@@ -81,7 +81,7 @@
             <div class="flex items-center gap-3 sm:gap-5">
                 <div class="flex items-center gap-2 bg-godot-card px-3 py-1.5 rounded-xl border border-godot-border">
                     <span class="text-xs font-medium text-slate-400">Mastery:</span>
-                    <span id="mastery-counter" class="text-sm font-bold text-godot-accent">0 / 10</span>
+                    <span id="mastery-counter" class="text-sm font-bold text-godot-accent">0 / 20</span>
                 </div>
                 <button onclick="openResetModal()" class="text-xs font-medium text-slate-400 hover:text-white px-3 py-2 rounded-lg hover:bg-godot-card transition-colors">
                     Reset Progress
@@ -96,27 +96,38 @@
         <!-- Left Sidebar: Concept & Project Navigator -->
         <aside class="lg:col-span-4 flex flex-col gap-4">
             <!-- Filter Pills -->
-            <div class="bg-godot-panel p-4 rounded-2xl border border-godot-border">
-                <div class="flex items-center justify-between mb-3">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Filter by Activity Type</span>
+            <div class="bg-godot-panel p-4 rounded-2xl border border-godot-border space-y-3">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-400 block mb-2">Filter by Activity Type</span>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button onclick="setFilter('all')" id="filter-all" class="filter-btn active px-3 py-2 rounded-xl text-xs font-semibold bg-godot-blue text-white transition-all">
+                            All (20)
+                        </button>
+                        <button onclick="setFilter('debug')" id="filter-debug" class="filter-btn px-3 py-2 rounded-xl text-xs font-semibold bg-godot-card text-slate-300 hover:text-white border border-godot-border transition-all">
+                            Debug (10)
+                        </button>
+                        <button onclick="setFilter('order')" id="filter-order" class="filter-btn px-3 py-2 rounded-xl text-xs font-semibold bg-godot-card text-slate-300 hover:text-white border border-godot-border transition-all">
+                            Order (10)
+                        </button>
+                    </div>
                 </div>
-                <div class="grid grid-cols-3 gap-2">
-                    <button onclick="setFilter('all')" id="filter-all" class="filter-btn active px-3 py-2 rounded-xl text-xs font-semibold bg-godot-blue text-white transition-all">
-                        All (10)
-                    </button>
-                    <button onclick="setFilter('debug')" id="filter-debug" class="filter-btn px-3 py-2 rounded-xl text-xs font-semibold bg-godot-card text-slate-300 hover:text-white border border-godot-border transition-all">
-                        Debug (5)
-                    </button>
-                    <button onclick="setFilter('order')" id="filter-order" class="filter-btn px-3 py-2 rounded-xl text-xs font-semibold bg-godot-card text-slate-300 hover:text-white border border-godot-border transition-all">
-                        Order (5)
-                    </button>
+                <div>
+                    <label for="lesson-select" class="text-xs font-semibold uppercase tracking-wider text-slate-400 block mb-1.5">Filter by Lesson (4 per Lesson)</label>
+                    <select id="lesson-select" onchange="setLessonFilter(this.value)" class="w-full bg-godot-card border border-godot-border rounded-xl px-3 py-2 text-xs font-medium text-slate-200 focus:outline-none focus:border-godot-blue">
+                        <option value="all">All 5 Lessons (20 Problems)</option>
+                        <option value="Lesson 1: Balloon Popper">Lesson 1: Balloon Popper (1–4)</option>
+                        <option value="Lesson 2: Balloon UI & Manager">Lesson 2: Balloon UI &amp; Manager (5–8)</option>
+                        <option value="Lesson 3: 2D Physics Game">Lesson 3: 2D Physics Game (9–12)</option>
+                        <option value="Lesson 4: Downhill Skiing">Lesson 4: Downhill Skiing (13–16)</option>
+                        <option value="Lesson 5: Star System Loops">Lesson 5: Star System Loops (17–20)</option>
+                    </select>
                 </div>
             </div>
 
             <!-- Curriculum Concept List -->
             <div class="bg-godot-panel p-4 rounded-2xl border border-godot-border flex-1 flex flex-col">
                 <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3 px-1">Course Concepts &amp; Problems</h2>
-                <div id="problem-list" class="space-y-2 overflow-y-auto max-h-[62vh] pr-1">
+                <div id="problem-list" class="space-y-2 overflow-y-auto max-h-[56vh] pr-1">
                     <!-- Populated by JS -->
                 </div>
             </div>
@@ -206,7 +217,7 @@
         <div class="bg-godot-panel border border-godot-border rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4">
             <h3 class="text-lg font-bold text-white">Reset All Practice Progress?</h3>
             <p class="text-sm text-slate-300 leading-relaxed">
-                This will clear your completed checkmarks across all 10 Godot 4 concepts so you can practice retrieval from scratch.
+                This will clear your completed checkmarks across all 20 Godot 4 concepts so you can practice retrieval from scratch.
             </p>
             <div class="flex justify-end gap-3 pt-2">
                 <button onclick="closeResetModal()" class="px-4 py-2 rounded-xl text-sm font-medium bg-godot-card hover:bg-slate-700 text-slate-300 border border-godot-border">
@@ -221,18 +232,21 @@
 
     <script>
         /**
-         * Retrieval Practice Curriculum Database
-         * Derived directly from Zenva's "Godot 4 Mini-Projects" (Godot 4.5)
-         * Covers all 4 mini-projects and their in-depth concepts:
-         * 1. Balloon Popper (Export vars, Input Events, Uniform Vector3 scaling & queue_free, Script Communication, UI Label & str() formatting)
-         * 2. 2D Physics Game (2D Mouse Input & Vector2.direction_to, RigidBody2D apply_impulse)
-         * 3. Downhill Skiing / Collision (3D Physics Movement & apply_force, Group Collision Detection & call_deferred)
-         * 4. Star System with Loops (Scene Preloading & Instantiation, For Loops & randf_range)
+         * Retrieval Practice Curriculum Database (20 Problems Total — 4 per Lesson)
+         * Derived directly from Zenva's "Godot 4 Mini-Projects"
+         * Lesson 1: Balloon Popper (Balloon.gd) — Problems 1–4
+         * Lesson 2: Balloon UI & Manager (BalloonManager.gd) — Problems 5–8
+         * Lesson 3: 2D Physics Game (PhysicsPlayer.gd) — Problems 9–12
+         * Lesson 4: Downhill Skiing (PlayerMovement.gd) — Problems 13–16
+         * Lesson 5: Star System Loops (Loops.gd) — Problems 17–20
          */
         const PROBLEMS = [
+            // =========================================================================
+            // LESSON 1: BALLOON POPPER (4 Problems)
+            // =========================================================================
             {
                 id: 1,
-                project: "Project 1: Balloon Popper",
+                project: "Lesson 1: Balloon Popper",
                 type: "order",
                 title: "1. Balloon Script Variables & Setup",
                 concept: "GDScript Inheritance & @export Inspector Variables",
@@ -249,7 +263,7 @@
             },
             {
                 id: 2,
-                project: "Project 1: Balloon Popper",
+                project: "Lesson 1: Balloon Popper",
                 type: "debug",
                 title: "2. Filtering Left Mouse Clicks",
                 concept: "Input Events & Compound 'and' Conditions",
@@ -284,7 +298,7 @@
             },
             {
                 id: 3,
-                project: "Project 1: Balloon Popper",
+                project: "Lesson 1: Balloon Popper",
                 type: "order",
                 title: "3. Inflating & Popping Sequence",
                 concept: "Vector3 Uniform Scaling, Script Communication & queue_free()",
@@ -302,21 +316,73 @@
             },
             {
                 id: 4,
-                project: "Project 1: Balloon Popper",
+                project: "Lesson 1: Balloon Popper",
                 type: "debug",
-                title: "4. Updating the Score UI Label",
-                concept: "Node References ($) & String Formatting with str()",
-                fileName: "BalloonManager.gd",
-                prompt: "When a balloon pops in BalloonManager.gd, Godot throws a type error when updating score_text. Click the broken line and select the proper fix.",
-                hint: "In GDScript, you cannot directly add a String ('Score: ') and an int variable (score) with '+' without converting the integer using str().",
-                explanation: "Nailed it! Wrapping 'score' inside str(score) converts the integer into a String so it can be concatenated with 'Score: '.",
-                buggyLineIndex: 7,
+                title: "4. Uniform 3D Scaling Bug",
+                concept: "3D Vector Math (Vector3.ONE vs Vector3.UP)",
+                fileName: "Balloon.gd",
+                prompt: "When clicking the balloon, it stretches tall like a cylinder along the Y-axis instead of growing evenly in all 3 dimensions! Click the buggy line and fix it.",
+                hint: "Check which built-in Vector3 constant multiplies 'size_increase' when updating 'scale'.",
+                explanation: "Nice job! Vector3.ONE equals (1, 1, 1), which scales X, Y, and Z uniformly, whereas Vector3.UP only scales the Y-axis (0, 1, 0).",
+                buggyLineIndex: 2,
                 codeLines: [
+                    "func _on_input_event(camera, event, position, normal, shape_idx):",
+                    "    if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:",
+                    "        scale += Vector3.UP * size_increase",
+                    "        clicks_to_pop -= 1"
+                ],
+                options: [
+                    {
+                        text: "        scale += Vector3.ONE * size_increase",
+                        correct: true,
+                        reason: "Vector3.ONE is (1, 1, 1), expanding the balloon equally on X, Y, and Z."
+                    },
+                    {
+                        text: "        scale = Vector3.ONE * size_increase",
+                        correct: false,
+                        reason: "Using '=' instead of '+=' shrinks the balloon down to (0.2, 0.2, 0.2) on the first click instead of growing."
+                    },
+                    {
+                        text: "        position += Vector3.ONE * size_increase",
+                        correct: false,
+                        reason: "Modifying 'position' moves the balloon diagonally instead of inflating its size."
+                    }
+                ]
+            },
+
+            // =========================================================================
+            // LESSON 2: BALLOON UI & MANAGER (4 Problems)
+            // =========================================================================
+            {
+                id: 5,
+                project: "Lesson 2: Balloon UI & Manager",
+                type: "order",
+                title: "5. Initializing BalloonManager & Score Label",
+                concept: "@onready Node References ($) & _ready() Initialization",
+                fileName: "BalloonManager.gd",
+                prompt: "Arrange the setup lines of BalloonManager.gd so the script tracks score, grabs the $ScoreText Label node when ready, and sets the initial UI text.",
+                hint: "Class variables and @onready references go at the top of the script before func _ready():.",
+                explanation: "Spot on! Declaring score and @onready var score_text : Label = $ScoreText at the top ensures the Label node is ready when _ready() sets its text.",
+                lines: [
                     "extends Node3D",
                     "var score : int = 0",
                     "@onready var score_text : Label = $ScoreText",
                     "func _ready():",
-                    "    score_text.text = \"Score: 0\"",
+                    "    score_text.text = \"Score: 0\""
+                ]
+            },
+            {
+                id: 6,
+                project: "Lesson 2: Balloon UI & Manager",
+                type: "debug",
+                title: "6. Updating the Score UI Label",
+                concept: "String Concatenation & Type Casting with str()",
+                fileName: "BalloonManager.gd",
+                prompt: "When a balloon pops in BalloonManager.gd, Godot throws a type error when updating score_text. Click the broken line and select the proper fix.",
+                hint: "In GDScript, you cannot directly add a String ('Score: ') and an int variable (score) with '+' without converting the integer using str().",
+                explanation: "Nailed it! Wrapping 'score' inside str(score) converts the integer into a String so it can be concatenated with 'Score: '.",
+                buggyLineIndex: 2,
+                codeLines: [
                     "func increase_score(amount : int):",
                     "    score += amount",
                     "    score_text.text = \"Score: \" + score"
@@ -340,10 +406,64 @@
                 ]
             },
             {
-                id: 5,
-                project: "Project 2: 2D Physics Game",
+                id: 7,
+                project: "Lesson 2: Balloon UI & Manager",
                 type: "order",
-                title: "5. Launching the 2D Physics Player",
+                title: "7. Ordering the increase_score() Function",
+                concept: "Custom Functions, Parameters & Accumulating State",
+                fileName: "BalloonManager.gd",
+                prompt: "Order the lines of increase_score(amount : int) in BalloonManager.gd so the score updates before the UI Label refreshes.",
+                hint: "If you update score_text.text before adding amount to score, the UI will always lag one pop behind!",
+                explanation: "Exactly right! First define the function signature, then add 'amount' to 'score' with +=, and finally update score_text.text.",
+                lines: [
+                    "func increase_score(amount : int):",
+                    "    score += amount",
+                    "    score_text.text = \"Score: \" + str(score)"
+                ]
+            },
+            {
+                id: 8,
+                project: "Lesson 2: Balloon UI & Manager",
+                type: "debug",
+                title: "8. Broken Node Path to Main Manager",
+                concept: "Scene Tree Absolute Paths (get_node)",
+                fileName: "Balloon.gd",
+                prompt: "When a balloon reaches 0 clicks_to_pop, Godot crashes with 'Node not found: Main'. Inspect Balloon.gd and fix the get_node() path.",
+                hint: "In Zenva's scene tree, Main is the root node inside '/root/'.",
+                explanation: "Bullseye! Because Main sits at the top of the active scene tree, get_node(\"/root/Main\") locates it reliably from any balloon.",
+                buggyLineIndex: 2,
+                codeLines: [
+                    "if clicks_to_pop == 0:",
+                    "    get_node(\"Main\").increase_score(score_to_give)",
+                    "    queue_free()"
+                ],
+                options: [
+                    {
+                        text: "    get_node(\"/root/Main\").increase_score(score_to_give)",
+                        correct: true,
+                        reason: "Using '/root/Main' provides the full path from the SceneTree root down to the Main node."
+                    },
+                    {
+                        text: "    get_node(\"/root/Balloon\").increase_score(score_to_give)",
+                        correct: false,
+                        reason: "The increase_score() function is defined on BalloonManager.gd attached to Main, not on Balloon."
+                    },
+                    {
+                        text: "    get_node(\"/root/Main\").score_to_give",
+                        correct: false,
+                        reason: "We need to call the method .increase_score(score_to_give), not access a property."
+                    }
+                ]
+            },
+
+            // =========================================================================
+            // LESSON 3: 2D PHYSICS GAME (4 Problems)
+            // =========================================================================
+            {
+                id: 9,
+                project: "Lesson 3: 2D Physics Game",
+                type: "order",
+                title: "9. Launching the 2D Physics Player",
                 concept: "Mouse Coordinates, Vector2.direction_to() & RigidBody2D Impulses",
                 fileName: "PhysicsPlayer.gd",
                 prompt: "Order the lines inside _process(delta) from Zenva's PhysicsPlayer.gd so the RigidBody2D player calculates the direction toward the cursor and launches on a left click.",
@@ -357,10 +477,10 @@
                 ]
             },
             {
-                id: 6,
-                project: "Project 2: 2D Physics Game",
+                id: 10,
+                project: "Lesson 3: 2D Physics Game",
                 type: "debug",
-                title: "6. Reversed Launch Direction Bug",
+                title: "10. Reversed Launch Direction Bug",
                 concept: "Vector Direction Math (Origin vs. Target)",
                 fileName: "PhysicsPlayer.gd",
                 prompt: "When the player clicks on a crate, the character launches AWAY from the mouse cursor instead of toward it! Inspect PhysicsPlayer.gd and fix the faulty line.",
@@ -394,10 +514,70 @@
                 ]
             },
             {
-                id: 7,
-                project: "Project 3: Downhill Skiing",
+                id: 11,
+                project: "Lesson 3: 2D Physics Game",
+                type: "order",
+                title: "11. Complete PhysicsPlayer.gd Structure",
+                concept: "RigidBody2D Inheritance & Force Variable Setup",
+                fileName: "PhysicsPlayer.gd",
+                prompt: "Reconstruct the entire PhysicsPlayer.gd script from top to bottom in the exact Zenva lesson order.",
+                hint: "Start with 'extends RigidBody2D', then declare 'var hit_force : float = 50.0' above _process(delta).",
+                explanation: "Clean work! Extending RigidBody2D gives the script access to apply_impulse(), and hit_force scales the unit direction vector.",
+                lines: [
+                    "extends RigidBody2D",
+                    "var hit_force : float = 50.0",
+                    "func _process(delta):",
+                    "    if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):",
+                    "        var dir = global_position.direction_to(get_global_mouse_position())",
+                    "        apply_impulse(dir * hit_force)"
+                ]
+            },
+            {
+                id: 12,
+                project: "Lesson 3: 2D Physics Game",
                 type: "debug",
-                title: "7. Steering Left & Right on the Slope",
+                title: "12. Unscaled Impulse Force Bug",
+                concept: "Multiplying Direction Vectors by Magnitude (hit_force)",
+                fileName: "PhysicsPlayer.gd",
+                prompt: "The player barely nudges by 1 pixel when clicking because hit_force is never applied to the impulse! Find the buggy line and fix it.",
+                hint: "direction_to() returns a normalized vector of length 1. How do we scale it by hit_force?",
+                explanation: "Spot on! Multiplying 'dir * hit_force' scales the unit vector by 50.0 so the RigidBody2D launches across the arena.",
+                buggyLineIndex: 5,
+                codeLines: [
+                    "extends RigidBody2D",
+                    "var hit_force : float = 50.0",
+                    "func _process(delta):",
+                    "    if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):",
+                    "        var dir = global_position.direction_to(get_global_mouse_position())",
+                    "        apply_impulse(dir)"
+                ],
+                options: [
+                    {
+                        text: "        apply_impulse(dir * hit_force)",
+                        correct: true,
+                        reason: "Multiplying the normalized direction vector 'dir' by 'hit_force' applies the full 50.0 impulse."
+                    },
+                    {
+                        text: "        apply_impulse(hit_force)",
+                        correct: false,
+                        reason: "apply_impulse() requires a Vector2, not a single float."
+                    },
+                    {
+                        text: "        dir = hit_force",
+                        correct: false,
+                        reason: "You cannot assign a float directly to a Vector2 direction variable."
+                    }
+                ]
+            },
+
+            // =========================================================================
+            // LESSON 4: DOWNHILL SKIING (4 Problems)
+            // =========================================================================
+            {
+                id: 13,
+                project: "Lesson 4: Downhill Skiing",
+                type: "debug",
+                title: "13. Steering Left & Right on the Slope",
                 concept: "3D Physics Process & linear_velocity.x",
                 fileName: "PlayerMovement.gd",
                 prompt: "While testing the 3D skiing game in PlayerMovement.gd, pressing the Right Arrow key pushes the skier to the LEFT! Find the bug and fix it.",
@@ -432,10 +612,10 @@
                 ]
             },
             {
-                id: 8,
-                project: "Project 3: Downhill Skiing",
+                id: 14,
+                project: "Lesson 4: Downhill Skiing",
                 type: "order",
-                title: "8. Tree Collision & Scene Reload",
+                title: "14. Tree Collision & Scene Reload",
                 concept: "Node Groups (is_in_group) & get_tree().reload_current_scene()",
                 fileName: "PlayerMovement.gd",
                 prompt: "Arrange the collision signal handler from Zenva's PlayerMovement.gd so the game checks if the collided body is in the 'Tree' group and reloads the scene.",
@@ -448,31 +628,84 @@
                 ]
             },
             {
-                id: 9,
-                project: "Project 4: Star System",
+                id: 15,
+                project: "Lesson 4: Downhill Skiing",
                 type: "order",
-                title: "9. Spawning & Randomizing Stars in a Loop",
-                concept: "For Loops, Scene Instantiation, randi_range() & randf_range()",
-                fileName: "Loops.gd",
-                prompt: "Order the loop body inside _ready() from Zenva's Loops.gd to instantiate a star, add it as a child, set its random integer position, and randomize its float star_size.",
-                hint: "Notice Zenva uses randi_range() for star.position.x / y, and randf_range() stored in 'star_size' for star.scale.x / y.",
-                explanation: "Fantastic! Each iteration instantiates star_scene, calls add_child(star), sets random integer positions with randi_range(), and applies float scaling via star_size = randf_range(0.5, 1.0).",
+                title: "15. Skier Physics Movement Loop",
+                concept: "Fixed Timestep _physics_process(delta) & Key Polling",
+                fileName: "PlayerMovement.gd",
+                prompt: "Order the declarations and _physics_process(delta) steering blocks in PlayerMovement.gd.",
+                hint: "Start with 'extends RigidBody3D', then '@export var move_speed : float = 2.0', followed by _physics_process(delta) checking KEY_LEFT and KEY_RIGHT.",
+                explanation: "Great job! Using _physics_process(delta) ensures smooth, frame-rate-independent velocity updates for RigidBody3D.",
                 lines: [
-                    "for i in spawn_count:",
-                    "    var star = star_scene.instantiate()",
-                    "    add_child(star)",
-                    "    star.position.x = randi_range(-280, 280)",
-                    "    star.position.y = randi_range(-150, 150)",
-                    "    var star_size = randf_range(0.5, 1.0)",
-                    "    star.scale.x = star_size",
-                    "    star.scale.y = star_size"
+                    "extends RigidBody3D",
+                    "@export var move_speed : float = 2.0",
+                    "func _physics_process(delta):",
+                    "    if Input.is_key_pressed(KEY_LEFT):",
+                    "        linear_velocity.x = -move_speed",
+                    "    if Input.is_key_pressed(KEY_RIGHT):",
+                    "        linear_velocity.x = move_speed"
                 ]
             },
             {
-                id: 10,
-                project: "Project 4: Star System",
+                id: 16,
+                project: "Lesson 4: Downhill Skiing",
                 type: "debug",
-                title: "10. Invisible Stars in the Night Sky",
+                title: "16. Reloading Scene on Ground Contact",
+                concept: "Filtering Colliders with Node Groups",
+                fileName: "PlayerMovement.gd",
+                prompt: "The instant the skier touches the snow slope (Ground), the game reloads endlessly! Inspect _on_body_entered(body) and fix the missing group check.",
+                hint: "Both Ground and Tree are StaticBody3D colliders. How does Zenva tell them apart?",
+                explanation: "Nailed it! Wrapping get_tree().reload_current_scene() inside 'if body.is_in_group(\"Tree\"):' ensures only trees reset the level.",
+                buggyLineIndex: 1,
+                codeLines: [
+                    "func _on_body_entered(body):",
+                    "    if body.is_in_group(\"Ground\"):",
+                    "        get_tree().reload_current_scene()"
+                ],
+                options: [
+                    {
+                        text: "    if body.is_in_group(\"Tree\"):",
+                        correct: true,
+                        reason: "Checking for the 'Tree' group ignores the Ground slope and only restarts when hitting a tree obstacle."
+                    },
+                    {
+                        text: "    if body.is_in_group(\"Player\"):",
+                        correct: false,
+                        reason: "The player does not collide with itself; obstacles are assigned to the 'Tree' group."
+                    },
+                    {
+                        text: "    get_tree().quit()",
+                        correct: false,
+                        reason: "quit() closes the entire game window instead of restarting the slope."
+                    }
+                ]
+            },
+
+            // =========================================================================
+            // LESSON 5: STAR SYSTEM LOOPS (4 Problems)
+            // =========================================================================
+            {
+                id: 17,
+                project: "Lesson 5: Star System Loops",
+                type: "order",
+                title: "17. Preloading Star.tscn & Setup",
+                concept: "@export Iteration Count & preload() PackedScene",
+                fileName: "Loops.gd",
+                prompt: "Arrange the top of Loops.gd in Zenva's exact order to extend Node2D, expose spawn_count, and preload Star.tscn.",
+                hint: "First extend Node2D, then declare '@export var spawn_count : int = 200', and then preload 'res://Loops/Star.tscn'.",
+                explanation: "Spot on! Preloading Star.tscn into star_scene prepares the template so the loop can instantiate 200 copies instantly.",
+                lines: [
+                    "extends Node2D",
+                    "@export var spawn_count : int = 200",
+                    "var star_scene = preload(\"res://Loops/Star.tscn\")"
+                ]
+            },
+            {
+                id: 18,
+                project: "Lesson 5: Star System Loops",
+                type: "debug",
+                title: "18. Invisible Stars in the Night Sky",
                 concept: "Instancing Workflow (Preload -> Instantiate -> add_child)",
                 fileName: "Loops.gd",
                 prompt: "The loop in Loops.gd runs 200 times without errors, yet zero stars appear on screen! Inspect the script, click the line causing the issue, and choose the fix.",
@@ -506,12 +739,70 @@
                         reason: "Using floats instead of integers for position won't make unattached nodes appear in the scene tree."
                     }
                 ]
+            },
+            {
+                id: 19,
+                project: "Lesson 5: Star System Loops",
+                type: "order",
+                title: "19. Spawning & Randomizing Stars in a Loop",
+                concept: "For Loops, Scene Instantiation, randi_range() & randf_range()",
+                fileName: "Loops.gd",
+                prompt: "Order the loop body inside _ready() from Zenva's Loops.gd to instantiate a star, add it as a child, set its random integer position, and randomize its float star_size.",
+                hint: "Notice Zenva uses randi_range() for star.position.x / y, and randf_range() stored in 'star_size' for star.scale.x / y.",
+                explanation: "Fantastic! Each iteration instantiates star_scene, calls add_child(star), sets random integer positions with randi_range(), and applies float scaling via star_size = randf_range(0.5, 1.0).",
+                lines: [
+                    "for i in spawn_count:",
+                    "    var star = star_scene.instantiate()",
+                    "    add_child(star)",
+                    "    star.position.x = randi_range(-280, 280)",
+                    "    star.position.y = randi_range(-150, 150)",
+                    "    var star_size = randf_range(0.5, 1.0)",
+                    "    star.scale.x = star_size",
+                    "    star.scale.y = star_size"
+                ]
+            },
+            {
+                id: 20,
+                project: "Lesson 5: Star System Loops",
+                type: "debug",
+                title: "20. Integer Truncation on Star Scale",
+                concept: "randf_range() (Floats) vs randi_range() (Integers)",
+                fileName: "Loops.gd",
+                prompt: "All the stars in the sky either vanish completely (scale 0) or stay full size (scale 1) with no smooth sizes in between! Inspect the scaling code and fix the bug.",
+                hint: "In Zenva's lesson, why does Daniel Buckley specifically switch from randi_range() to randf_range() for star_size?",
+                explanation: "Awesome! randi_range(0.5, 1.0) truncates decimals to integers (0 or 1), whereas randf_range(0.5, 1.0) generates smooth decimal floats between 0.5 and 1.0.",
+                buggyLineIndex: 2,
+                codeLines: [
+                    "    star.position.x = randi_range(-280, 280)",
+                    "    star.position.y = randi_range(-150, 150)",
+                    "    var star_size = randi_range(0.5, 1.0)",
+                    "    star.scale.x = star_size",
+                    "    star.scale.y = star_size"
+                ],
+                options: [
+                    {
+                        text: "    var star_size = randf_range(0.5, 1.0)",
+                        correct: true,
+                        reason: "randf_range() returns floating-point numbers (like 0.64 or 0.88), giving stars natural size variation."
+                    },
+                    {
+                        text: "    var star_size = randi_range(5, 10)",
+                        correct: false,
+                        reason: "Scaling stars 5x to 10x larger would make huge overlapping sprites."
+                    },
+                    {
+                        text: "    star.scale.x = star.position.x",
+                        correct: false,
+                        reason: "Setting scale to position coordinates (-280 to 280) would stretch the stars wildly across the screen."
+                    }
+                ]
             }
         ];
 
         // Application State
         let currentProblemIndex = 0;
         let currentFilter = 'all';
+        let currentLessonFilter = 'all';
         let solvedIds = new Set();
         let hintVisible = false;
 
@@ -563,9 +854,18 @@
             activeBtn.classList.remove('bg-godot-card', 'text-slate-300', 'border', 'border-godot-border');
             activeBtn.classList.add('bg-godot-blue', 'text-white');
 
+            applyFiltersAndRender();
+        }
+
+        function setLessonFilter(lesson) {
+            currentLessonFilter = lesson;
+            applyFiltersAndRender();
+        }
+
+        function applyFiltersAndRender() {
             renderSidebar();
 
-            // If current problem doesn't match filter, jump to first matching
+            // If current problem doesn't match active filters, jump to first matching
             const filtered = getFilteredProblems();
             if (filtered.length > 0 && !filtered.some(p => p.id === PROBLEMS[currentProblemIndex].id)) {
                 const firstIdx = PROBLEMS.findIndex(p => p.id === filtered[0].id);
@@ -574,8 +874,11 @@
         }
 
         function getFilteredProblems() {
-            if (currentFilter === 'all') return PROBLEMS;
-            return PROBLEMS.filter(p => p.type === currentFilter);
+            return PROBLEMS.filter(p => {
+                const matchesType = currentFilter === 'all' || p.type === currentFilter;
+                const matchesLesson = currentLessonFilter === 'all' || p.project === currentLessonFilter;
+                return matchesType && matchesLesson;
+            });
         }
 
         function renderSidebar() {
@@ -583,6 +886,10 @@
             listEl.innerHTML = '';
 
             const filtered = getFilteredProblems();
+            if (filtered.length === 0) {
+                listEl.innerHTML = `<p class="text-xs text-slate-400 text-center py-6">No problems match both filters.</p>`;
+                return;
+            }
             filtered.forEach(problem => {
                 const actualIndex = PROBLEMS.findIndex(p => p.id === problem.id);
                 const isActive = actualIndex === currentProblemIndex;
@@ -604,7 +911,7 @@
                     <div class="space-y-1 min-w-0 flex-1">
                         <div class="flex items-center gap-2">
                             ${typeBadge}
-                            <span class="text-[11px] text-slate-400 truncate">${problem.project.replace(/Project \d+: /, '')}</span>
+                            <span class="text-[11px] text-slate-400 truncate">${problem.project.replace(/Lesson \d+: /, '')}</span>
                         </div>
                         <p class="text-xs sm:text-sm font-semibold truncate">${problem.title}</p>
                     </div>
