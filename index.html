@@ -93,665 +93,944 @@
   <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 py-8">
 
     <!-- ==================== PAGE 1: UNIT 2 HUB ==================== -->
-    <section id="page-hub" class="space-y-8">
-      <!-- Hero Banner -->
-      <div class="bg-gradient-to-r from-teal-700 via-teal-600 to-sky-700 rounded-2xl p-6 sm:p-8 text-white shadow-lg">
-        <div class="max-w-3xl">
-          <span class="inline-block bg-white/20 backdrop-blur-sm text-teal-50 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3">
-            Weeks 7–10 • Self-Paced Studio + Game Jam
-          </span>
-          <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-3">
-            Welcome to Unit 2: Making Games Actually React
-          </h2>
-          <p class="text-teal-50 text-base sm:text-lg leading-relaxed mb-6">
-            In Unit 1, you learned how to set up a scene. In Unit 2, you’ll make objects <strong>fall, bounce, collide, and spawn automatically</strong>. Heads up: this unit is tougher on purpose. Keep this site open while you build—every hint, vocab word, and weekly checklist you need is right here.
-          </p>
-          <div class="flex flex-wrap gap-3">
-            <button onclick="switchPage('w7')" class="bg-white text-teal-800 hover:bg-teal-50 font-bold px-5 py-2.5 rounded-xl text-sm shadow transition">
+    <section id="page-hub" class="space-y-6">
+      <!-- Streamlined Hero Banner + Integrated Biblical Mindset -->
+      <div class="bg-gradient-to-r from-teal-700 via-teal-600 to-sky-700 rounded-2xl p-6 sm:p-7 text-white shadow-lg">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div class="max-w-2xl">
+            <span class="inline-block bg-white/20 backdrop-blur-sm text-teal-50 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-2.5">
+              Weeks 7 to 10 • Self-Paced Studio + Game Jam
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-2">
+              Unit 2: Making Games Actually React
+            </h2>
+            <p class="text-teal-50 text-sm sm:text-base leading-relaxed">
+              In this unit, you’ll make objects <strong>fall, bounce, collide, and spawn automatically</strong>. Broken code isn’t failure. <em>Romans 8:28</em> and <em>Galatians 6:9</em> remind us that patient repair is how good work gets finished.
+            </p>
+          </div>
+          <div class="flex flex-wrap lg:flex-col gap-2.5 shrink-0">
+            <button onclick="switchPage('w7')" class="bg-white text-teal-800 hover:bg-teal-50 font-extrabold px-5 py-2.5 rounded-xl text-sm shadow transition text-center">
               Start Week 7 →
             </button>
-            <a href="https://login.zenva.com" target="_blank" class="bg-teal-900/50 hover:bg-teal-900/70 border border-teal-300/40 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition">
-              Log in to Zenva
-            </a>
+            <button onclick="document.getElementById('hub-video-drawer').open = true; document.getElementById('hub-video-drawer').scrollIntoView({behavior: 'smooth'});"
+                    class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-sm shadow transition flex items-center justify-center gap-1.5">
+              <span>🎥 Watch 7-Min Overview</span>
+            </button>
           </div>
         </div>
       </div>
 
-      <!-- Faith & Mindset Callout (Biblical Integration) -->
-      <div class="bg-amber-50 border-l-4 border-amber-500 rounded-r-xl p-5 sm:p-6 shadow-sm">
-        <div class="flex items-start gap-3.5">
-          <span class="text-2xl">🛠️</span>
-          <div>
-            <h3 class="text-lg font-bold text-amber-950">Broken Code Isn’t Failure—It’s Just Part of Building</h3>
-            <p class="text-amber-900 text-sm sm:text-base mt-1 leading-relaxed">
-              When your character clips through a floor or a balloon refuses to pop, it’s easy to think, <em>"I'm just bad at coding."</em> Not true. <strong>Romans 8:28</strong> and <strong>Galatians 6:9</strong> remind us that in a fallen, broken world, things don't work smoothly on the first try—they require patient, steady repair rather than giving up. In this class, <strong>debugging is the actual skill being graded</strong>, not getting it perfect on try #1.
-            </p>
-          </div>
+      <!-- Section 1: 4-Week Roadmap Cards -->
+      <div class="space-y-3">
+        <h3 class="text-lg font-extrabold text-slate-800">1. Your 4-Week Roadmap (Click Any Week to Jump In)</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+          <button onclick="switchPage('w7')" class="text-left bg-white hover:bg-teal-50/60 border border-slate-200 hover:border-teal-300 rounded-xl p-4 shadow-sm transition group">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-teal-700 block">Week 7</span>
+            <h4 class="font-extrabold text-slate-900 text-base mt-0.5 group-hover:text-teal-800">🎈 Balloon Popper</h4>
+            <p class="text-xs text-slate-600 mt-1">3D click detection with Area3D, signals, and updating UI score labels.</p>
+          </button>
+
+          <button onclick="switchPage('w8')" class="text-left bg-white hover:bg-sky-50/60 border border-slate-200 hover:border-sky-300 rounded-xl p-4 shadow-sm transition group">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-sky-700 block">Week 8</span>
+            <h4 class="font-extrabold text-slate-900 text-base mt-0.5 group-hover:text-sky-800">🧊 2D Physics</h4>
+            <p class="text-xs text-slate-600 mt-1">RigidBody2D forces, impulses, gravity scale, and Physics Quiz.</p>
+          </button>
+
+          <button onclick="switchPage('w9')" class="text-left bg-white hover:bg-indigo-50/60 border border-slate-200 hover:border-indigo-300 rounded-xl p-4 shadow-sm transition group">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-indigo-700 block">Week 9</span>
+            <h4 class="font-extrabold text-slate-900 text-base mt-0.5 group-hover:text-indigo-800">⛷️ Collision & Loops</h4>
+            <p class="text-xs text-slate-600 mt-1">3D ski collisions, scene reloads, for loops, and 2 Concept Checks.</p>
+          </button>
+
+          <button onclick="switchPage('w10')" class="text-left bg-white hover:bg-amber-50/60 border border-slate-200 hover:border-amber-300 rounded-xl p-4 shadow-sm transition group">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-amber-700 block">Week 10</span>
+            <h4 class="font-extrabold text-slate-900 text-base mt-0.5 group-hover:text-amber-800">🏆 Game Jam & Test</h4>
+            <p class="text-xs text-slate-600 mt-1">4-day original game build, playtesting, GDD, and Day 5 Unit 2 Test.</p>
+          </button>
         </div>
       </div>
 
-      <!-- 4-Week Roadmap Cards -->
-      <div>
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="text-xl font-extrabold text-slate-800">Your 4-Week Game Plan</h3>
-          <span class="text-xs font-medium text-slate-500">Click any week to open lessons & hints</span>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <!-- Week 7 Card -->
-          <div onclick="switchPage('w7')" class="cursor-pointer bg-white hover:border-teal-500 border-2 border-slate-200 rounded-xl p-5 shadow-sm transition group">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-2.5 py-1 rounded-md">Week 7</span>
-              <span class="text-xl">🎈</span>
-            </div>
-            <h4 class="font-bold text-slate-900 group-hover:text-teal-700 transition">Balloon Popper</h4>
-            <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-              Godot 4.5 check, Balloon Popper Pts 1–6 + In-Depth Overview.
+      <!-- Section 2: The 3 Big Ideas -->
+      <div class="space-y-3">
+        <h3 class="text-lg font-extrabold text-slate-800">2. The 3 Big Ideas (Read This First)</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+          <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+            <div class="w-8 h-8 rounded-lg bg-sky-100 text-sky-800 font-extrabold flex items-center justify-center text-sm mb-2">⚡</div>
+            <h4 class="font-bold text-slate-900 text-sm mb-1">Physics = Forces, Not Coordinates</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              You don’t tell a <code class="font-mono bg-slate-100 px-1 rounded">RigidBody</code> exact X/Y coordinates each frame. You push it with a force or impulse and let Godot’s engine calculate the motion.
             </p>
-            <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-500">
-              Due: Portfolio Loom + Dev Log
-            </div>
           </div>
 
-          <!-- Week 8 Card -->
-          <div onclick="switchPage('w8')" class="cursor-pointer bg-white hover:border-sky-500 border-2 border-slate-200 rounded-xl p-5 shadow-sm transition group">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold uppercase tracking-wider text-sky-700 bg-sky-50 px-2.5 py-1 rounded-md">Week 8</span>
-              <span class="text-xl">🧊</span>
-            </div>
-            <h4 class="font-bold text-slate-900 group-hover:text-sky-700 transition">2D Physics</h4>
-            <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-              Physics Pts 1–4 + Overview, and start Collision Pt 1.
+          <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+            <div class="w-8 h-8 rounded-lg bg-teal-100 text-teal-800 font-extrabold flex items-center justify-center text-sm mb-2">💬</div>
+            <h4 class="font-bold text-slate-900 text-sm mb-1">Collision = A Two-Way Conversation</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Two objects only react if their collision layers, masks, or groups allow them to notice each other. A <strong>Signal</strong> is how one node tells your script they touched.
             </p>
-            <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-500">
-              Due: Portfolio + Physics Check
-            </div>
           </div>
 
-          <!-- Week 9 Card -->
-          <div onclick="switchPage('w9')" class="cursor-pointer bg-white hover:border-indigo-500 border-2 border-slate-200 rounded-xl p-5 shadow-sm transition group">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold uppercase tracking-wider text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-md">Week 9</span>
-              <span class="text-xl">⛷️</span>
-            </div>
-            <h4 class="font-bold text-slate-900 group-hover:text-indigo-700 transition">Collision & Loops</h4>
-            <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-              Finish Collision, Loops Pts 1–3 + Overview, Course Conclusion.
-            </p>
-            <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-500">
-              Due: Portfolio + 2 Concept Checks
-            </div>
-          </div>
-
-          <!-- Week 10 Card -->
-          <div onclick="switchPage('w10')" class="cursor-pointer bg-white hover:border-amber-500 border-2 border-slate-200 rounded-xl p-5 shadow-sm transition group">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-50 px-2.5 py-1 rounded-md">Week 10</span>
-              <span class="text-xl">🏆</span>
-            </div>
-            <h4 class="font-bold text-slate-900 group-hover:text-amber-700 transition">Game Jam & Test</h4>
-            <p class="text-xs text-slate-600 mt-1.5 leading-relaxed">
-              Pitch, build, playtest an original game + Unit 2 Test.
-            </p>
-            <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-500">
-              Due: Team Build, GDD & Unit Test
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- The 3 Big Ideas (Plain-English Visual Cards) -->
-      <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-        <h3 class="text-xl font-extrabold text-slate-800 mb-1">The 3 Big Ideas (If You Remember Nothing Else, Read This)</h3>
-        <p class="text-sm text-slate-500 mb-5">Every single test question and Game Jam requirement comes back to these three rules.</p>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div class="bg-sky-50/70 border border-sky-200 rounded-xl p-4">
-            <div class="text-sky-700 font-extrabold text-sm uppercase tracking-wide mb-1">1. Physics = Forces, Not Coordinates</div>
-            <p class="text-sm text-slate-700 leading-relaxed">
-              You don’t tell a <code class="bg-sky-100 px-1 rounded text-sky-900 font-mono text-xs">RigidBody</code> exact X/Y coordinates every frame. You push it with a <strong>force or impulse</strong> (gravity, a click, a bounce) and let Godot’s engine calculate the slide.
-            </p>
-          </div>
-          <div class="bg-teal-50/70 border border-teal-200 rounded-xl p-4">
-            <div class="text-teal-700 font-extrabold text-sm uppercase tracking-wide mb-1">2. Collision = A Two-Way Conversation</div>
-            <p class="text-sm text-slate-700 leading-relaxed">
-              Two objects only react if their <strong>collision layers/masks</strong> (or groups) are set to notice each other. A <strong>Signal</strong> is the text message one node sends your script when they touch.
-            </p>
-          </div>
-          <div class="bg-indigo-50/70 border border-indigo-200 rounded-xl p-4">
-            <div class="text-indigo-700 font-extrabold text-sm uppercase tracking-wide mb-1">3. Loops = Replacing Repetition With a Rule</div>
-            <p class="text-sm text-slate-700 leading-relaxed">
-              Never copy-paste the same code 200 times. A <code class="bg-indigo-100 px-1 rounded text-indigo-900 font-mono text-xs">for</code> loop tells Godot: <em>"Repeat this block until you hit the target count."</em> Used for spawning stars, enemies, and timers.
+          <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+            <div class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-800 font-extrabold flex items-center justify-center text-sm mb-2">🔁</div>
+            <h4 class="font-bold text-slate-900 text-sm mb-1">Loops = Replacing Repetition With a Rule</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Never copy and paste the same code 200 times. A <code class="font-mono bg-slate-100 px-1 rounded">for</code> loop repeats a block automatically until it hits your target count.
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Weekly Portfolio Submission Rules -->
-      <div class="bg-slate-900 text-white rounded-2xl p-6 shadow-md">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-700 pb-4 mb-4">
-          <div>
-            <h3 class="text-lg font-bold text-teal-300">Every Friday: What Goes Into Your Portfolio</h3>
-            <p class="text-xs sm:text-sm text-slate-300">All weekly work is submitted in your Digital Portfolio (linked in Google Classroom).</p>
-          </div>
-          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-teal-500/20 text-teal-300 border border-teal-500/30">
-            3 Non-Negotiables
-          </span>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-          <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
-            <div class="font-bold text-amber-300 mb-1">1. Required "Twist"</div>
-            <p class="text-slate-300 text-xs leading-relaxed">
-              Change or add at least <strong>one thing</strong> beyond what the Zenva video shows (different force, color, size, spawn count, or rule) before calling a lesson done.
-            </p>
-          </div>
-          <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
-            <div class="font-bold text-teal-300 mb-1">2. Process Loom Video</div>
-            <p class="text-slate-300 text-xs leading-relaxed">
-              Don’t just record the game running. Narrate <strong>one decision</strong> you made (e.g., <em>why</em> you picked a specific force value or collision shape).
-            </p>
-          </div>
-          <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700">
-            <div class="font-bold text-sky-300 mb-1">3. Dev Log + Scripture Prompt</div>
-            <p class="text-slate-300 text-xs leading-relaxed">
-              Name <strong>one thing that broke</strong> this week and how you fixed it, plus answer that week’s reflection prompt. <em>(If nothing broke, you weren’t building yet!)</em>
-            </p>
-          </div>
-        </div>
-      </div>
+      <!-- Section 3: Clean Collapsible Drawers for Devotion, Video, Friday Checklist & Vocab -->
+      <div class="space-y-3 pt-1">
+        <h3 class="text-lg font-extrabold text-slate-800">3. Quick Reference Drawers (Click to Expand)</h3>
 
-      <!-- Quick Vocab Decoder -->
-      <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-        <h3 class="text-lg font-extrabold text-slate-800 mb-3">Quick Vocab Decoder (No-Fluff Edition)</h3>
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse text-sm">
-            <thead>
-              <tr class="border-b-2 border-slate-200 text-slate-600 text-xs uppercase">
-                <th class="py-2.5 px-3">Godot Term</th>
-                <th class="py-2.5 px-3">Plain-English Meaning</th>
-                <th class="py-2.5 px-3">Where You Use It</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-100">
-              <tr>
-                <td class="py-2.5 px-3 font-bold text-teal-700">RigidBody (2D/3D)</td>
-                <td class="py-2.5 px-3 text-slate-700">A node moved by physics forces (gravity, pushes) instead of manual coordinates.</td>
-                <td class="py-2.5 px-3 text-slate-600">Physics player, crates, and your downhill skier.</td>
-              </tr>
-              <tr>
-                <td class="py-2.5 px-3 font-bold text-teal-700">StaticBody3D</td>
-                <td class="py-2.5 px-3 text-slate-700">A solid object that never moves when hit—walls, floors, and obstacles.</td>
-                <td class="py-2.5 px-3 text-slate-600">The ski slope and trees in Collision.</td>
-              </tr>
-              <tr>
-                <td class="py-2.5 px-3 font-bold text-teal-700">Area (2D/3D)</td>
-                <td class="py-2.5 px-3 text-slate-700">An invisible trigger zone that detects clicks or overlaps without acting like a solid wall.</td>
-                <td class="py-2.5 px-3 text-slate-600">Detecting mouse clicks on each balloon.</td>
-              </tr>
-              <tr>
-                <td class="py-2.5 px-3 font-bold text-teal-700">Signal</td>
-                <td class="py-2.5 px-3 text-slate-700">An alert a node fires off when an event happens so your script can react.</td>
-                <td class="py-2.5 px-3 text-slate-600"><code class="font-mono text-xs bg-slate-100 px-1 rounded">input_event</code> (balloon click) & <code class="font-mono text-xs bg-slate-100 px-1 rounded">body_entered</code> (hitting a tree).</td>
-              </tr>
-              <tr>
-                <td class="py-2.5 px-3 font-bold text-teal-700">For Loop</td>
-                <td class="py-2.5 px-3 text-slate-700">Code that repeats automatically a set number of times.</td>
-                <td class="py-2.5 px-3 text-slate-600">Spawning 200 random stars in 10 lines of code.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <!-- Drawer 0: Full Unit 2 Devotional (Collapsible) -->
+        <details class="group bg-white rounded-xl border-2 border-teal-200 shadow-sm overflow-hidden">
+          <summary class="p-4 cursor-pointer flex items-center justify-between gap-3 hover:bg-teal-50/40 transition">
+            <div class="flex items-center gap-3">
+              <span class="text-xl">✝️</span>
+              <div>
+                <span class="font-bold text-slate-900 text-sm sm:text-base">Unit 2 Devotional: Broken Systems, Patient Repair & Good Work</span>
+                <span class="block text-xs text-slate-500">Connecting Physics, Collision & Loops to Philippians 1:6, Romans 8:28 & Galatians 6:9</span>
+              </div>
+            </div>
+            <span class="bg-teal-100 text-teal-800 text-xs font-bold px-3 py-1 rounded-full shrink-0 group-open:hidden">
+              Read Devotion +
+            </span>
+            <span class="bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full shrink-0 hidden group-open:inline">
+              Hide Devotion -
+            </span>
+          </summary>
+          <div class="p-5 pt-3 border-t border-teal-100 bg-gradient-to-b from-teal-50/30 to-white space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed">
+            <div class="bg-white border border-teal-100 rounded-xl p-4 shadow-sm">
+              <h4 class="font-extrabold text-teal-950 text-sm sm:text-base mb-1.5">Why Does Your Game Break When You Finally Add Real Rules?</h4>
+              <p>
+                In Unit 1, nothing moved unless you manually dragged it into place. In Unit 2, you hand control over to Godot’s <strong>physics engine</strong>, wire up <strong>collision signals</strong>, and run <strong>loops</strong> that spawn hundreds of objects at once. Suddenly, things get messy: balloons refuse to pop, crates fly off the screen, and your skier spins out before hitting the first tree. When that happens, it’s tempting to think, <em>“I’m just not wired for coding.”</em>
+              </p>
+              <p class="mt-2">
+                In reality, you’re experiencing how complex systems behave in a fallen world. Good architecture doesn’t magically stay intact on the first run. It requires an attentive builder who inspects what went wrong, traces the signal, and restores order step by step.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+              <!-- Point 1: Philippians 1:6 -->
+              <div class="bg-teal-50/70 border border-teal-200 rounded-xl p-4 flex flex-col justify-between">
+                <div>
+                  <span class="text-[11px] font-extrabold uppercase tracking-wider text-teal-800 block mb-1">1. Starting Shaky • Philippians 1:6</span>
+                  <blockquote class="italic text-teal-950 font-medium text-xs border-l-2 border-teal-500 pl-2.5 mb-2.5">
+                    “Being confident of this, that he who began a good work in you will carry it on to completion...”
+                  </blockquote>
+                  <p class="text-xs text-slate-700">
+                    Just like your first <code class="font-mono bg-white px-1 rounded">Area3D</code> script feels clunky before signals click, God never abandons a project halfway through. Growth in skill and character happens across the whole unit, not in one class period.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Point 2: Romans 8:28 -->
+              <div class="bg-sky-50/70 border border-sky-200 rounded-xl p-4 flex flex-col justify-between">
+                <div>
+                  <span class="text-[11px] font-extrabold uppercase tracking-wider text-sky-800 block mb-1">2. Unexpected Forces • Romans 8:28</span>
+                  <blockquote class="italic text-sky-950 font-medium text-xs border-l-2 border-sky-500 pl-2.5 mb-2.5">
+                    “And we know that in all things God works for the good of those who love him...”
+                  </blockquote>
+                  <p class="text-xs text-slate-700">
+                    When a <code class="font-mono bg-white px-1 rounded">RigidBody</code> launches backward or a collision misfires, that bug isn’t wasted time. It exposes the hidden rule you didn’t understand yet. God uses unexpected friction to build real discernment.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Point 3: Galatians 6:9 -->
+              <div class="bg-indigo-50/70 border border-indigo-200 rounded-xl p-4 flex flex-col justify-between">
+                <div>
+                  <span class="text-[11px] font-extrabold uppercase tracking-wider text-indigo-800 block mb-1">3. The Debugging Loop • Galatians 6:9</span>
+                  <blockquote class="italic text-indigo-950 font-medium text-xs border-l-2 border-indigo-500 pl-2.5 mb-2.5">
+                    “Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.”
+                  </blockquote>
+                  <p class="text-xs text-slate-700">
+                    Debugging is a <code class="font-mono bg-white px-1 rounded">while</code> loop of patience: test, observe, adjust one variable, and run again. Keep showing up faithfully, both for your own build and for the teammate sitting next to you.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-slate-900 text-teal-50 rounded-xl p-3.5 text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <span><strong>🙏 Studio Prayer:</strong> <em>Lord, give me patience when my code breaks, humility to ask good questions, and perseverance to finish the work You’ve put in front of me today. Amen.</em></span>
+            </div>
+          </div>
+        </details>
+
+        <!-- Drawer 1: Embedded Video -->
+        <details id="hub-video-drawer" class="group bg-slate-900 text-white rounded-xl border border-slate-800 shadow-sm overflow-hidden">
+          <summary class="p-4 cursor-pointer flex items-center justify-between gap-3 hover:bg-slate-800/80 transition">
+            <div class="flex items-center gap-3">
+              <span class="text-xl">🎬</span>
+              <div>
+                <span class="font-bold text-sm sm:text-base">Watch Unit 2 Overview Video (7 Mins • NotebookLM Explainer)</span>
+                <span class="block text-xs text-slate-400">Covers all 4 mini-projects & the Game Jam</span>
+              </div>
+            </div>
+            <span class="bg-indigo-500/20 text-indigo-300 border border-indigo-400/30 text-xs font-bold px-3 py-1 rounded-full shrink-0 group-open:hidden">
+              Expand Video +
+            </span>
+            <span class="bg-slate-800 text-slate-300 text-xs font-bold px-3 py-1 rounded-full shrink-0 hidden group-open:inline">
+              Hide Video -
+            </span>
+          </summary>
+          <div class="p-4 pt-0 space-y-3 border-t border-slate-800">
+            <div class="flex items-center justify-between pt-3 text-xs text-slate-300">
+              <span><em>Tip: Click the gear icon in the player to watch at 1.25x speed.</em></span>
+              <a href="https://drive.google.com/file/d/1wXPdjzlHr6DBw62y29w-RvCgaRVE8vBS/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="text-indigo-300 hover:underline font-semibold">
+                Open in Google Drive ↗
+              </a>
+            </div>
+            <div class="relative w-full overflow-hidden rounded-xl border border-slate-700 bg-black aspect-video">
+              <iframe src="https://drive.google.com/file/d/1wXPdjzlHr6DBw62y29w-RvCgaRVE8vBS/preview"
+                      class="absolute top-0 left-0 w-full h-full border-0"
+                      allow="autoplay; fullscreen"
+                      allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+        </details>
+
+        <!-- Drawer 2: Friday Portfolio Rules -->
+        <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          <summary class="p-4 cursor-pointer flex items-center justify-between gap-3 hover:bg-slate-50 transition">
+            <div class="flex items-center gap-3">
+              <span class="text-xl">📂</span>
+              <div>
+                <span class="font-bold text-slate-900 text-sm sm:text-base">Every Friday: Digital Portfolio Checklist (3 Non-Negotiables)</span>
+                <span class="block text-xs text-slate-500">Required Twist • Process Loom • Dev Log + Scripture</span>
+              </div>
+            </div>
+            <span class="text-teal-700 text-xs font-bold shrink-0 group-open:hidden">Expand +</span>
+            <span class="text-slate-500 text-xs font-bold shrink-0 hidden group-open:inline">Hide -</span>
+          </summary>
+          <div class="p-4 pt-3 border-t border-slate-100 grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+            <div class="bg-amber-50/70 p-3.5 rounded-lg border border-amber-200">
+              <div class="font-bold text-amber-950 mb-1">1. Required "Twist"</div>
+              <p class="text-slate-700 leading-relaxed">Change or add at least <strong>one thing</strong> beyond what the Zenva video shows before calling a lesson done.</p>
+            </div>
+            <div class="bg-teal-50/70 p-3.5 rounded-lg border border-teal-200">
+              <div class="font-bold text-teal-950 mb-1">2. Process Loom Video</div>
+              <p class="text-slate-700 leading-relaxed">Narrate <strong>one decision</strong> you made (e.g., <em>why</em> you picked a specific force value or collision shape).</p>
+            </div>
+            <div class="bg-sky-50/70 p-3.5 rounded-lg border border-sky-200">
+              <div class="font-bold text-sky-950 mb-1">3. Dev Log + Scripture</div>
+              <p class="text-slate-700 leading-relaxed">Name <strong>one thing that broke</strong> this week and how you fixed it, plus answer that week’s reflection prompt.</p>
+            </div>
+          </div>
+        </details>
+
+        <!-- Drawer 3: Quick Vocab Decoder -->
+        <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          <summary class="p-4 cursor-pointer flex items-center justify-between gap-3 hover:bg-slate-50 transition">
+            <div class="flex items-center gap-3">
+              <span class="text-xl">📖</span>
+              <div>
+                <span class="font-bold text-slate-900 text-sm sm:text-base">Quick Vocab Decoder (5 Key Godot Terms)</span>
+                <span class="block text-xs text-slate-500">RigidBody • StaticBody3D • Area • Signal • For Loop</span>
+              </div>
+            </div>
+            <span class="text-teal-700 text-xs font-bold shrink-0 group-open:hidden">Expand +</span>
+            <span class="text-slate-500 text-xs font-bold shrink-0 hidden group-open:inline">Hide -</span>
+          </summary>
+          <div class="p-4 pt-2 border-t border-slate-100 overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs sm:text-sm">
+              <thead>
+                <tr class="border-b border-slate-200 text-slate-500 text-xs uppercase">
+                  <th class="py-2 px-2">Godot Term</th>
+                  <th class="py-2 px-2">Plain-English Meaning</th>
+                  <th class="py-2 px-2">Where You Use It</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr>
+                  <td class="py-2 px-2 font-bold text-teal-700">RigidBody (2D/3D)</td>
+                  <td class="py-2 px-2 text-slate-700">Moved by physics forces (gravity, pushes) instead of manual coordinates.</td>
+                  <td class="py-2 px-2 text-slate-600">Physics player, crates, downhill skier.</td>
+                </tr>
+                <tr>
+                  <td class="py-2 px-2 font-bold text-teal-700">StaticBody3D</td>
+                  <td class="py-2 px-2 text-slate-700">A solid object that never moves when hit (walls, floors, obstacles).</td>
+                  <td class="py-2 px-2 text-slate-600">Ski slope and trees in Collision.</td>
+                </tr>
+                <tr>
+                  <td class="py-2 px-2 font-bold text-teal-700">Area (2D/3D)</td>
+                  <td class="py-2 px-2 text-slate-700">An invisible zone that detects clicks or overlaps without blocking movement.</td>
+                  <td class="py-2 px-2 text-slate-600">Detecting mouse clicks on each balloon.</td>
+                </tr>
+                <tr>
+                  <td class="py-2 px-2 font-bold text-teal-700">Signal</td>
+                  <td class="py-2 px-2 text-slate-700">An alert a node fires off when an event happens so your script can react.</td>
+                  <td class="py-2 px-2 text-slate-600"><code class="font-mono text-xs bg-slate-100 px-1 rounded">input_event</code> & <code class="font-mono text-xs bg-slate-100 px-1 rounded">body_entered</code>.</td>
+                </tr>
+                <tr>
+                  <td class="py-2 px-2 font-bold text-teal-700">For Loop</td>
+                  <td class="py-2 px-2 text-slate-700">Code that repeats automatically a set number of times.</td>
+                  <td class="py-2 px-2 text-slate-600">Spawning 200 random stars in 10 lines.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
       </div>
     </section>
 
     <!-- ==================== PAGE 2: WEEK 7 (BALLOON POPPER) ==================== -->
-    <section id="page-w7" class="hidden space-y-6">
-      <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+    <section id="page-w7" class="hidden space-y-5">
+      <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm">
         <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
           <span class="bg-teal-100 text-teal-800 text-xs font-bold uppercase px-3 py-1 rounded-full">Week 7 • Mini-Project 1</span>
-          <a href="https://login.zenva.com" target="_blank" class="text-xs font-bold text-teal-700 hover:underline">Open Zenva: Godot 4 Mini-Projects →</a>
+          <a href="https://login.zenva.com" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-teal-700 hover:underline">Open Zenva: Godot 4 Mini-Projects →</a>
         </div>
         <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">🎈 Week 7: Balloon Popper & 3D Interaction</h2>
-        <p class="text-slate-600 text-sm sm:text-base mt-1">
+        <p class="text-slate-600 text-sm mt-1">
           Build a 3D clickable balloon game that inflates on each click, pops at zero, and updates an on-screen score label.
         </p>
 
-        <!-- Week 7 Checklist -->
-        <div class="mt-6 bg-slate-50 border border-slate-200 rounded-xl p-5">
-          <h3 class="font-bold text-slate-800 text-sm uppercase tracking-wider mb-3">✅ Week 7 Pacing Checklist</h3>
-          <div class="space-y-2.5 text-sm">
-            <label class="flex items-start gap-3 cursor-pointer">
-              <input type="checkbox" class="mt-1 rounded text-teal-600 focus:ring-teal-500">
-              <span><strong>Step 1 — Godot Version Check:</strong> Confirm your lab computer is running <strong>Godot 4.5</strong> (matching the Zenva setup lesson) so project files import cleanly.</span>
-            </label>
-            <label class="flex items-start gap-3 cursor-pointer">
-              <input type="checkbox" class="mt-1 rounded text-teal-600 focus:ring-teal-500">
-              <span><strong>Step 2 — Zenva Lessons:</strong> Complete <em>Balloon Popper Parts 1–6</em> + <em>Balloon Popper In-Depth Overview</em> on <a href="https://login.zenva.com" target="_blank" class="text-teal-700 underline font-medium">login.zenva.com</a>.</span>
-            </label>
-            <label class="flex items-start gap-3 cursor-pointer">
-              <input type="checkbox" class="mt-1 rounded text-teal-600 focus:ring-teal-500">
-              <span><strong>Step 3 — Your Required Twist:</strong> Customize at least one variable or visual element (e.g., create multiple balloon colors with different <code class="font-mono text-xs bg-slate-200 px-1 rounded">clicks_to_pop</code> and <code class="font-mono text-xs bg-slate-200 px-1 rounded">score_to_give</code> values in the Inspector).</span>
-            </label>
-            <label class="flex items-start gap-3 cursor-pointer">
-              <input type="checkbox" class="mt-1 rounded text-teal-600 focus:ring-teal-500">
-              <span><strong>Step 4 — Portfolio Submission:</strong> Upload your Process Loom (explain how your balloon talks to <code class="font-mono text-xs bg-slate-200 px-1 rounded">Main</code>) + Dev Log entry.</span>
-            </label>
+        <!-- Side-by-Side Checklist & Dev Log Prompt -->
+        <div class="mt-5 grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div class="lg:col-span-2 bg-slate-50 border border-slate-200 rounded-xl p-4 sm:p-5">
+            <h3 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-3">✅ Week 7 Pacing Checklist</h3>
+            <div class="space-y-2.5 text-sm">
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" class="mt-1 rounded text-teal-600 focus:ring-teal-500">
+                <span><strong>Step 1: Godot Version Check.</strong> Confirm your lab computer is running <strong>Godot 4.5</strong> so project files import cleanly.</span>
+              </label>
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" class="mt-1 rounded text-teal-600 focus:ring-teal-500">
+                <span><strong>Step 2: Zenva Lessons.</strong> Complete <em>Balloon Popper Parts 1 to 6</em> + <em>Balloon Popper In-Depth Overview</em> on <a href="https://login.zenva.com" target="_blank" rel="noopener noreferrer" class="text-teal-700 underline font-medium">login.zenva.com</a>.</span>
+              </label>
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" class="mt-1 rounded text-teal-600 focus:ring-teal-500">
+                <span><strong>Step 3: Your Required Twist.</strong> Add at least one custom change (e.g., multiple balloon colors with different <code class="font-mono text-xs bg-slate-200 px-1 rounded">clicks_to_pop</code> and <code class="font-mono text-xs bg-slate-200 px-1 rounded">score_to_give</code> values).</span>
+              </label>
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" class="mt-1 rounded text-teal-600 focus:ring-teal-500">
+                <span><strong>Step 4: Portfolio Submission.</strong> Upload your Process Loom (explain how your balloon talks to <code class="font-mono text-xs bg-slate-200 px-1 rounded">Main</code>) + Dev Log entry.</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Week 7 Dev Log Prompt Card -->
+          <div class="bg-teal-900 text-white rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-teal-300 block mb-2">✍️ Week 7 Dev Log Prompt</span>
+              <blockquote class="text-xs sm:text-sm font-medium italic text-teal-50 border-l-2 border-teal-400 pl-3">
+                “Being confident of this, that he who began a good work in you will carry it on to completion.” (Philippians 1:6)
+              </blockquote>
+            </div>
+            <p class="text-xs text-teal-100 mt-3 leading-relaxed">
+              <strong>Portfolio Reflection:</strong> Write <strong>two sentences</strong> about one part of Balloon Popper that felt shaky at first, and what makes you think you’ll get better at it by the end of the unit.
+            </p>
           </div>
         </div>
       </div>
 
-      <!-- I'M STUCK! Guided Hints (No Spoilers) -->
-      <div class="bg-white rounded-2xl border-2 border-amber-300 p-6 shadow-sm">
-        <div class="flex items-center gap-2.5 mb-2">
-          <span class="text-2xl">🆘</span>
-          <h3 class="text-xl font-extrabold text-slate-900">Stuck on Balloon Popper? Use These Guided Hints</h3>
+      <!-- I'M STUCK! Guided Hints (Compact 2-Column Grid) -->
+      <div class="bg-white rounded-2xl border-2 border-amber-300 p-5 sm:p-6 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="text-xl">🆘</span>
+            <h3 class="text-lg font-extrabold text-slate-900">Stuck on Balloon Popper? Click a Clue</h3>
+          </div>
+          <span class="text-xs text-slate-500">Try fixing it yourself before asking for help</span>
         </div>
-        <p class="text-sm text-slate-600 mb-4">Click the problem you’re hitting below. Read the clue and try fixing it yourself before asking for help!</p>
 
-        <div class="space-y-3">
-          <details class="group bg-amber-50/60 border border-amber-200 rounded-xl p-4">
-            <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <details class="group bg-amber-50/60 border border-amber-200 rounded-xl p-3.5 h-fit">
+            <summary class="font-bold text-slate-800 text-sm cursor-pointer flex justify-between items-start gap-2">
               <span>❓ "I click on the balloon, and literally nothing happens."</span>
-              <span class="text-amber-700 text-xs font-semibold group-open:hidden">Show Hint +</span>
-              <span class="text-amber-700 text-xs font-semibold hidden group-open:inline">Hide Hint −</span>
+              <span class="text-amber-700 text-xs font-semibold shrink-0 group-open:hidden">Hint +</span>
+              <span class="text-amber-700 text-xs font-semibold shrink-0 hidden group-open:inline">Hide -</span>
             </summary>
-            <div class="mt-3 pt-3 border-t border-amber-200/70 text-sm text-slate-700 space-y-2">
+            <div class="mt-2.5 pt-2.5 border-t border-amber-200/70 text-xs text-slate-700 space-y-1.5">
               <p><strong>Check 3 things in order:</strong></p>
               <ol class="list-decimal list-inside space-y-1">
-                <li><strong>Node Hierarchy:</strong> Is your root Balloon node an <code class="font-mono text-xs bg-white px-1 rounded">Area3D</code> (not just a <code class="font-mono text-xs bg-white px-1 rounded">MeshInstance3D</code>)?</li>
-                <li><strong>Hitbox:</strong> Does <code class="font-mono text-xs bg-white px-1 rounded">Area3D</code> have a <code class="font-mono text-xs bg-white px-1 rounded">CollisionShape3D</code> child with a <code class="font-mono text-xs bg-white px-1 rounded">SphereShape3D</code> sized around the balloon?</li>
-                <li><strong>Signal Connection:</strong> Look at the <em>Node → Signals</em> tab on <code class="font-mono text-xs bg-white px-1 rounded">Area3D</code>. Do you see a green arrow next to <code class="font-mono text-xs bg-white px-1 rounded">input_event</code> pointing to <code class="font-mono text-xs bg-white px-1 rounded">_on_input_event</code>?</li>
+                <li><strong>Node Type:</strong> Is your root Balloon node an <code class="font-mono bg-white px-1 rounded">Area3D</code> (not just a <code class="font-mono bg-white px-1 rounded">MeshInstance3D</code>)?</li>
+                <li><strong>Hitbox:</strong> Does <code class="font-mono bg-white px-1 rounded">Area3D</code> have a <code class="font-mono bg-white px-1 rounded">CollisionShape3D</code> child with a <code class="font-mono bg-white px-1 rounded">SphereShape3D</code>?</li>
+                <li><strong>Signal:</strong> Check <em>Node → Signals</em> on <code class="font-mono bg-white px-1 rounded">Area3D</code> for a green arrow next to <code class="font-mono bg-white px-1 rounded">input_event</code>.</li>
               </ol>
             </div>
           </details>
 
-          <details class="group bg-amber-50/60 border border-amber-200 rounded-xl p-4">
-            <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
-              <span>❓ "The balloon grows just by moving my mouse over it, or grows twice per click!"</span>
-              <span class="text-amber-700 text-xs font-semibold group-open:hidden">Show Hint +</span>
-              <span class="text-amber-700 text-xs font-semibold hidden group-open:inline">Hide Hint −</span>
+          <details class="group bg-amber-50/60 border border-amber-200 rounded-xl p-3.5 h-fit">
+            <summary class="font-bold text-slate-800 text-sm cursor-pointer flex justify-between items-start gap-2">
+              <span>❓ "The balloon grows on hover, or grows twice per click!"</span>
+              <span class="text-amber-700 text-xs font-semibold shrink-0 group-open:hidden">Hint +</span>
+              <span class="text-amber-700 text-xs font-semibold shrink-0 hidden group-open:inline">Hide -</span>
             </summary>
-            <div class="mt-3 pt-3 border-t border-amber-200/70 text-sm text-slate-700 space-y-2">
-              <p><strong>Why this happens:</strong> <code class="font-mono text-xs bg-white px-1 rounded">input_event</code> fires for <em>every</em> mouse movement, button press, and button release.</p>
-              <p><strong>Where to look:</strong> At the very top of <code class="font-mono text-xs bg-white px-1 rounded">_on_input_event</code>, you need three "guard clauses" that <code class="font-mono text-xs bg-white px-1 rounded">return</code> early if: (1) it's not a mouse button, (2) it's not the left button, or (3) <code class="font-mono text-xs bg-white px-1 rounded">event.pressed</code> is false (meaning you let go of the button).</p>
+            <div class="mt-2.5 pt-2.5 border-t border-amber-200/70 text-xs text-slate-700 space-y-1.5">
+              <p><strong>Why:</strong> <code class="font-mono bg-white px-1 rounded">input_event</code> fires for mouse movement, button press, and button release.</p>
+              <p><strong>Fix:</strong> At the top of <code class="font-mono bg-white px-1 rounded">_on_input_event</code>, add the 3 <code class="font-mono bg-white px-1 rounded">return</code> checks: (1) is mouse button, (2) is left button, and (3) <code class="font-mono bg-white px-1 rounded">event.pressed</code> is true.</p>
             </div>
           </details>
 
-          <details class="group bg-amber-50/60 border border-amber-200 rounded-xl p-4">
-            <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
-              <span>❓ "My game crashes with 'Invalid call. Nonexistent function increase_score' when a balloon pops."</span>
-              <span class="text-amber-700 text-xs font-semibold group-open:hidden">Show Hint +</span>
-              <span class="text-amber-700 text-xs font-semibold hidden group-open:inline">Hide Hint −</span>
+          <details class="group bg-amber-50/60 border border-amber-200 rounded-xl p-3.5 h-fit">
+            <summary class="font-bold text-slate-800 text-sm cursor-pointer flex justify-between items-start gap-2">
+              <span>❓ "Crash: 'Nonexistent function increase_score' on pop."</span>
+              <span class="text-amber-700 text-xs font-semibold shrink-0 group-open:hidden">Hint +</span>
+              <span class="text-amber-700 text-xs font-semibold shrink-0 hidden group-open:inline">Hide -</span>
             </summary>
-            <div class="mt-3 pt-3 border-t border-amber-200/70 text-sm text-slate-700 space-y-2">
-              <p><strong>Why this happens:</strong> In <code class="font-mono text-xs bg-white px-1 rounded">balloon.gd</code>, <code class="font-mono text-xs bg-white px-1 rounded">$".."</code> looks at the balloon's <strong>parent node</strong> in the Scene tree.</p>
-              <p><strong>How to trace it:</strong> Check your Scene dock. Is every balloon a direct child of <code class="font-mono text-xs bg-white px-1 rounded">Main</code>, and does <code class="font-mono text-xs bg-white px-1 rounded">Main</code> have <code class="font-mono text-xs bg-white px-1 rounded">balloon_manager.gd</code> attached? Also check spelling: <code class="font-mono text-xs bg-white px-1 rounded">increase_score</code> must match letter-for-letter in both scripts.</p>
+            <div class="mt-2.5 pt-2.5 border-t border-amber-200/70 text-xs text-slate-700 space-y-1.5">
+              <p><strong>Why:</strong> <code class="font-mono bg-white px-1 rounded">$".."</code> looks at the balloon's <strong>parent node</strong> in the Scene tree.</p>
+              <p><strong>Fix:</strong> Confirm every balloon is a direct child of <code class="font-mono bg-white px-1 rounded">Main</code>, <code class="font-mono bg-white px-1 rounded">Main</code> has <code class="font-mono bg-white px-1 rounded">balloon_manager.gd</code> attached, and <code class="font-mono bg-white px-1 rounded">increase_score</code> is spelled identically.</p>
             </div>
           </details>
 
-          <details class="group bg-amber-50/60 border border-amber-200 rounded-xl p-4">
-            <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
-              <span>❓ "My score label says 'Score: 0' and never changes, or throws a String + int error."</span>
-              <span class="text-amber-700 text-xs font-semibold group-open:hidden">Show Hint +</span>
-              <span class="text-amber-700 text-xs font-semibold hidden group-open:inline">Hide Hint −</span>
+          <details class="group bg-amber-50/60 border border-amber-200 rounded-xl p-3.5 h-fit">
+            <summary class="font-bold text-slate-800 text-sm cursor-pointer flex justify-between items-start gap-2">
+              <span>❓ "Score stays at 'Score: 0' or gives a String + int error."</span>
+              <span class="text-amber-700 text-xs font-semibold shrink-0 group-open:hidden">Hint +</span>
+              <span class="text-amber-700 text-xs font-semibold shrink-0 hidden group-open:inline">Hide -</span>
             </summary>
-            <div class="mt-3 pt-3 border-t border-amber-200/70 text-sm text-slate-700 space-y-2">
-              <p><strong>Check 2 things:</strong></p>
+            <div class="mt-2.5 pt-2.5 border-t border-amber-200/70 text-xs text-slate-700 space-y-1.5">
               <ul class="list-disc list-inside space-y-1">
-                <li><strong>Node Name:</strong> Did you rename your Label node to <code class="font-mono text-xs bg-white px-1 rounded">ScoreText</code> (capital S, capital T, no spaces) so <code class="font-mono text-xs bg-white px-1 rounded">$ScoreText</code> can find it?</li>
-                <li><strong>Type Conversion:</strong> Godot cannot add a number directly to text. Wrap your score variable inside <code class="font-mono text-xs bg-white px-1 rounded">str(...)</code> when setting <code class="font-mono text-xs bg-white px-1 rounded">score_text.text</code>.</li>
+                <li><strong>Node Name:</strong> Rename your Label node to <code class="font-mono bg-white px-1 rounded">ScoreText</code> (no spaces) so <code class="font-mono bg-white px-1 rounded">$ScoreText</code> finds it.</li>
+                <li><strong>Conversion:</strong> Wrap your number inside <code class="font-mono bg-white px-1 rounded">str(...)</code> when setting <code class="font-mono bg-white px-1 rounded">score_text.text</code>.</li>
               </ul>
             </div>
           </details>
         </div>
       </div>
 
-      <!-- Week 7 Dev Log Prompt -->
-      <div class="bg-teal-900 text-white rounded-2xl p-6 shadow-sm">
-        <span class="text-xs font-bold uppercase tracking-wider text-teal-300">Week 7 Dev Log Prompt • Portfolio</span>
-        <blockquote class="text-base sm:text-lg font-medium italic text-teal-50 mt-2 border-l-2 border-teal-400 pl-4">
-          “Being confident of this, that he who began a good work in you will carry it on to completion.” — Philippians 1:6
-        </blockquote>
-        <p class="text-sm text-teal-100 mt-3 leading-relaxed">
-          <strong>Your Prompt:</strong> You’re starting a harder unit than Unit 1. Write <strong>two sentences</strong> about one part of Balloon Popper that felt shaky at first, and what makes you think you’ll get better at it by the end of the unit.
-        </p>
+      <!-- Bottom Quick Navigation -->
+      <div class="flex justify-between items-center pt-1">
+        <button onclick="switchPage('hub')" class="text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900">← Back to Unit 2 Hub</button>
+        <button onclick="switchPage('w8')" class="bg-teal-700 hover:bg-teal-600 text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-xl shadow-sm transition">Next: Week 8 (2D Physics) →</button>
       </div>
     </section>
 
     <!-- ==================== PAGE 3: WEEK 8 (2D PHYSICS) ==================== -->
-    <section id="page-w8" class="hidden space-y-6">
-      <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+    <section id="page-w8" class="hidden space-y-5">
+      <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm">
         <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
           <span class="bg-sky-100 text-sky-800 text-xs font-bold uppercase px-3 py-1 rounded-full">Week 8 • Mini-Project 2</span>
-          <a href="https://login.zenva.com" target="_blank" class="text-xs font-bold text-sky-700 hover:underline">Open Zenva: Physics Pts 1–4 →</a>
+          <a href="https://login.zenva.com" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-sky-700 hover:underline">Open Zenva: Physics Pts 1 to 4 →</a>
         </div>
         <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">🧊 Week 8: 2D Physics, Forces & Impulses</h2>
-        <p class="text-slate-600 text-sm sm:text-base mt-1">
+        <p class="text-slate-600 text-sm mt-1">
           Build an icy 2D arena where clicking launches your player toward the mouse using <code class="font-mono text-xs bg-slate-100 px-1 rounded">RigidBody2D</code> impulses to knock crates around.
         </p>
 
-        <!-- Week 8 Checklist -->
-        <div class="mt-6 bg-slate-50 border border-slate-200 rounded-xl p-5">
-          <h3 class="font-bold text-slate-800 text-sm uppercase tracking-wider mb-3">✅ Week 8 Pacing Checklist</h3>
-          <div class="space-y-2.5 text-sm">
-            <label class="flex items-start gap-3 cursor-pointer">
-              <input type="checkbox" class="mt-1 rounded text-sky-600 focus:ring-sky-500">
-              <span><strong>Step 1 — Zenva Physics Lessons:</strong> Complete <em>Physics Parts 1–4</em> + <em>Physics In-Depth Overview</em> on <a href="https://login.zenva.com" target="_blank" class="text-sky-700 underline font-medium">login.zenva.com</a>.</span>
-            </label>
-            <label class="flex items-start gap-3 cursor-pointer">
-              <input type="checkbox" class="mt-1 rounded text-sky-600 focus:ring-sky-500">
-              <span><strong>Step 2 — Begin Collision Project:</strong> Start <em>Collision Part 1</em> (setting up the 3D ski slope and lighting).</span>
-            </label>
-            <label class="flex items-start gap-3 cursor-pointer">
-              <input type="checkbox" class="mt-1 rounded text-sky-600 focus:ring-sky-500">
-              <span><strong>Step 3 — Your Required Twist:</strong> Create at least two different weights of physics objects (e.g., a heavy "boulder" crate with higher <code class="font-mono text-xs bg-slate-200 px-1 rounded">Mass</code> and a light crate that slides farther).</span>
-            </label>
-            <label class="flex items-start gap-3 cursor-pointer">
-              <input type="checkbox" class="mt-1 rounded text-sky-600 focus:ring-sky-500">
-              <span><strong>Step 4 — Check & Portfolio:</strong> Complete the <strong>Physics Concept Check</strong> + upload your Narrated Process Loom & Week 8 Dev Log to your portfolio.</span>
-            </label>
+        <!-- Side-by-Side Checklist & Dev Log Prompt -->
+        <div class="mt-5 grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div class="lg:col-span-2 bg-slate-50 border border-slate-200 rounded-xl p-4 sm:p-5">
+            <h3 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-3">✅ Week 8 Pacing Checklist</h3>
+            <div class="space-y-2.5 text-sm">
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" class="mt-1 rounded text-sky-600 focus:ring-sky-500">
+                <span><strong>Step 1: Zenva Physics Lessons.</strong> Complete <em>Physics Parts 1 to 4</em> + <em>Physics In-Depth Overview</em> on <a href="https://login.zenva.com" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline font-medium">login.zenva.com</a>.</span>
+              </label>
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" class="mt-1 rounded text-sky-600 focus:ring-sky-500">
+                <span><strong>Step 2: Begin Collision Project.</strong> Start <em>Collision Part 1</em> (setting up the 3D ski slope and lighting).</span>
+              </label>
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" class="mt-1 rounded text-sky-600 focus:ring-sky-500">
+                <span><strong>Step 3: Your Required Twist.</strong> Create at least two different weights of physics objects (e.g., a heavy "boulder" crate with higher <code class="font-mono text-xs bg-slate-200 px-1 rounded">Mass</code> and a light crate).</span>
+              </label>
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" class="mt-1 rounded text-sky-600 focus:ring-sky-500">
+                <span><strong>Step 4: Check & Portfolio.</strong> Complete the <strong>Physics Concept Check</strong> + upload your Narrated Process Loom & Week 8 Dev Log.</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Week 8 Dev Log Prompt Card -->
+          <div class="bg-sky-900 text-white rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-sky-300 block mb-2">✍️ Week 8 Dev Log Prompt</span>
+              <blockquote class="text-xs sm:text-sm font-medium italic text-sky-50 border-l-2 border-sky-400 pl-3">
+                “And we know that in all things God works for the good of those who love him.” (Romans 8:28)
+              </blockquote>
+            </div>
+            <p class="text-xs text-sky-100 mt-3 leading-relaxed">
+              <strong>Portfolio Reflection:</strong> Write <strong>two sentences</strong> about a moment something didn’t behave the way you expected, and <strong>one sentence</strong> about what the unexpected result taught you.
+            </p>
           </div>
         </div>
       </div>
 
-      <!-- I'M STUCK! Guided Hints -->
-      <div class="bg-white rounded-2xl border-2 border-amber-300 p-6 shadow-sm">
-        <div class="flex items-center gap-2.5 mb-2">
-          <span class="text-2xl">🆘</span>
-          <h3 class="text-xl font-extrabold text-slate-900">Stuck on 2D Physics? Use These Guided Hints</h3>
+      <!-- I'M STUCK! Guided Hints (2-Column Grid) -->
+      <div class="bg-white rounded-2xl border-2 border-amber-300 p-5 sm:p-6 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="text-xl">🆘</span>
+            <h3 class="text-lg font-extrabold text-slate-900">Stuck on 2D Physics? Click a Clue</h3>
+          </div>
+          <span class="text-xs text-slate-500">Check Inspector settings & vector math first</span>
         </div>
-        <p class="text-sm text-slate-600 mb-4">Physics bugs usually come down to Inspector settings or vector math. Check these clues:</p>
 
-        <div class="space-y-3">
-          <details class="group bg-amber-50/60 border border-amber-200 rounded-xl p-4">
-            <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
-              <span>❓ "As soon as I hit Play, my player and crates fall straight off the bottom of the screen!"</span>
-              <span class="text-amber-700 text-xs font-semibold group-open:hidden">Show Hint +</span>
-              <span class="text-amber-700 text-xs font-semibold hidden group-open:inline">Hide Hint −</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <details class="group bg-amber-50/60 border border-amber-200 rounded-xl p-3.5 h-fit">
+            <summary class="font-bold text-slate-800 text-sm cursor-pointer flex justify-between items-start gap-2">
+              <span>❓ "My player and crates fall straight off the bottom of the screen!"</span>
+              <span class="text-amber-700 text-xs font-semibold shrink-0 group-open:hidden">Hint +</span>
+              <span class="text-amber-700 text-xs font-semibold shrink-0 hidden group-open:inline">Hide -</span>
             </summary>
-            <div class="mt-3 pt-3 border-t border-amber-200/70 text-sm text-slate-700 space-y-2">
-              <p><strong>Why this happens:</strong> By default, every <code class="font-mono text-xs bg-white px-1 rounded">RigidBody2D</code> has gravity turned on (top-down view vs. side-scroller view).</p>
-              <p><strong>Where to look:</strong> Select your <code class="font-mono text-xs bg-white px-1 rounded">Player</code> and <code class="font-mono text-xs bg-white px-1 rounded">Crate</code> nodes, look in the Inspector under <strong>RigidBody2D</strong>, and set <strong>Gravity Scale</strong> to <code class="font-mono text-xs bg-white px-1 rounded">0.0</code>.</p>
+            <div class="mt-2.5 pt-2.5 border-t border-amber-200/70 text-xs text-slate-700 space-y-1.5">
+              <p><strong>Why:</strong> Every <code class="font-mono bg-white px-1 rounded">RigidBody2D</code> has downward gravity turned on by default.</p>
+              <p><strong>Fix:</strong> Select <code class="font-mono bg-white px-1 rounded">Player</code> and <code class="font-mono bg-white px-1 rounded">Crate</code>, look in the Inspector under <strong>RigidBody2D</strong>, and set <strong>Gravity Scale</strong> to <code class="font-mono bg-white px-1 rounded">0.0</code>.</p>
             </div>
           </details>
 
-          <details class="group bg-amber-50/60 border border-amber-200 rounded-xl p-4">
-            <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
-              <span>❓ "My player flies in the WRONG direction when I click, or barely moves at all."</span>
-              <span class="text-amber-700 text-xs font-semibold group-open:hidden">Show Hint +</span>
-              <span class="text-amber-700 text-xs font-semibold hidden group-open:inline">Hide Hint −</span>
+          <details class="group bg-amber-50/60 border border-amber-200 rounded-xl p-3.5 h-fit">
+            <summary class="font-bold text-slate-800 text-sm cursor-pointer flex justify-between items-start gap-2">
+              <span>❓ "My player flies in the WRONG direction or barely moves."</span>
+              <span class="text-amber-700 text-xs font-semibold shrink-0 group-open:hidden">Hint +</span>
+              <span class="text-amber-700 text-xs font-semibold shrink-0 hidden group-open:inline">Hide -</span>
             </summary>
-            <div class="mt-3 pt-3 border-t border-amber-200/70 text-sm text-slate-700 space-y-2">
-              <p><strong>Check 2 things:</strong></p>
+            <div class="mt-2.5 pt-2.5 border-t border-amber-200/70 text-xs text-slate-700 space-y-1.5">
               <ol class="list-decimal list-inside space-y-1">
-                <li><strong>Direction Order:</strong> Think of <code class="font-mono text-xs bg-white px-1 rounded">a.direction_to(b)</code> as drawing an arrow <em>from A to B</em>. You want the arrow pointing from <code class="font-mono text-xs bg-white px-1 rounded">global_position</code> (the player) TO <code class="font-mono text-xs bg-white px-1 rounded">get_global_mouse_position()</code>—not backwards!</li>
-                <li><strong>Force vs. Mass:</strong> If you increased your player's <code class="font-mono text-xs bg-white px-1 rounded">Mass</code> to <code class="font-mono text-xs bg-white px-1 rounded">5.0</code>, a small <code class="font-mono text-xs bg-white px-1 rounded">hit_force</code> won't budge it. Try increasing <code class="font-mono text-xs bg-white px-1 rounded">hit_force</code> (around 50) or testing values live in Debug mode.</li>
+                <li><strong>Arrow Order:</strong> <code class="font-mono bg-white px-1 rounded">a.direction_to(b)</code> points <em>from A to B</em>. Make sure it goes from <code class="font-mono bg-white px-1 rounded">global_position</code> TO <code class="font-mono bg-white px-1 rounded">get_global_mouse_position()</code>.</li>
+                <li><strong>Force vs. Mass:</strong> If <code class="font-mono bg-white px-1 rounded">Mass</code> is <code class="font-mono bg-white px-1 rounded">5.0</code>, raise <code class="font-mono bg-white px-1 rounded">hit_force</code> (around 50).</li>
               </ol>
             </div>
           </details>
 
-          <details class="group bg-amber-50/60 border border-amber-200 rounded-xl p-4">
-            <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
-              <span>❓ "My player slides forever like an air-hockey puck and never slows down."</span>
-              <span class="text-amber-700 text-xs font-semibold group-open:hidden">Show Hint +</span>
-              <span class="text-amber-700 text-xs font-semibold hidden group-open:inline">Hide Hint −</span>
+          <details class="group bg-amber-50/60 border border-amber-200 rounded-xl p-3.5 h-fit">
+            <summary class="font-bold text-slate-800 text-sm cursor-pointer flex justify-between items-start gap-2">
+              <span>❓ "My player slides forever like an air-hockey puck."</span>
+              <span class="text-amber-700 text-xs font-semibold shrink-0 group-open:hidden">Hint +</span>
+              <span class="text-amber-700 text-xs font-semibold shrink-0 hidden group-open:inline">Hide -</span>
             </summary>
-            <div class="mt-3 pt-3 border-t border-amber-200/70 text-sm text-slate-700 space-y-2">
-              <p><strong>Where to look:</strong> In the Inspector for your <code class="font-mono text-xs bg-white px-1 rounded">RigidBody2D</code>, expand the <strong>Linear</strong> section. Increase <strong>Damp</strong> (try <code class="font-mono text-xs bg-white px-1 rounded">1.0</code> for the player and <code class="font-mono text-xs bg-white px-1 rounded">3.0</code> for crates). Damping acts like friction/air resistance.</p>
+            <div class="mt-2.5 pt-2.5 border-t border-amber-200/70 text-xs text-slate-700 space-y-1.5">
+              <p><strong>Fix:</strong> In the Inspector for your <code class="font-mono bg-white px-1 rounded">RigidBody2D</code>, expand <strong>Linear</strong> and increase <strong>Damp</strong> (<code class="font-mono bg-white px-1 rounded">1.0</code> for player, <code class="font-mono bg-white px-1 rounded">3.0</code> for crates) to simulate friction.</p>
             </div>
           </details>
 
-          <details class="group bg-amber-50/60 border border-amber-200 rounded-xl p-4">
-            <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
+          <details class="group bg-amber-50/60 border border-amber-200 rounded-xl p-3.5 h-fit">
+            <summary class="font-bold text-slate-800 text-sm cursor-pointer flex justify-between items-start gap-2">
               <span>❓ "My pixel-art character and crate look blurry!"</span>
-              <span class="text-amber-700 text-xs font-semibold group-open:hidden">Show Hint +</span>
-              <span class="text-amber-700 text-xs font-semibold hidden group-open:inline">Hide Hint −</span>
+              <span class="text-amber-700 text-xs font-semibold shrink-0 group-open:hidden">Hint +</span>
+              <span class="text-amber-700 text-xs font-semibold shrink-0 hidden group-open:inline">Hide -</span>
             </summary>
-            <div class="mt-3 pt-3 border-t border-amber-200/70 text-sm text-slate-700 space-y-2">
-              <p><strong>Quick Fix:</strong> Go to <strong>Project → Project Settings → Rendering → Textures</strong> and change <strong>Default Texture Filter</strong> from <em>Linear</em> to <strong>Nearest</strong>.</p>
+            <div class="mt-2.5 pt-2.5 border-t border-amber-200/70 text-xs text-slate-700 space-y-1.5">
+              <p><strong>Fix:</strong> Open <strong>Project → Project Settings → Rendering → Textures</strong> and change <strong>Default Texture Filter</strong> to <strong>Nearest</strong>.</p>
             </div>
           </details>
         </div>
       </div>
 
-      <!-- Week 8 Dev Log Prompt -->
-      <div class="bg-sky-900 text-white rounded-2xl p-6 shadow-sm">
-        <span class="text-xs font-bold uppercase tracking-wider text-sky-300">Week 8 Dev Log Prompt • Portfolio</span>
-        <blockquote class="text-base sm:text-lg font-medium italic text-sky-50 mt-2 border-l-2 border-sky-400 pl-4">
-          “And we know that in all things God works for the good of those who love him.” — Romans 8:28
-        </blockquote>
-        <p class="text-sm text-sky-100 mt-3 leading-relaxed">
-          <strong>Your Prompt:</strong> Physics and Collision are where this unit gets genuinely hard. Write <strong>two sentences</strong> about a moment something didn’t behave the way you expected, and <strong>one sentence</strong> about what the unexpected result actually taught you.
-        </p>
+      <!-- Week 8 Physics Concept Check Study Guide (Collapsible Drawer) -->
+      <details class="group bg-white rounded-2xl border-2 border-sky-200 shadow-sm overflow-hidden">
+        <summary class="p-5 cursor-pointer flex flex-wrap items-center justify-between gap-2 hover:bg-sky-50/40 transition">
+          <div class="flex items-center gap-2.5">
+            <span class="text-2xl">📘</span>
+            <div>
+              <h3 class="text-lg font-extrabold text-slate-900">Week 8 Study Guide: Physics Concept Check</h3>
+              <p class="text-xs text-slate-500">4 key concepts + self-check questions before taking the Quiz (20%)</p>
+            </div>
+          </div>
+          <span class="bg-sky-100 text-sky-800 text-xs font-bold px-3 py-1 rounded-full group-open:hidden">Open Study Guide +</span>
+          <span class="bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full hidden group-open:inline">Hide Study Guide -</span>
+        </summary>
+        <div class="p-5 pt-2 border-t border-sky-100 space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+            <div class="bg-sky-50/70 border border-sky-100 rounded-xl p-4">
+              <h4 class="font-bold text-sky-950 mb-1">1. Forces vs. Manual Coordinates</h4>
+              <p class="text-slate-700 text-xs leading-relaxed">
+                You never type exact X/Y coordinates to move a <code class="font-mono bg-white px-1 rounded">RigidBody</code> each frame. Instead, you apply a <strong>force</strong> (a push or pull like gravity, wind, or an impulse) and let Godot’s physics engine calculate realistic motion automatically.
+              </p>
+            </div>
+            <div class="bg-sky-50/70 border border-sky-100 rounded-xl p-4">
+              <h4 class="font-bold text-sky-950 mb-1">2. Controlling Gravity (<code class="font-mono">gravity_scale</code>)</h4>
+              <p class="text-slate-700 text-xs leading-relaxed">
+                Gravity is a <strong>continuous force</strong> pulling physics objects downward. Adjust <code class="font-mono bg-white px-1 rounded">gravity_scale</code> (<code class="font-mono bg-white px-1 rounded">0.0</code> for top-down games, or negative to float upward) to control how strongly gravity pulls on a specific body.
+              </p>
+            </div>
+            <div class="bg-sky-50/70 border border-sky-100 rounded-xl p-4">
+              <h4 class="font-bold text-sky-950 mb-1">3. Why Physics Feels Unpredictable</h4>
+              <p class="text-slate-700 text-xs leading-relaxed">
+                Physics combines <strong>multiple forces at once</strong> (gravity + player push + damping). Applying too strong a force causes dramatic reactions. Debugging those values is normal, not failure!
+              </p>
+            </div>
+            <div class="bg-sky-50/70 border border-sky-100 rounded-xl p-4">
+              <h4 class="font-bold text-sky-950 mb-1">4. First Debugging Step for Physics</h4>
+              <p class="text-slate-700 text-xs leading-relaxed">
+                If a <code class="font-mono bg-white px-1 rounded">RigidBody</code> flies off screen or refuses to move, check the <strong>applied forces</strong> in your script and inspect its physics properties (<code class="font-mono bg-white px-1 rounded">gravity_scale</code>, <code class="font-mono bg-white px-1 rounded">mass</code>, <code class="font-mono bg-white px-1 rounded">linear_damp</code>) first.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs text-slate-700 space-y-1.5">
+            <div class="font-bold text-slate-900">⚡ Quick Self-Check:</div>
+            <p><strong>Q: What makes a balloon rise upward on its own if it uses a RigidBody?</strong> Answer: <em>An upward force or a negative <code class="font-mono bg-white px-1 rounded">gravity_scale</code>.</em></p>
+            <p><strong>Q: Why use a RigidBody instead of changing <code class="font-mono bg-white px-1 rounded">position</code> every frame?</strong> Answer: <em>So Godot’s physics engine automatically calculates realistic motion from forces.</em></p>
+          </div>
+        </div>
+      </details>
+
+      <!-- Bottom Quick Navigation -->
+      <div class="flex justify-between items-center pt-1">
+        <button onclick="switchPage('w7')" class="text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900">← Previous: Week 7</button>
+        <button onclick="switchPage('w9')" class="bg-sky-700 hover:bg-sky-600 text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-xl shadow-sm transition">Next: Week 9 (Collision & Loops) →</button>
       </div>
     </section>
 
     <!-- ==================== PAGE 4: WEEK 9 (COLLISION & LOOPS) ==================== -->
-    <section id="page-w9" class="hidden space-y-6">
-      <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+    <section id="page-w9" class="hidden space-y-5">
+      <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm">
         <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
           <span class="bg-indigo-100 text-indigo-800 text-xs font-bold uppercase px-3 py-1 rounded-full">Week 9 • Mini-Projects 3 & 4</span>
-          <a href="https://login.zenva.com" target="_blank" class="text-xs font-bold text-indigo-700 hover:underline">Open Zenva: Collision & Loops →</a>
+          <a href="https://login.zenva.com" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-indigo-700 hover:underline">Open Zenva: Collision & Loops →</a>
         </div>
         <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">⛷️ Week 9: 3D Collision Detection & For Loops</h2>
-        <p class="text-slate-600 text-sm sm:text-base mt-1">
+        <p class="text-slate-600 text-sm mt-1">
           Finish the 3D Downhill Skiing game (restarting when you hit a tree) and build a 2D Starfield generator using <code class="font-mono text-xs bg-slate-100 px-1 rounded">for</code> loops.
         </p>
 
-        <!-- Week 9 Checklist -->
-        <div class="mt-6 bg-slate-50 border border-slate-200 rounded-xl p-5">
-          <h3 class="font-bold text-slate-800 text-sm uppercase tracking-wider mb-3">✅ Week 9 Pacing Checklist</h3>
-          <div class="space-y-2.5 text-sm">
-            <label class="flex items-start gap-3 cursor-pointer">
-              <input type="checkbox" class="mt-1 rounded text-indigo-600 focus:ring-indigo-500">
-              <span><strong>Step 1 — Finish Collision:</strong> Complete <em>Collision Parts 2–5</em> + <em>Collision In-Depth Overview</em>.</span>
-            </label>
-            <label class="flex items-start gap-3 cursor-pointer">
-              <input type="checkbox" class="mt-1 rounded text-indigo-600 focus:ring-indigo-500">
-              <span><strong>Step 2 — Complete Loops:</strong> Finish <em>Loops Parts 1–3</em> + <em>Loops In-Depth Overview</em> + <em>Course Conclusion</em>.</span>
-            </label>
-            <label class="flex items-start gap-3 cursor-pointer">
-              <input type="checkbox" class="mt-1 rounded text-indigo-600 focus:ring-indigo-500">
-              <span><strong>Step 3 — Your Required Twist:</strong> In Loops, adjust the spawn range, star scale range, or add a second spawned object/color variation using your loop.</span>
-            </label>
-            <label class="flex items-start gap-3 cursor-pointer">
-              <input type="checkbox" class="mt-1 rounded text-indigo-600 focus:ring-indigo-500">
-              <span><strong>Step 4 — Checks & Portfolio:</strong> Pass the <strong>Collision Concept Check</strong> & <strong>Loops Concept Check</strong> + submit your Process Loom & Week 9 Dev Log to your portfolio.</span>
-            </label>
+        <!-- Side-by-Side Checklist & Dev Log Prompt -->
+        <div class="mt-5 grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div class="lg:col-span-2 bg-slate-50 border border-slate-200 rounded-xl p-4 sm:p-5">
+            <h3 class="font-bold text-slate-800 text-xs uppercase tracking-wider mb-3">✅ Week 9 Pacing Checklist</h3>
+            <div class="space-y-2.5 text-sm">
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" class="mt-1 rounded text-indigo-600 focus:ring-indigo-500">
+                <span><strong>Step 1: Finish Collision.</strong> Complete <em>Collision Parts 2 to 5</em> + <em>Collision In-Depth Overview</em>.</span>
+              </label>
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" class="mt-1 rounded text-indigo-600 focus:ring-indigo-500">
+                <span><strong>Step 2: Complete Loops.</strong> Finish <em>Loops Parts 1 to 3</em> + <em>Loops In-Depth Overview</em> + <em>Course Conclusion</em>.</span>
+              </label>
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" class="mt-1 rounded text-indigo-600 focus:ring-indigo-500">
+                <span><strong>Step 3: Your Required Twist.</strong> In Loops, adjust the spawn range, star scale range, or add a second spawned object/color variation.</span>
+              </label>
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" class="mt-1 rounded text-indigo-600 focus:ring-indigo-500">
+                <span><strong>Step 4: Checks & Portfolio.</strong> Pass the <strong>Collision & Loops Concept Checks</strong> + submit your Process Loom & Week 9 Dev Log.</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Week 9 Dev Log Prompt Card -->
+          <div class="bg-indigo-900 text-white rounded-xl p-4 sm:p-5 flex flex-col justify-between shadow-sm">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-indigo-300 block mb-2">✍️ Week 9 Dev Log Prompt</span>
+              <blockquote class="text-xs sm:text-sm font-medium italic text-indigo-50 border-l-2 border-indigo-400 pl-3">
+                “Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.” (Galatians 6:9)
+              </blockquote>
+            </div>
+            <p class="text-xs text-indigo-100 mt-3 leading-relaxed">
+              <strong>Portfolio Reflection:</strong> Write about a moment you wanted to give up on something that wasn’t working. What did you do next, and what did you learn either way?
+            </p>
           </div>
         </div>
       </div>
 
-      <!-- I'M STUCK! Guided Hints -->
-      <div class="bg-white rounded-2xl border-2 border-amber-300 p-6 shadow-sm">
-        <div class="flex items-center gap-2.5 mb-2">
-          <span class="text-2xl">🆘</span>
-          <h3 class="text-xl font-extrabold text-slate-900">Stuck on Collision or Loops? Use These Guided Hints</h3>
+      <!-- I'M STUCK! Guided Hints (2-Column Grid) -->
+      <div class="bg-white rounded-2xl border-2 border-amber-300 p-5 sm:p-6 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="text-xl">🆘</span>
+            <h3 class="text-lg font-extrabold text-slate-900">Stuck on Collision or Loops? Click a Clue</h3>
+          </div>
+          <span class="text-xs text-slate-500">This is the buggiest week. Use these clues first.</span>
         </div>
-        <p class="text-sm text-slate-600 mb-4">This is the buggiest week of the unit—use these targeted clues before raising your hand:</p>
 
-        <div class="space-y-3">
-          <details class="group bg-amber-50/60 border border-amber-200 rounded-xl p-4">
-            <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
-              <span>❓ [Collision] "My skier hits a tree, bounces off it, and the level NEVER restarts!"</span>
-              <span class="text-amber-700 text-xs font-semibold group-open:hidden">Show Hint +</span>
-              <span class="text-amber-700 text-xs font-semibold hidden group-open:inline">Hide Hint −</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <details class="group bg-amber-50/60 border border-amber-200 rounded-xl p-3.5 h-fit">
+            <summary class="font-bold text-slate-800 text-sm cursor-pointer flex justify-between items-start gap-2">
+              <span>❓ [Collision] "My skier hits a tree and the level NEVER restarts!"</span>
+              <span class="text-amber-700 text-xs font-semibold shrink-0 group-open:hidden">Hint +</span>
+              <span class="text-amber-700 text-xs font-semibold shrink-0 hidden group-open:inline">Hide -</span>
             </summary>
-            <div class="mt-3 pt-3 border-t border-amber-200/70 text-sm text-slate-700 space-y-2">
-              <p><strong>90% of the time, it's one of these 3 things:</strong></p>
+            <div class="mt-2.5 pt-2.5 border-t border-amber-200/70 text-xs text-slate-700 space-y-1.5">
               <ol class="list-decimal list-inside space-y-1">
-                <li><strong>Contact Monitor (Most Common!):</strong> By default, a <code class="font-mono text-xs bg-white px-1 rounded">RigidBody3D</code> ignores collision signals! Select <code class="font-mono text-xs bg-white px-1 rounded">Player</code>, open <strong>Solver</strong> in the Inspector, turn <strong>Contact Monitor ON</strong>, and set <strong>Max Contacts Reported</strong> to <code class="font-mono text-xs bg-white px-1 rounded">1</code> (or higher).</li>
-                <li><strong>Group Spelling:</strong> Open <code class="font-mono text-xs bg-white px-1 rounded">tree.tscn</code>, check <em>Node → Groups</em>, and make sure the group name matches your code's <code class="font-mono text-xs bg-white px-1 rounded">is_in_group("...")</code> exact capitalization (<code class="font-mono text-xs bg-white px-1 rounded">"Tree"</code> vs <code class="font-mono text-xs bg-white px-1 rounded">"tree"</code>).</li>
-                <li><strong>Signal Connection:</strong> Verify <code class="font-mono text-xs bg-white px-1 rounded">body_entered</code> is connected to <code class="font-mono text-xs bg-white px-1 rounded">_on_body_entered</code> on the Player node.</li>
+                <li><strong>Contact Monitor (Most Common!):</strong> Select <code class="font-mono bg-white px-1 rounded">Player</code> → Inspector → <strong>Solver</strong> → turn <strong>Contact Monitor ON</strong> and set <strong>Max Contacts Reported</strong> to <code class="font-mono bg-white px-1 rounded">1</code>.</li>
+                <li><strong>Group Spelling:</strong> Check <code class="font-mono bg-white px-1 rounded">tree.tscn</code> → <em>Node → Groups</em> to ensure exact spelling (<code class="font-mono bg-white px-1 rounded">"Tree"</code> vs <code class="font-mono bg-white px-1 rounded">"tree"</code>).</li>
+                <li><strong>Signal:</strong> Verify <code class="font-mono bg-white px-1 rounded">body_entered</code> is connected to <code class="font-mono bg-white px-1 rounded">_on_body_entered</code>.</li>
               </ol>
             </div>
           </details>
 
-          <details class="group bg-amber-50/60 border border-amber-200 rounded-xl p-4">
-            <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
-              <span>❓ [Collision] "I get a red Debugger error: 'Removing a CollisionObject node during a physics callback is not allowed'"</span>
-              <span class="text-amber-700 text-xs font-semibold group-open:hidden">Show Hint +</span>
-              <span class="text-amber-700 text-xs font-semibold hidden group-open:inline">Hide Hint −</span>
+          <details class="group bg-amber-50/60 border border-amber-200 rounded-xl p-3.5 h-fit">
+            <summary class="font-bold text-slate-800 text-sm cursor-pointer flex justify-between items-start gap-2">
+              <span>❓ [Collision] "Red error: 'Removing a CollisionObject node...'"</span>
+              <span class="text-amber-700 text-xs font-semibold shrink-0 group-open:hidden">Hint +</span>
+              <span class="text-amber-700 text-xs font-semibold shrink-0 hidden group-open:inline">Hide -</span>
             </summary>
-            <div class="mt-3 pt-3 border-t border-amber-200/70 text-sm text-slate-700 space-y-2">
-              <p><strong>Why this happens:</strong> Godot is still mid-calculation on the crash when you tell it to delete the level.</p>
-              <p><strong>How to fix it:</strong> Instead of calling <code class="font-mono text-xs bg-white px-1 rounded">reload_current_scene()</code> directly, chain <code class="font-mono text-xs bg-white px-1 rounded">.call_deferred()</code> onto the end of it so Godot waits until the physics frame finishes.</p>
+            <div class="mt-2.5 pt-2.5 border-t border-amber-200/70 text-xs text-slate-700 space-y-1.5">
+              <p><strong>Why:</strong> Godot is still mid-calculation on the crash when you unload the scene.</p>
+              <p><strong>Fix:</strong> Chain <code class="font-mono bg-white px-1 rounded">.call_deferred()</code> onto <code class="font-mono bg-white px-1 rounded">reload_current_scene</code> so Godot waits until the physics frame finishes.</p>
             </div>
           </details>
 
-          <details class="group bg-amber-50/60 border border-amber-200 rounded-xl p-4">
-            <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
-              <span>❓ [Collision] "My skier spins out of control like a top when I press Left or Right."</span>
-              <span class="text-amber-700 text-xs font-semibold group-open:hidden">Show Hint +</span>
-              <span class="text-amber-700 text-xs font-semibold hidden group-open:inline">Hide Hint −</span>
+          <details class="group bg-amber-50/60 border border-amber-200 rounded-xl p-3.5 h-fit">
+            <summary class="font-bold text-slate-800 text-sm cursor-pointer flex justify-between items-start gap-2">
+              <span>❓ [Collision] "My skier spins out of control when moving."</span>
+              <span class="text-amber-700 text-xs font-semibold shrink-0 group-open:hidden">Hint +</span>
+              <span class="text-amber-700 text-xs font-semibold shrink-0 hidden group-open:inline">Hide -</span>
             </summary>
-            <div class="mt-3 pt-3 border-t border-amber-200/70 text-sm text-slate-700 space-y-2">
-              <p><strong>Where to look:</strong> Select the Player's <code class="font-mono text-xs bg-white px-1 rounded">CollisionShape3D</code> and check its <strong>Transform → Position</strong>. Make sure <strong>X</strong> and <strong>Z</strong> are both <code class="font-mono text-xs bg-white px-1 rounded">0.0</code> so the force pushes through the center of the player, not off-center.</p>
+            <div class="mt-2.5 pt-2.5 border-t border-amber-200/70 text-xs text-slate-700 space-y-1.5">
+              <p><strong>Fix:</strong> Select the Player's <code class="font-mono bg-white px-1 rounded">CollisionShape3D</code> and set <strong>Transform → Position</strong> X and Z to <code class="font-mono bg-white px-1 rounded">0.0</code> so forces push through the center.</p>
             </div>
           </details>
 
-          <details class="group bg-amber-50/60 border border-amber-200 rounded-xl p-4">
-            <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
-              <span>❓ [Loops] "Only ONE star shows up on screen, even though spawn_count is 200!"</span>
-              <span class="text-amber-700 text-xs font-semibold group-open:hidden">Show Hint +</span>
-              <span class="text-amber-700 text-xs font-semibold hidden group-open:inline">Hide Hint −</span>
+          <details class="group bg-amber-50/60 border border-amber-200 rounded-xl p-3.5 h-fit">
+            <summary class="font-bold text-slate-800 text-sm cursor-pointer flex justify-between items-start gap-2">
+              <span>❓ [Loops] "Only ONE star shows up, even with spawn_count = 200!"</span>
+              <span class="text-amber-700 text-xs font-semibold shrink-0 group-open:hidden">Hint +</span>
+              <span class="text-amber-700 text-xs font-semibold shrink-0 hidden group-open:inline">Hide -</span>
             </summary>
-            <div class="mt-3 pt-3 border-t border-amber-200/70 text-sm text-slate-700 space-y-2">
-              <p><strong>Check your indentation!</strong> In GDScript, indentation tells Godot what belongs <em>inside</em> the loop. If <code class="font-mono text-xs bg-white px-1 rounded">star.position.x = ...</code> is not tabbed inward under the <code class="font-mono text-xs bg-white px-1 rounded">for i in spawn_count:</code> line, all 200 stars stack right on top of each other at <code class="font-mono text-xs bg-white px-1 rounded">(0, 0)</code>!</p>
+            <div class="mt-2.5 pt-2.5 border-t border-amber-200/70 text-xs text-slate-700 space-y-1.5">
+              <p><strong>Check indentation!</strong> If <code class="font-mono bg-white px-1 rounded">star.position.x = ...</code> is not tabbed inward under <code class="font-mono bg-white px-1 rounded">for i in spawn_count:</code>, all 200 stars stack at <code class="font-mono bg-white px-1 rounded">(0, 0)</code>.</p>
             </div>
           </details>
         </div>
       </div>
 
-      <!-- Week 9 Dev Log Prompt -->
-      <div class="bg-indigo-900 text-white rounded-2xl p-6 shadow-sm">
-        <span class="text-xs font-bold uppercase tracking-wider text-indigo-300">Week 9 Dev Log Prompt • Portfolio</span>
-        <blockquote class="text-base sm:text-lg font-medium italic text-indigo-50 mt-2 border-l-2 border-indigo-400 pl-4">
-          “Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.” — Galatians 6:9
-        </blockquote>
-        <p class="text-sm text-indigo-100 mt-3 leading-relaxed">
-          <strong>Your Prompt:</strong> This is the hardest, buggiest week before the Game Jam. Write about a moment you wanted to give up on something that wasn’t working. What did you do next, and what did you learn either way?
-        </p>
+      <!-- Week 9 Collision & Loops Concept Check Study Guide (Collapsible Drawer) -->
+      <details class="group bg-white rounded-2xl border-2 border-indigo-200 shadow-sm overflow-hidden">
+        <summary class="p-5 cursor-pointer flex flex-wrap items-center justify-between gap-2 hover:bg-indigo-50/40 transition">
+          <div class="flex items-center gap-2.5">
+            <span class="text-2xl">📘</span>
+            <div>
+              <h3 class="text-lg font-extrabold text-slate-900">Week 9 Study Guide: Collision & Loops Concept Checks</h3>
+              <p class="text-xs text-slate-500">Part A (Collision/Signals) + Part B (For/While Loops) + Self-Check</p>
+            </div>
+          </div>
+          <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full group-open:hidden">Open Study Guide +</span>
+          <span class="bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full hidden group-open:inline">Hide Study Guide -</span>
+        </summary>
+        <div class="p-5 pt-2 border-t border-indigo-100 space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+            <div class="bg-indigo-50/60 border border-indigo-100 rounded-xl p-4 space-y-2">
+              <h4 class="font-extrabold text-indigo-950 text-sm">💥 Part A: Collision & Signals</h4>
+              <ul class="space-y-1.5 text-xs text-slate-700 leading-relaxed">
+                <li><strong>Area vs. Solid Body:</strong> An <code class="font-mono bg-white px-1 rounded">Area</code> detects overlap <em>without</em> blocking movement like a wall.</li>
+                <li><strong>Layers & Masks:</strong> Decide which objects notice each other. Overlapping on mismatched layers simply means no interaction registers.</li>
+                <li><strong>Signals:</strong> Event messages (<code class="font-mono bg-white px-1 rounded">body_entered</code>, <code class="font-mono bg-white px-1 rounded">input_event</code>) that trigger connected functions.</li>
+                <li><strong>Debugging Rule #1:</strong> Always check <strong>collision layers/masks</strong> and <strong>signal connections</strong> first.</li>
+              </ul>
+            </div>
+
+            <div class="bg-indigo-50/60 border border-indigo-100 rounded-xl p-4 space-y-2">
+              <h4 class="font-extrabold text-indigo-950 text-sm">🔁 Part B: For & While Loops</h4>
+              <ul class="space-y-1.5 text-xs text-slate-700 leading-relaxed">
+                <li><strong>Why Use Loops?</strong> Replaces repetitive copy-paste code and adapts easily when spawn counts change.</li>
+                <li><strong><code class="font-mono bg-white px-1 rounded">for</code> Loops:</strong> Best when you <strong>know</strong> how many times something should repeat.</li>
+                <li><strong><code class="font-mono bg-white px-1 rounded">while</code> Loops:</strong> Best when repeating <strong>as long as a condition stays true</strong>.</li>
+                <li><strong>⚠️ Infinite Loop Risk:</strong> Ensure a <code class="font-mono bg-white px-1 rounded">while</code> condition eventually becomes <code class="font-mono bg-white px-1 rounded">false</code> so it doesn't freeze your game!</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs text-slate-700 space-y-1.5">
+            <div class="font-bold text-slate-900">⚡ Quick Self-Check:</div>
+            <p><strong>Q: If a signal fires, but isn't connected to a function, what happens?</strong> Answer: <em>Nothing crashes; nothing happens in code because nothing is listening.</em></p>
+            <p><strong>Q: When should you pick a <code class="font-mono bg-white px-1 rounded">for</code> loop over a <code class="font-mono bg-white px-1 rounded">while</code> loop?</strong> Answer: <em>Pick <code class="font-mono bg-white px-1 rounded">for</code> when you know the repeat count; pick <code class="font-mono bg-white px-1 rounded">while</code> when repeating until a condition changes.</em></p>
+          </div>
+        </div>
+      </details>
+
+      <!-- Bottom Quick Navigation -->
+      <div class="flex justify-between items-center pt-1">
+        <button onclick="switchPage('w8')" class="text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900">← Previous: Week 8</button>
+        <button onclick="switchPage('w10')" class="bg-indigo-700 hover:bg-indigo-600 text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-xl shadow-sm transition">Next: Week 10 (Game Jam & Test) →</button>
       </div>
     </section>
 
     <!-- ==================== PAGE 5: WEEK 10 (GAME JAM & FINAL EXAM) ==================== -->
-    <section id="page-w10" class="hidden space-y-6">
-      <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+    <section id="page-w10" class="hidden space-y-5">
+      <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm">
         <span class="bg-amber-100 text-amber-800 text-xs font-bold uppercase px-3 py-1 rounded-full">Week 10 • Capstone & Assessment</span>
         <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">🏆 Week 10: Unit 2 Game Jam & Unit Test</h2>
-        <p class="text-slate-600 text-sm sm:text-base mt-1">
-          No new tutorials this week. You’re taking Physics, Collision, and Loops and building an original playable game from scratch.
+        <p class="text-slate-600 text-sm mt-1">
+          No new tutorials this week. Apply Physics, Collision, and Loops to build an original playable game from scratch.
         </p>
 
         <!-- 5-Day Game Jam Schedule -->
-        <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 mt-6">
-          <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5">
             <div class="text-xs font-extrabold text-teal-700 uppercase">Day 1 • Pitch</div>
-            <p class="text-xs text-slate-700 mt-1">Scope an original game using physics, collision, and/or loops—<strong>not</strong> a copy of Balloon Popper.</p>
+            <p class="text-xs text-slate-700 mt-1">Scope an original game using physics, collision, and/or loops. Must <strong>not</strong> be a Balloon Popper clone.</p>
           </div>
-          <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
-            <div class="text-xs font-extrabold text-sky-700 uppercase">Days 2–3 • Build</div>
-            <p class="text-xs text-slate-700 mt-1">Build with your team. Stuck? Check Godot Docs or ask a teammate before asking your teacher.</p>
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5">
+            <div class="text-xs font-extrabold text-sky-700 uppercase">Days 2 to 3 • Build</div>
+            <p class="text-xs text-slate-700 mt-1">Build with your team. Check Godot Docs or ask a teammate before asking your teacher.</p>
           </div>
-          <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5">
             <div class="text-xs font-extrabold text-indigo-700 uppercase">Day 4 • Playtest</div>
-            <p class="text-xs text-slate-700 mt-1">Peer playtest rotation. Document <strong>one real change</strong> you made based on tester feedback + finalize Individual GDD.</p>
+            <p class="text-xs text-slate-700 mt-1">Peer playtest rotation. Make <strong>one real change</strong> from feedback + finish Individual GDD.</p>
           </div>
-          <div class="bg-amber-50 border border-amber-300 rounded-xl p-4">
+          <div class="bg-amber-50 border border-amber-300 rounded-xl p-3.5">
             <div class="text-xs font-extrabold text-amber-800 uppercase">Day 5 • Unit 2 Test</div>
             <p class="text-xs text-slate-700 mt-1">Written & practical assessment covering Physics, Collision, and Loops.</p>
           </div>
         </div>
       </div>
 
-      <!-- Check Your Understanding (Test Prep Questions) -->
-      <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-        <h3 class="text-lg font-extrabold text-slate-800 mb-1">🧠 Check Your Understanding (Before Day 5's Test)</h3>
-        <p class="text-sm text-slate-500 mb-4">If you can answer these 6 questions in your own words without looking at notes, you are ready for the Unit 2 Test:</p>
-        <ol class="list-decimal list-inside space-y-2.5 text-sm text-slate-700 bg-slate-50 p-5 rounded-xl border border-slate-200">
-          <li>What is the difference between a <strong>RigidBody</strong> and an <strong>Area</strong>?</li>
-          <li>Why do <strong>collision layers, masks, or groups</strong> matter if two objects are already touching?</li>
-          <li>Give an example from Balloon Popper of a <strong>signal</strong> and what it tells your code to do.</li>
-          <li>Why would you use a <strong>loop</strong> instead of writing the same line of code five times?</li>
-          <li>Describe one real <strong>bug</strong> you hit this unit and how you tracked down the fix.</li>
-          <li>Explain one decision in your <strong>Game Jam</strong> project where you had to choose between two ways to use physics, collision, or loops.</li>
-        </ol>
-      </div>
+      <!-- Collapsible Drawers for Rubric, Test Study Guide & Review Questions -->
+      <div class="space-y-3">
+        <!-- Drawer 1: Unit 2 Test Study Guide -->
+        <details open class="group bg-white rounded-2xl border-2 border-amber-300 shadow-sm overflow-hidden">
+          <summary class="p-5 cursor-pointer flex flex-wrap items-center justify-between gap-2 hover:bg-amber-50/40 transition">
+            <div class="flex items-center gap-2.5">
+              <span class="text-2xl">🎯</span>
+              <div>
+                <h3 class="text-lg font-extrabold text-slate-900">Unit 2 Test Study Guide (Day 5 • Test Category 40%)</h3>
+                <p class="text-xs text-slate-500">Covers all 23 Multiple Choice + 2 Short Response questions</p>
+              </div>
+            </div>
+            <span class="bg-amber-100 text-amber-900 text-xs font-bold px-3 py-1 rounded-full group-open:hidden">Expand Study Guide +</span>
+            <span class="bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full hidden group-open:inline">Hide -</span>
+          </summary>
+          <div class="p-5 pt-2 border-t border-amber-100 space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5 text-xs">
+              <div class="bg-sky-50 border border-sky-200 rounded-xl p-3.5 space-y-1">
+                <div class="font-extrabold text-sky-900 text-sm">1. Physics Mastery</div>
+                <p class="text-slate-700">• <strong>RigidBody</strong> moves via forces calculated by Godot's engine.</p>
+                <p class="text-slate-700">• <strong>Forces</strong> (gravity, wind, impulses) combine to create motion.</p>
+                <p class="text-slate-700">• <code class="font-mono bg-white px-1 rounded">gravity_scale</code> controls gravity strength per object.</p>
+                <p class="text-slate-700">• <strong>First fix:</strong> Check applied forces & <code class="font-mono bg-white px-1 rounded">gravity_scale</code>.</p>
+              </div>
+              <div class="bg-teal-50 border border-teal-200 rounded-xl p-3.5 space-y-1">
+                <div class="font-extrabold text-teal-900 text-sm">2. Collision & Signals</div>
+                <p class="text-slate-700">• <strong>Area</strong> detects overlap without blocking movement.</p>
+                <p class="text-slate-700">• <strong>Layers/Masks</strong> control which objects notice each other.</p>
+                <p class="text-slate-700">• <strong>Signals</strong> send event messages to connected functions.</p>
+                <p class="text-slate-700">• <strong>Detect + React:</strong> Area overlaps → emits signal → updates score.</p>
+              </div>
+              <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-3.5 space-y-1">
+                <div class="font-extrabold text-indigo-900 text-sm">3. Loops & Automation</div>
+                <p class="text-slate-700">• Loops replace copy-paste code and adapt easily to new counts.</p>
+                <p class="text-slate-700">• <strong>for loop:</strong> Known repeat count (e.g., spawning objects).</p>
+                <p class="text-slate-700">• <strong>while loop:</strong> Repeats while a condition stays true.</p>
+                <p class="text-slate-700">• <strong>Watch out:</strong> Never write a <code class="font-mono bg-white px-1 rounded">while</code> loop that never turns false!</p>
+              </div>
+            </div>
 
-      <!-- Game Jam Rubric Table -->
-      <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-          <h3 class="text-lg font-extrabold text-slate-800">📋 Game Jam Grading Rubric (24 Points Total • Test Category)</h3>
-          <span class="text-xs text-slate-500">Team Build + Individual GDD graded together</span>
-        </div>
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse text-xs sm:text-sm">
-            <thead>
-              <tr class="bg-slate-800 text-white">
-                <th class="p-3 rounded-tl-lg">Criterion</th>
-                <th class="p-3">4 • Exemplary</th>
-                <th class="p-3">3 • Proficient</th>
-                <th class="p-3">2 • Developing</th>
-                <th class="p-3 rounded-tr-lg">1 • Beginning</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-200 border border-slate-200">
-              <tr>
-                <td class="p-3 font-bold text-slate-900">Original Concept<br><span class="text-xs font-normal text-slate-500">(GDAS-2)</span></td>
-                <td class="p-3 text-slate-700">Clearly original, combining ideas in a way not shown in any Zenva lesson.</td>
-                <td class="p-3 text-slate-700">Original with only minor echoes of Balloon Popper.</td>
-                <td class="p-3 text-slate-700">Closely resembles Balloon Popper with mostly cosmetic changes.</td>
-                <td class="p-3 text-slate-700">Effectively Balloon Popper unchanged, or copied.</td>
-              </tr>
-              <tr class="bg-slate-50/60">
-                <td class="p-3 font-bold text-slate-900">Functional Build<br><span class="text-xs font-normal text-slate-500">(GDAS-3)</span></td>
-                <td class="p-3 text-slate-700">Runs start to finish with no breaking bugs; core mechanic always works.</td>
-                <td class="p-3 text-slate-700">Runs reliably with only minor cosmetic bugs.</td>
-                <td class="p-3 text-slate-700">Core mechanic works but with distracting bugs.</td>
-                <td class="p-3 text-slate-700">Does not reliably run, or core mechanic fails.</td>
-              </tr>
-              <tr>
-                <td class="p-3 font-bold text-slate-900">Applied Unit 2 Concepts<br><span class="text-xs font-normal text-slate-500">(GDAS-5)</span></td>
-                <td class="p-3 text-slate-700">Correctly applies physics, collision, and loops together to serve gameplay.</td>
-                <td class="p-3 text-slate-700">Correctly applies at least 2 of the 3 concepts.</td>
-                <td class="p-3 text-slate-700">Correctly applies 1 of the 3; others copied or broken.</td>
-                <td class="p-3 text-slate-700">Fundamental misunderstanding of physics, collision, or loops.</td>
-              </tr>
-              <tr class="bg-slate-50/60">
-                <td class="p-3 font-bold text-slate-900">Debugging & Process<br><span class="text-xs font-normal text-slate-500">(GDAS-1)</span></td>
-                <td class="p-3 text-slate-700">Dev log & Loom clearly document at least one real problem and its fix.</td>
-                <td class="p-3 text-slate-700">Documents a real problem, but fix explanation is vague.</td>
-                <td class="p-3 text-slate-700">Shows only finished state; no evidence of iteration.</td>
-                <td class="p-3 text-slate-700">No dev log or Loom evidence of build process.</td>
-              </tr>
-              <tr>
-                <td class="p-3 font-bold text-slate-900">Playtest Response<br><span class="text-xs font-normal text-slate-500">(GDAS-11)</span></td>
-                <td class="p-3 text-slate-700">Specific, documented change made directly from Day 4 playtest feedback.</td>
-                <td class="p-3 text-slate-700">Feedback noted and acted on, but change was minor.</td>
-                <td class="p-3 text-slate-700">Feedback collected but not visibly acted on.</td>
-                <td class="p-3 text-slate-700">No evidence a playtest happened.</td>
-              </tr>
-              <tr class="bg-slate-50/60">
-                <td class="p-3 font-bold text-slate-900">Individual GDD<br><span class="text-xs font-normal text-slate-500">(GDAS-12)</span></td>
-                <td class="p-3 text-slate-700">Clearly explains the game, player experience, and at least one design decision & why.</td>
-                <td class="p-3 text-slate-700">Covers game and decisions with limited detail.</td>
-                <td class="p-3 text-slate-700">Describes <em>what</em> the game is, not <em>why</em> choices were made.</td>
-                <td class="p-3 text-slate-700">Missing, incomplete, or copied from teammate.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            <!-- How to Ace the 2 Short Response Questions -->
+            <div class="bg-slate-900 text-white rounded-xl p-4 space-y-2.5">
+              <div class="flex items-center justify-between">
+                <h4 class="font-bold text-amber-300 text-xs uppercase tracking-wider">✍️ How to Score 100% on the 2 Short Response Questions</h4>
+                <span class="text-xs text-slate-400">Complete sentences required</span>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-slate-200">
+                <div class="bg-slate-800 p-3 rounded-lg border border-slate-700">
+                  <p class="font-bold text-teal-300 mb-1">Short Response #1: Real Debugging Story</p>
+                  <p class="leading-relaxed">Describe a real physics/collision bug and <strong>what you checked first</strong>. Name the exact setting (e.g., <em>Contact Monitor, collision layers/masks, signal connections, or gravity_scale</em>).</p>
+                </div>
+                <div class="bg-slate-800 p-3 rounded-lg border border-slate-700">
+                  <p class="font-bold text-sky-300 mb-1">Short Response #2: Combining Systems</p>
+                  <p class="leading-relaxed">Explain how <strong>at least two</strong> systems (Physics, Collision, Loops) worked together in your project. Show the chain reaction, not just separate definitions.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Drawer 2: Check Your Understanding (6 Questions) -->
+        <details class="group bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+          <summary class="p-5 cursor-pointer flex items-center justify-between gap-2 hover:bg-slate-50 transition">
+            <div>
+              <h3 class="text-base sm:text-lg font-extrabold text-slate-800">🧠 Check Your Understanding (6 Practice Prompts)</h3>
+              <p class="text-xs text-slate-500">Test yourself without notes before Day 5</p>
+            </div>
+            <span class="text-teal-700 text-xs font-bold shrink-0 group-open:hidden">Expand +</span>
+            <span class="text-slate-500 text-xs font-bold shrink-0 hidden group-open:inline">Hide -</span>
+          </summary>
+          <div class="p-5 pt-2 border-t border-slate-100">
+            <ol class="list-decimal list-inside space-y-2 text-xs sm:text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-slate-200">
+              <li>What is the difference between a <strong>RigidBody</strong> and an <strong>Area</strong>?</li>
+              <li>Why do <strong>collision layers, masks, or groups</strong> matter if two objects are already touching?</li>
+              <li>Give an example from Balloon Popper of a <strong>signal</strong> and what it tells your code to do.</li>
+              <li>Why would you use a <strong>loop</strong> instead of writing the same line of code five times?</li>
+              <li>Describe one real <strong>bug</strong> you hit this unit and how you tracked down the fix.</li>
+              <li>Explain one decision in your <strong>Game Jam</strong> project where you had to choose between two ways to use physics, collision, or loops.</li>
+            </ol>
+          </div>
+        </details>
+
+        <!-- Drawer 3: Game Jam Rubric Table -->
+        <details class="group bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+          <summary class="p-5 cursor-pointer flex items-center justify-between gap-2 hover:bg-slate-50 transition">
+            <div>
+              <h3 class="text-base sm:text-lg font-extrabold text-slate-800">📋 Game Jam Grading Rubric (24 Points • Test Category)</h3>
+              <p class="text-xs text-slate-500">Team Build + Individual GDD graded together</p>
+            </div>
+            <span class="text-teal-700 text-xs font-bold shrink-0 group-open:hidden">View Rubric +</span>
+            <span class="text-slate-500 text-xs font-bold shrink-0 hidden group-open:inline">Hide -</span>
+          </summary>
+          <div class="p-5 pt-2 border-t border-slate-100 overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="bg-slate-800 text-white">
+                  <th class="p-2.5 rounded-tl-lg">Criterion</th>
+                  <th class="p-2.5">4 • Exemplary</th>
+                  <th class="p-2.5">3 • Proficient</th>
+                  <th class="p-2.5">2 • Developing</th>
+                  <th class="p-2.5 rounded-tr-lg">1 • Beginning</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 border border-slate-200">
+                <tr>
+                  <td class="p-2.5 font-bold text-slate-900">Original Concept <span class="font-normal text-slate-500">(GDAS-2)</span></td>
+                  <td class="p-2.5 text-slate-700">Clearly original, combining ideas not shown in Zenva.</td>
+                  <td class="p-2.5 text-slate-700">Original with minor echoes of Balloon Popper.</td>
+                  <td class="p-2.5 text-slate-700">Closely resembles Balloon Popper with cosmetic changes.</td>
+                  <td class="p-2.5 text-slate-700">Balloon Popper unchanged, or copied.</td>
+                </tr>
+                <tr class="bg-slate-50/60">
+                  <td class="p-2.5 font-bold text-slate-900">Functional Build <span class="font-normal text-slate-500">(GDAS-3)</span></td>
+                  <td class="p-2.5 text-slate-700">Runs start to finish with no breaking bugs.</td>
+                  <td class="p-2.5 text-slate-700">Runs reliably with minor cosmetic bugs.</td>
+                  <td class="p-2.5 text-slate-700">Core mechanic works with distracting bugs.</td>
+                  <td class="p-2.5 text-slate-700">Does not reliably run, or core mechanic fails.</td>
+                </tr>
+                <tr>
+                  <td class="p-2.5 font-bold text-slate-900">Unit 2 Concepts <span class="font-normal text-slate-500">(GDAS-5)</span></td>
+                  <td class="p-2.5 text-slate-700">Applies physics, collision, and loops together cleanly.</td>
+                  <td class="p-2.5 text-slate-700">Correctly applies at least 2 of the 3 concepts.</td>
+                  <td class="p-2.5 text-slate-700">Correctly applies 1 of the 3; others copied/broken.</td>
+                  <td class="p-2.5 text-slate-700">Fundamental misunderstanding of concepts.</td>
+                </tr>
+                <tr class="bg-slate-50/60">
+                  <td class="p-2.5 font-bold text-slate-900">Debugging & Process <span class="font-normal text-slate-500">(GDAS-1)</span></td>
+                  <td class="p-2.5 text-slate-700">Dev log & Loom document a real problem and its fix.</td>
+                  <td class="p-2.5 text-slate-700">Documents a real problem; fix explanation is vague.</td>
+                  <td class="p-2.5 text-slate-700">Shows only finished state; no iteration shown.</td>
+                  <td class="p-2.5 text-slate-700">No dev log or Loom evidence.</td>
+                </tr>
+                <tr>
+                  <td class="p-2.5 font-bold text-slate-900">Playtest Response <span class="font-normal text-slate-500">(GDAS-11)</span></td>
+                  <td class="p-2.5 text-slate-700">Specific, documented change made from Day 4 feedback.</td>
+                  <td class="p-2.5 text-slate-700">Feedback noted and acted on with minor change.</td>
+                  <td class="p-2.5 text-slate-700">Feedback collected but not visibly acted on.</td>
+                  <td class="p-2.5 text-slate-700">No evidence a playtest happened.</td>
+                </tr>
+                <tr class="bg-slate-50/60">
+                  <td class="p-2.5 font-bold text-slate-900">Individual GDD <span class="font-normal text-slate-500">(GDAS-12)</span></td>
+                  <td class="p-2.5 text-slate-700">Explains game, player experience, and design choices & why.</td>
+                  <td class="p-2.5 text-slate-700">Covers game and decisions with limited detail.</td>
+                  <td class="p-2.5 text-slate-700">Describes <em>what</em> the game is, not <em>why</em>.</td>
+                  <td class="p-2.5 text-slate-700">Missing, incomplete, or copied.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
       </div>
 
       <!-- FINAL EXAM STUDY GUIDE PLACEHOLDER -->
-      <div class="border-2 border-dashed border-teal-400 bg-teal-50/50 rounded-2xl p-6 text-center">
-        <span class="inline-block bg-teal-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-2">
+      <div class="border-2 border-dashed border-teal-400 bg-teal-50/50 rounded-2xl p-5 text-center">
+        <span class="inline-block bg-teal-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-1.5">
           Coming Soon • Placeholder
         </span>
-        <h3 class="text-xl font-extrabold text-teal-950">📚 Semester Final Exam Study Guide</h3>
-        <p class="text-sm text-teal-800 max-w-xl mx-auto mt-1">
-          This section is reserved for your Semester Final Exam Study Guide, vocabulary flashcards, and practice debugging scenarios. Check back here before finals week!
+        <h3 class="text-lg font-extrabold text-teal-950">📚 Semester Final Exam Study Guide</h3>
+        <p class="text-xs sm:text-sm text-teal-800 max-w-xl mx-auto mt-1">
+          Reserved for your Semester Final Exam Study Guide, vocabulary flashcards, and practice debugging scenarios. Check back here before finals week!
         </p>
+      </div>
+
+      <!-- Bottom Quick Navigation -->
+      <div class="flex justify-between items-center pt-1">
+        <button onclick="switchPage('w9')" class="text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900">← Previous: Week 9</button>
+        <button onclick="switchPage('hub')" class="bg-slate-800 hover:bg-slate-700 text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-xl shadow-sm transition">🏠 Return to Unit 2 Hub</button>
       </div>
     </section>
 
@@ -780,7 +1059,7 @@
         <div class="bg-slate-900 text-white rounded-2xl p-6 flex flex-wrap items-center justify-between gap-4">
           <div>
             <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Unlocked • Faculty Only</span>
-            <h2 class="text-2xl font-extrabold mt-1">Teacher Facilitation Notes (Weeks 7–10)</h2>
+            <h2 class="text-2xl font-extrabold mt-1">Teacher Facilitation Notes (Weeks 7 to 10)</h2>
             <p class="text-xs text-slate-300 mt-0.5">GDI-001 • Creekside Christian Academy STEAM</p>
           </div>
           <button onclick="lockTeacherNotes()" class="bg-slate-800 hover:bg-slate-700 text-xs font-semibold px-3.5 py-2 rounded-lg border border-slate-700">
@@ -790,7 +1069,7 @@
 
         <!-- Pacing & Gradebook Table -->
         <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-          <h3 class="text-lg font-extrabold text-slate-800 mb-3">Updated Pacing & Gradebook Overview (Weeks 7–10)</h3>
+          <h3 class="text-lg font-extrabold text-slate-800 mb-3">Updated Pacing & Gradebook Overview (Weeks 7 to 10)</h3>
           <div class="overflow-x-auto">
             <table class="w-full text-left border-collapse text-sm">
               <thead>
@@ -805,28 +1084,28 @@
               <tbody class="divide-y divide-slate-100">
                 <tr>
                   <td class="py-2.5 px-3 font-bold">Week 7</td>
-                  <td class="py-2.5 px-3">Godot 4.5 check, Balloon Popper Pts 1–6 + Overview</td>
+                  <td class="py-2.5 px-3">Godot 4.5 check, Balloon Popper Pts 1 to 6 + Overview</td>
                   <td class="py-2.5 px-3">Process Loom + Dev Log</td>
                   <td class="py-2.5 px-3 text-slate-400">N/A</td>
                   <td class="py-2.5 px-3">Balloon Popper walkthrough: what input, spawn & score systems do</td>
                 </tr>
                 <tr>
                   <td class="py-2.5 px-3 font-bold">Week 8</td>
-                  <td class="py-2.5 px-3">Physics Pts 1–4 + Overview; begin Collision</td>
+                  <td class="py-2.5 px-3">Physics Pts 1 to 4 + Overview; begin Collision</td>
                   <td class="py-2.5 px-3">Narrated Process Loom + Dev Log</td>
                   <td class="py-2.5 px-3 font-semibold text-sky-700">Physics Concept Check</td>
                   <td class="py-2.5 px-3">Physics concept clinic on whatever pre-sync poll flags as hardest</td>
                 </tr>
                 <tr>
                   <td class="py-2.5 px-3 font-bold">Week 9</td>
-                  <td class="py-2.5 px-3">Finish Collision, Loops Pts 1–3 + Overview, Conclusion</td>
+                  <td class="py-2.5 px-3">Finish Collision, Loops Pts 1 to 3 + Overview, Conclusion</td>
                   <td class="py-2.5 px-3">Process Loom (deviation) + Dev Log</td>
                   <td class="py-2.5 px-3 font-semibold text-indigo-700">Collision & Loops Concept Checks</td>
                   <td class="py-2.5 px-3">Collision & loop debugging clinic; live troubleshoot a volunteer's project</td>
                 </tr>
                 <tr>
                   <td class="py-2.5 px-3 font-bold">Week 10</td>
-                  <td class="py-2.5 px-3">Game Jam (Days 1–4) + Unit 2 Test (Day 5)</td>
+                  <td class="py-2.5 px-3">Game Jam (Days 1 to 4) + Unit 2 Test (Day 5)</td>
                   <td class="py-2.5 px-3">Daily standup + build progress</td>
                   <td class="py-2.5 px-3 font-semibold text-amber-700">Test Category: Jam + Unit 2 Test</td>
                   <td class="py-2.5 px-3">Peer playtest & GDD check-in</td>
@@ -842,7 +1121,7 @@
             <h3 class="text-lg font-extrabold text-slate-800">🎯 Classroom Facilitation Moves</h3>
             <ul class="list-disc list-inside space-y-2 text-sm text-slate-700">
               <li><strong>Pre-Flight Check:</strong> Confirm every machine is on <strong>Godot 4.5</strong> before Week 7 starts.</li>
-              <li><strong>Weeks 8–9 Monitoring:</strong> Check concept-check scores every class period—this is where reluctant learners stall.</li>
+              <li><strong>Weeks 8 to 9 Monitoring:</strong> Check concept-check scores every class period, since this is where reluctant learners stall.</li>
               <li><strong>Oral Spot-Checks:</strong> Ask students <em>why</em> they chose a specific force value or collision shape, not just whether it runs.</li>
               <li><strong>Fast Finishers:</strong> Pair early finishers to debug a peer's physics/collision setup rather than starting Unit 3 early.</li>
               <li><strong>Reteach Protocol:</strong> Pull flagged students the <em>same week</em> using the matching Zenva "In-Depth Overview" lesson; allow one G2 quiz reattempt after reteach.</li>
@@ -855,7 +1134,7 @@
               <li>☑️ <strong>Process Loom</strong> narrates one specific design decision (force, mass, collision), not just a silent screen recording.</li>
               <li>☑️ <strong>Required Twist</strong> (one-line or visual deviation) is visibly present in the build.</li>
               <li>☑️ <strong>Portfolio Dev Log</strong> names a real bug encountered and how it was fixed.</li>
-              <li>☑️ <strong>Wednesday Spot-Check:</strong> Randomly pull 2–3 students to walk through their physics/collision setup live.</li>
+              <li>☑️ <strong>Wednesday Spot-Check:</strong> Randomly pull 2 to 3 students to walk through their physics/collision setup live.</li>
               <li>☑️ <strong>Jam Absentee Path:</strong> A student absent for Jam build days completes the Individual GDD as their makeup path.</li>
             </ul>
           </div>
@@ -867,7 +1146,7 @@
 
   <!-- Footer -->
   <footer class="bg-slate-100 border-t border-slate-200 py-5 text-center text-xs text-slate-500">
-    Creekside Christian Academy STEAM • GDI-001 Unit 2 Hub • Built for Google Sites
+    Creekside Christian Academy STEAM • GDI-001 Unit 2 Hub • Built for Google Sites & GitHub Pages
   </footer>
 
   <script>
