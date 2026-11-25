@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Godot 4 Game Design — Retrieval Practice Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        godot: {
+                            bg: '#14161f',
+                            panel: '#1d212e',
+                            card: '#252a3a',
+                            border: '#32394f',
+                            blue: '#478cbf',
+                            blueHover: '#5aa0d6',
+                            accent: '#38bdf8',
+                            success: '#10b981',
+                            warning: '#f59e0b',
+                            danger: '#ef4444'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for code panels */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #14161f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #32394f;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #478cbf;
+        }
+        .code-line-enter {
+            animation: slideIn 0.2s ease-out forwards;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-godot-bg text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-godot-blue selection:text-white">
+
+    <!-- Top Navigation / Header -->
+    <header class="bg-godot-panel border-b border-godot-border sticky top-0 z-30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <!-- Godot-inspired Gear/Bot Icon SVG -->
+                <div class="w-10 h-10 rounded-xl bg-godot-blue/20 border border-godot-blue/40 flex items-center justify-center text-godot-blue shrink-0">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="font-bold text-base sm:text-lg tracking-tight text-white leading-tight">Godot 4 Retrieval Practice</h1>
+                    <p class="text-xs text-slate-400 hidden sm:block">GDScript Debugging &amp; Code Ordering • Mini-Projects Curriculum</p>
+                </div>
+            </div>
+
+            <!-- Score & Progress Pill -->
+            <div class="flex items-center gap-3 sm:gap-5">
+                <div class="flex items-center gap-2 bg-godot-card px-3 py-1.5 rounded-xl border border-godot-border">
+                    <span class="text-xs font-medium text-slate-400">Mastery:</span>
+                    <span id="mastery-counter" class="text-sm font-bold text-godot-accent">0 / 10</span>
+                </div>
+                <button onclick="openResetModal()" class="text-xs font-medium text-slate-400 hover:text-white px-3 py-2 rounded-lg hover:bg-godot-card transition-colors">
+                    Reset Progress
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace Layout -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+        <!-- Left Sidebar: Concept & Project Navigator -->
+        <aside class="lg:col-span-4 flex flex-col gap-4">
+            <!-- Filter Pills -->
+            <div class="bg-godot-panel p-4 rounded-2xl border border-godot-border">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Filter by Activity Type</span>
+                </div>
+                <div class="grid grid-cols-3 gap-2">
+                    <button onclick="setFilter('all')" id="filter-all" class="filter-btn active px-3 py-2 rounded-xl text-xs font-semibold bg-godot-blue text-white transition-all">
+                        All (10)
+                    </button>
+                    <button onclick="setFilter('debug')" id="filter-debug" class="filter-btn px-3 py-2 rounded-xl text-xs font-semibold bg-godot-card text-slate-300 hover:text-white border border-godot-border transition-all">
+                        Debug (5)
+                    </button>
+                    <button onclick="setFilter('order')" id="filter-order" class="filter-btn px-3 py-2 rounded-xl text-xs font-semibold bg-godot-card text-slate-300 hover:text-white border border-godot-border transition-all">
+                        Order (5)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Curriculum Concept List -->
+            <div class="bg-godot-panel p-4 rounded-2xl border border-godot-border flex-1 flex flex-col">
+                <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3 px-1">Course Concepts &amp; Problems</h2>
+                <div id="problem-list" class="space-y-2 overflow-y-auto max-h-[62vh] pr-1">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Main Area: Active Retrieval Challenge -->
+        <section class="lg:col-span-8 flex flex-col gap-5">
+            <div id="challenge-container" class="bg-godot-panel rounded-2xl border border-godot-border p-5 sm:p-7 shadow-xl flex flex-col gap-6">
+                <!-- Challenge Header -->
+                <div class="flex flex-wrap items-start justify-between gap-4 border-b border-godot-border pb-5">
+                    <div class="space-y-1.5">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span id="badge-project" class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-godot-blue/20 text-godot-accent border border-godot-blue/30">
+                                Project 1: Balloon Popper
+                            </span>
+                            <span id="badge-type" class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                                Code Debugging
+                            </span>
+                        </div>
+                        <h2 id="problem-title" class="text-xl sm:text-2xl font-bold text-white pt-1">
+                            Filtering Mouse Input Events
+                        </h2>
+                        <p id="problem-concept" class="text-sm text-slate-400">
+                            Concept: Detecting left mouse clicks on an Area3D node via <code class="text-godot-accent font-mono">_on_input_event</code>
+                        </p>
+                    </div>
+
+                    <div id="solved-badge" class="hidden items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-bold">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                        Completed
+                    </div>
+                </div>
+
+                <!-- Scenario / Retrieval Prompt -->
+                <div class="bg-godot-card/70 border border-godot-border rounded-xl p-4 sm:p-5">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Mission Brief</h3>
+                    <p id="problem-prompt" class="text-sm sm:text-base text-slate-200 leading-relaxed">
+                        Loading problem...
+                    </p>
+                </div>
+
+                <!-- Interactive Workspace (Dynamically switches between Debug & Order UI) -->
+                <div id="workspace-area" class="space-y-4">
+                    <!-- Injected via JS -->
+                </div>
+
+                <!-- Hint & Feedback Box -->
+                <div id="feedback-box" class="hidden rounded-xl p-4 border text-sm transition-all">
+                    <div class="flex items-start gap-3">
+                        <div id="feedback-icon" class="mt-0.5 shrink-0"></div>
+                        <div class="space-y-1 flex-1">
+                            <p id="feedback-title" class="font-bold"></p>
+                            <p id="feedback-message" class="text-slate-200 leading-relaxed"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Controls -->
+                <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-godot-border">
+                    <div class="flex items-center gap-2">
+                        <button id="btn-hint" onclick="toggleHint()" class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-godot-card hover:bg-slate-700 text-slate-200 border border-godot-border transition-colors flex items-center gap-2">
+                            <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                            Need a Hint?
+                        </button>
+                        <button id="btn-reset-problem" onclick="resetCurrentProblem()" class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-godot-card hover:bg-slate-700 text-slate-300 border border-godot-border transition-colors">
+                            Reset Code
+                        </button>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <button id="btn-check" onclick="checkSolution()" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-godot-blue hover:bg-godot-blueHover text-white shadow-lg shadow-godot-blue/20 transition-all flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            Run &amp; Verify
+                        </button>
+                        <button id="btn-next" onclick="nextProblem()" class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-emerald-600 hover:bg-emerald-500 text-white transition-colors hidden items-center gap-1.5">
+                            Next Concept
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Custom Modal for Reset Confirmation (No confirm()/alert() used) -->
+    <div id="reset-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-godot-panel border border-godot-border rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4">
+            <h3 class="text-lg font-bold text-white">Reset All Practice Progress?</h3>
+            <p class="text-sm text-slate-300 leading-relaxed">
+                This will clear your completed checkmarks across all 10 Godot 4 concepts so you can practice retrieval from scratch.
+            </p>
+            <div class="flex justify-end gap-3 pt-2">
+                <button onclick="closeResetModal()" class="px-4 py-2 rounded-xl text-sm font-medium bg-godot-card hover:bg-slate-700 text-slate-300 border border-godot-border">
+                    Cancel
+                </button>
+                <button onclick="confirmResetProgress()" class="px-4 py-2 rounded-xl text-sm font-bold bg-rose-600 hover:bg-rose-500 text-white">
+                    Yes, Reset All
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * Retrieval Practice Curriculum Database
+         * Derived directly from Zenva's "Godot 4 Mini-Projects" (Godot 4.5)
+         * Covers all 4 mini-projects and their in-depth concepts:
+         * 1. Balloon Popper (Export vars, Input Events, Uniform Vector3 scaling & queue_free, Script Communication, UI Label & str() formatting)
+         * 2. 2D Physics Game (2D Mouse Input & Vector2.direction_to, RigidBody2D apply_impulse)
+         * 3. Downhill Skiing / Collision (3D Physics Movement & apply_force, Group Collision Detection & call_deferred)
+         * 4. Star System with Loops (Scene Preloading & Instantiation, For Loops & randf_range)
+         */
+        const PROBLEMS = [
+            {
+                id: 1,
+                project: "Project 1: Balloon Popper",
+                type: "order",
+                title: "1. Balloon Script Variables & Setup",
+                concept: "GDScript Inheritance & @export Inspector Variables",
+                fileName: "Balloon.gd",
+                prompt: "Arrange the top declarations of Balloon.gd in the exact Zenva lesson order so the Area3D script exposes clicks_to_pop, size_increase, and score_to_give in the Inspector.",
+                hint: "In GDScript, 'extends Area3D' must always be the very first line, followed by the three @export variables in order.",
+                explanation: "Spot on! Starting with 'extends Area3D' establishes the node class, and the '@export' variables appear cleanly in the Inspector.",
+                lines: [
+                    "extends Area3D",
+                    "@export var clicks_to_pop : int = 5",
+                    "@export var size_increase : float = 0.2",
+                    "@export var score_to_give : int = 1"
+                ]
+            },
+            {
+                id: 2,
+                project: "Project 1: Balloon Popper",
+                type: "debug",
+                title: "2. Filtering Left Mouse Clicks",
+                concept: "Input Events & Compound 'and' Conditions",
+                fileName: "Balloon.gd",
+                prompt: "A student wrote _on_input_event in Balloon.gd to detect left clicks, but releasing the mouse button or moving the mouse triggers inflation! Find and click the buggy line, then choose the fix.",
+                hint: "Look closely at the compound 'if' statement: we want to ensure the button was pressed down ('event.pressed'), not unpressed.",
+                explanation: "Great catch! Zenva checks 'if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:' so the balloon only inflates on an active left-click press.",
+                buggyLineIndex: 1,
+                codeLines: [
+                    "func _on_input_event(camera, event, position, normal, shape_idx):",
+                    "    if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:",
+                    "        scale += Vector3.ONE * size_increase",
+                    "        clicks_to_pop -= 1"
+                ],
+                options: [
+                    {
+                        text: "    if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:",
+                        correct: true,
+                        reason: "Checking 'and event.pressed' ensures the balloon only inflates when the left mouse button is actively pressed down."
+                    },
+                    {
+                        text: "    if event is InputEventMouseButton or event.button_index == MOUSE_BUTTON_LEFT:",
+                        correct: false,
+                        reason: "Using 'or' makes the condition true for any mouse movement or any mouse button."
+                    },
+                    {
+                        text: "        scale += Vector3.ZERO * size_increase",
+                        correct: false,
+                        reason: "Multiplying by Vector3.ZERO would prevent the balloon from growing at all."
+                    }
+                ]
+            },
+            {
+                id: 3,
+                project: "Project 1: Balloon Popper",
+                type: "order",
+                title: "3. Inflating & Popping Sequence",
+                concept: "Vector3 Uniform Scaling, Script Communication & queue_free()",
+                fileName: "Balloon.gd",
+                prompt: "Once a valid left click is detected in Balloon.gd, put the balloon's inflation, score awarding, and removal steps in the exact Zenva lesson order.",
+                hint: "If you call queue_free() before calling increase_score(), the balloon destroys itself before updating the score!",
+                explanation: "Exactly right! First the balloon scales up with Vector3.ONE, then clicks_to_pop decrements, and when it reaches 0, it calls increase_score on the parent node before queue_free().",
+                lines: [
+                    "scale += Vector3.ONE * size_increase",
+                    "clicks_to_pop -= 1",
+                    "if clicks_to_pop == 0:",
+                    "    get_node(\"/root/Main\").increase_score(score_to_give)",
+                    "    queue_free()"
+                ]
+            },
+            {
+                id: 4,
+                project: "Project 1: Balloon Popper",
+                type: "debug",
+                title: "4. Updating the Score UI Label",
+                concept: "Node References ($) & String Formatting with str()",
+                fileName: "BalloonManager.gd",
+                prompt: "When a balloon pops in BalloonManager.gd, Godot throws a type error when updating score_text. Click the broken line and select the proper fix.",
+                hint: "In GDScript, you cannot directly add a String ('Score: ') and an int variable (score) with '+' without converting the integer using str().",
+                explanation: "Nailed it! Wrapping 'score' inside str(score) converts the integer into a String so it can be concatenated with 'Score: '.",
+                buggyLineIndex: 7,
+                codeLines: [
+                    "extends Node3D",
+                    "var score : int = 0",
+                    "@onready var score_text : Label = $ScoreText",
+                    "func _ready():",
+                    "    score_text.text = \"Score: 0\"",
+                    "func increase_score(amount : int):",
+                    "    score += amount",
+                    "    score_text.text = \"Score: \" + score"
+                ],
+                options: [
+                    {
+                        text: "    score_text.text = \"Score: \" + str(score)",
+                        correct: true,
+                        reason: "The str() function converts the integer 'score' into a string so it can be concatenated cleanly."
+                    },
+                    {
+                        text: "    score_text = \"Score: \" + str(score)",
+                        correct: false,
+                        reason: "This overwrites the Label node reference itself instead of setting its '.text' property."
+                    },
+                    {
+                        text: "    score_text.text = int(\"Score: \") + score",
+                        correct: false,
+                        reason: "'Score: ' cannot be converted into an integer."
+                    }
+                ]
+            },
+            {
+                id: 5,
+                project: "Project 2: 2D Physics Game",
+                type: "order",
+                title: "5. Launching the 2D Physics Player",
+                concept: "Mouse Coordinates, Vector2.direction_to() & RigidBody2D Impulses",
+                fileName: "PhysicsPlayer.gd",
+                prompt: "Order the lines inside _process(delta) from Zenva's PhysicsPlayer.gd so the RigidBody2D player calculates the direction toward the cursor and launches on a left click.",
+                hint: "First declare _process(delta), check Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT), calculate dir, and finally call apply_impulse().",
+                explanation: "Awesome! Checking Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT), calculating global_position.direction_to(get_global_mouse_position()), and calling apply_impulse(dir * hit_force) matches the exact Zenva script.",
+                lines: [
+                    "func _process(delta):",
+                    "    if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):",
+                    "        var dir = global_position.direction_to(get_global_mouse_position())",
+                    "        apply_impulse(dir * hit_force)"
+                ]
+            },
+            {
+                id: 6,
+                project: "Project 2: 2D Physics Game",
+                type: "debug",
+                title: "6. Reversed Launch Direction Bug",
+                concept: "Vector Direction Math (Origin vs. Target)",
+                fileName: "PhysicsPlayer.gd",
+                prompt: "When the player clicks on a crate, the character launches AWAY from the mouse cursor instead of toward it! Inspect PhysicsPlayer.gd and fix the faulty line.",
+                hint: "a.direction_to(b) returns a vector pointing from 'a' toward 'b'. Which position should be 'a'?",
+                explanation: "Correct! Calling get_global_mouse_position().direction_to(global_position) points from the mouse back to the player. Swapping them points from the player toward the mouse!",
+                buggyLineIndex: 4,
+                codeLines: [
+                    "extends RigidBody2D",
+                    "var hit_force : float = 50.0",
+                    "func _process(delta):",
+                    "    if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):",
+                    "        var dir = get_global_mouse_position().direction_to(global_position)",
+                    "        apply_impulse(dir * hit_force)"
+                ],
+                options: [
+                    {
+                        text: "        var dir = global_position.direction_to(get_global_mouse_position())",
+                        correct: true,
+                        reason: "Calling direction_to() on the player's global_position toward get_global_mouse_position() produces the exact vector pointing at the cursor."
+                    },
+                    {
+                        text: "        apply_impulse(dir / hit_force)",
+                        correct: false,
+                        reason: "Dividing by hit_force only shrinks the force; it doesn't reverse the backwards direction vector."
+                    },
+                    {
+                        text: "        var dir = global_position + get_global_mouse_position()",
+                        correct: false,
+                        reason: "Adding two global coordinates creates a large position vector rather than a normalized direction."
+                    }
+                ]
+            },
+            {
+                id: 7,
+                project: "Project 3: Downhill Skiing",
+                type: "debug",
+                title: "7. Steering Left & Right on the Slope",
+                concept: "3D Physics Process & linear_velocity.x",
+                fileName: "PlayerMovement.gd",
+                prompt: "While testing the 3D skiing game in PlayerMovement.gd, pressing the Right Arrow key pushes the skier to the LEFT! Find the bug and fix it.",
+                hint: "Check the sign in front of move_speed when Input.is_key_pressed(KEY_RIGHT) is true.",
+                explanation: "Spot on! Zenva sets linear_velocity.x = -move_speed for KEY_LEFT and linear_velocity.x = move_speed (positive) for KEY_RIGHT.",
+                buggyLineIndex: 6,
+                codeLines: [
+                    "extends RigidBody3D",
+                    "@export var move_speed : float = 2.0",
+                    "func _physics_process(delta):",
+                    "    if Input.is_key_pressed(KEY_LEFT):",
+                    "        linear_velocity.x = -move_speed",
+                    "    if Input.is_key_pressed(KEY_RIGHT):",
+                    "        linear_velocity.x = -move_speed"
+                ],
+                options: [
+                    {
+                        text: "        linear_velocity.x = move_speed",
+                        correct: true,
+                        reason: "Setting linear_velocity.x to positive move_speed steers the RigidBody3D skier to the right."
+                    },
+                    {
+                        text: "        linear_velocity.y = move_speed",
+                        correct: false,
+                        reason: "Modifying linear_velocity.y pushes the skier upward instead of steering right along the X-axis."
+                    },
+                    {
+                        text: "    if Input.is_key_pressed(KEY_LEFT):",
+                        correct: false,
+                        reason: "Checking KEY_LEFT twice would leave the right arrow key unresponsive."
+                    }
+                ]
+            },
+            {
+                id: 8,
+                project: "Project 3: Downhill Skiing",
+                type: "order",
+                title: "8. Tree Collision & Scene Reload",
+                concept: "Node Groups (is_in_group) & get_tree().reload_current_scene()",
+                fileName: "PlayerMovement.gd",
+                prompt: "Arrange the collision signal handler from Zenva's PlayerMovement.gd so the game checks if the collided body is in the 'Tree' group and reloads the scene.",
+                hint: "First declare _on_body_entered(body), check body.is_in_group(\"Tree\"), and then reload the current scene via get_tree().",
+                explanation: "Well done! Checking body.is_in_group(\"Tree\") ignores collisions with the ski slope Ground, and get_tree().reload_current_scene() restarts the run.",
+                lines: [
+                    "func _on_body_entered(body):",
+                    "    if body.is_in_group(\"Tree\"):",
+                    "        get_tree().reload_current_scene()"
+                ]
+            },
+            {
+                id: 9,
+                project: "Project 4: Star System",
+                type: "order",
+                title: "9. Spawning & Randomizing Stars in a Loop",
+                concept: "For Loops, Scene Instantiation, randi_range() & randf_range()",
+                fileName: "Loops.gd",
+                prompt: "Order the loop body inside _ready() from Zenva's Loops.gd to instantiate a star, add it as a child, set its random integer position, and randomize its float star_size.",
+                hint: "Notice Zenva uses randi_range() for star.position.x / y, and randf_range() stored in 'star_size' for star.scale.x / y.",
+                explanation: "Fantastic! Each iteration instantiates star_scene, calls add_child(star), sets random integer positions with randi_range(), and applies float scaling via star_size = randf_range(0.5, 1.0).",
+                lines: [
+                    "for i in spawn_count:",
+                    "    var star = star_scene.instantiate()",
+                    "    add_child(star)",
+                    "    star.position.x = randi_range(-280, 280)",
+                    "    star.position.y = randi_range(-150, 150)",
+                    "    var star_size = randf_range(0.5, 1.0)",
+                    "    star.scale.x = star_size",
+                    "    star.scale.y = star_size"
+                ]
+            },
+            {
+                id: 10,
+                project: "Project 4: Star System",
+                type: "debug",
+                title: "10. Invisible Stars in the Night Sky",
+                concept: "Instancing Workflow (Preload -> Instantiate -> add_child)",
+                fileName: "Loops.gd",
+                prompt: "The loop in Loops.gd runs 200 times without errors, yet zero stars appear on screen! Inspect the script, click the line causing the issue, and choose the fix.",
+                hint: "Look at the 3-step scene instancing process in Zenva: 1) preload(\"res://Loops/Star.tscn\"), 2) star_scene.instantiate(), 3) attach it to the scene tree.",
+                explanation: "Bullseye! Calling star_scene.instantiate() creates the node in memory, but it will never appear in the game until you call add_child(star) to attach it to the scene tree.",
+                buggyLineIndex: 5,
+                codeLines: [
+                    "extends Node2D",
+                    "@export var spawn_count : int = 200",
+                    "var star_scene = preload(\"res://Loops/Star.tscn\")",
+                    "func _ready():",
+                    "    for i in spawn_count:",
+                    "        var star = star_scene.instantiate()",
+                    "        star.position.x = randi_range(-280, 280)",
+                    "        star.position.y = randi_range(-150, 150)"
+                ],
+                options: [
+                    {
+                        text: "Add 'add_child(star)' right after 'var star = star_scene.instantiate()'",
+                        correct: true,
+                        reason: "Instantiated scenes exist only in memory until add_child(star) attaches them into the active scene tree."
+                    },
+                    {
+                        text: "Change 'preload' to 'load' on line 3",
+                        correct: false,
+                        reason: "Both preload() and load() return a PackedScene; neither automatically adds instances to the tree."
+                    },
+                    {
+                        text: "Change 'randi_range' to 'randf_range' on lines 7 and 8",
+                        correct: false,
+                        reason: "Using floats instead of integers for position won't make unattached nodes appear in the scene tree."
+                    }
+                ]
+            }
+        ];
+
+        // Application State
+        let currentProblemIndex = 0;
+        let currentFilter = 'all';
+        let solvedIds = new Set();
+        let hintVisible = false;
+
+        // Per-problem interactive state
+        let selectedDebugLine = null;
+        let selectedDebugOption = null;
+        let currentOrderLines = [];
+
+        // Initialize App
+        function init() {
+            loadProgress();
+            renderSidebar();
+            loadProblem(0);
+        }
+
+        function loadProgress() {
+            try {
+                const saved = localStorage.getItem('godot4_retrieval_solved');
+                if (saved) {
+                    solvedIds = new Set(JSON.parse(saved));
+                }
+            } catch (e) {
+                console.warn('Could not read localStorage', e);
+            }
+            updateMasteryCounter();
+        }
+
+        function saveProgress() {
+            try {
+                localStorage.setItem('godot4_retrieval_solved', JSON.stringify([...solvedIds]));
+            } catch (e) {
+                console.warn('Could not write localStorage', e);
+            }
+            updateMasteryCounter();
+        }
+
+        function updateMasteryCounter() {
+            const counter = document.getElementById('mastery-counter');
+            counter.textContent = `${solvedIds.size} / ${PROBLEMS.length}`;
+        }
+
+        function setFilter(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-godot-blue', 'text-white');
+                btn.classList.add('bg-godot-card', 'text-slate-300', 'border', 'border-godot-border');
+            });
+            const activeBtn = document.getElementById(`filter-${filter}`);
+            activeBtn.classList.remove('bg-godot-card', 'text-slate-300', 'border', 'border-godot-border');
+            activeBtn.classList.add('bg-godot-blue', 'text-white');
+
+            renderSidebar();
+
+            // If current problem doesn't match filter, jump to first matching
+            const filtered = getFilteredProblems();
+            if (filtered.length > 0 && !filtered.some(p => p.id === PROBLEMS[currentProblemIndex].id)) {
+                const firstIdx = PROBLEMS.findIndex(p => p.id === filtered[0].id);
+                loadProblem(firstIdx);
+            }
+        }
+
+        function getFilteredProblems() {
+            if (currentFilter === 'all') return PROBLEMS;
+            return PROBLEMS.filter(p => p.type === currentFilter);
+        }
+
+        function renderSidebar() {
+            const listEl = document.getElementById('problem-list');
+            listEl.innerHTML = '';
+
+            const filtered = getFilteredProblems();
+            filtered.forEach(problem => {
+                const actualIndex = PROBLEMS.findIndex(p => p.id === problem.id);
+                const isActive = actualIndex === currentProblemIndex;
+                const isSolved = solvedIds.has(problem.id);
+
+                const btn = document.createElement('button');
+                btn.onclick = () => loadProblem(actualIndex);
+                btn.className = `w-full text-left p-3 rounded-xl border transition-all flex items-start justify-between gap-2.5 ${
+                    isActive
+                        ? 'bg-godot-blue/15 border-godot-blue text-white shadow-sm'
+                        : 'bg-godot-card/50 border-godot-border/70 text-slate-300 hover:bg-godot-card hover:text-white'
+                }`;
+
+                const typeBadge = problem.type === 'debug'
+                    ? `<span class="text-[10px] font-bold uppercase px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300">Debug</span>`
+                    : `<span class="text-[10px] font-bold uppercase px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300">Order</span>`;
+
+                btn.innerHTML = `
+                    <div class="space-y-1 min-w-0 flex-1">
+                        <div class="flex items-center gap-2">
+                            ${typeBadge}
+                            <span class="text-[11px] text-slate-400 truncate">${problem.project.replace(/Project \d+: /, '')}</span>
+                        </div>
+                        <p class="text-xs sm:text-sm font-semibold truncate">${problem.title}</p>
+                    </div>
+                    <div class="shrink-0 mt-1">
+                        ${isSolved
+                            ? `<span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                               </span>`
+                            : `<span class="w-5 h-5 rounded-full border border-slate-600 flex items-center justify-center text-[10px] text-slate-400">${problem.id}</span>`
+                        }
+                    </div>
+                `;
+                listEl.appendChild(btn);
+            });
+        }
+
+        function loadProblem(index) {
+            currentProblemIndex = index;
+            const problem = PROBLEMS[index];
+            hintVisible = false;
+            selectedDebugLine = null;
+            selectedDebugOption = null;
+
+            // Update Headers & Badges
+            document.getElementById('badge-project').textContent = problem.project;
+            const badgeType = document.getElementById('badge-type');
+            if (problem.type === 'debug') {
+                badgeType.textContent = 'Code Debugging';
+                badgeType.className = 'px-2.5 py-1 rounded-lg text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30';
+            } else {
+                badgeType.textContent = 'Code Order (Parsons Problem)';
+                badgeType.className = 'px-2.5 py-1 rounded-lg text-xs font-semibold bg-purple-500/20 text-purple-300 border border-purple-500/30';
+            }
+
+            document.getElementById('problem-title').textContent = problem.title;
+            document.getElementById('problem-concept').innerHTML = `Concept: <span class="text-slate-200 font-medium">${problem.concept}</span> • File: <code class="text-godot-accent font-mono text-xs">${problem.fileName}</code>`;
+            document.getElementById('problem-prompt').textContent = problem.prompt;
+
+            // Solved indicator
+            const solvedBadge = document.getElementById('solved-badge');
+            const nextBtn = document.getElementById('btn-next');
+            if (solvedIds.has(problem.id)) {
+                solvedBadge.classList.remove('hidden');
+                solvedBadge.classList.add('flex');
+                nextBtn.classList.remove('hidden');
+                nextBtn.classList.add('flex');
+            } else {
+                solvedBadge.classList.add('hidden');
+                solvedBadge.classList.remove('flex');
+                nextBtn.classList.add('hidden');
+                nextBtn.classList.remove('flex');
+            }
+
+            hideFeedback();
+
+            // Render specific workspace
+            if (problem.type === 'debug') {
+                renderDebugWorkspace(problem);
+            } else {
+                // Deterministic shuffle that isn't already solved
+                currentOrderLines = shuffleArray([...problem.lines]);
+                if (arraysEqual(currentOrderLines, problem.lines)) {
+                    currentOrderLines.reverse();
+                }
+                renderOrderWorkspace(problem);
+            }
+
+            renderSidebar();
+        }
+
+        function renderDebugWorkspace(problem) {
+            const workspace = document.getElementById('workspace-area');
+            workspace.innerHTML = `
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between text-xs text-slate-400 px-1">
+                        <span>Step 1: Click the line containing the bug in <code class="text-slate-200 font-mono">${problem.fileName}</code></span>
+                        <span id="selected-line-label" class="text-amber-300 font-medium">No line selected</span>
+                    </div>
+                    <div class="bg-[#0f111a] border border-godot-border rounded-xl overflow-hidden font-mono text-xs sm:text-sm">
+                        <div class="bg-godot-card/80 px-4 py-2 border-b border-godot-border flex items-center gap-2 text-xs text-slate-400">
+                            <span class="w-2.5 h-2.5 rounded-full bg-rose-500/70"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-amber-500/70"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/70"></span>
+                            <span class="ml-1 font-semibold text-slate-300">${problem.fileName}</span>
+                        </div>
+                        <div id="debug-code-lines" class="divide-y divide-slate-800/60">
+                            ${problem.codeLines.map((line, idx) => `
+                                <button type="button" onclick="selectDebugLine(${idx})" id="debug-line-${idx}"
+                                    class="w-full text-left px-4 py-2.5 flex items-center gap-4 hover:bg-godot-blue/15 transition-colors group">
+                                    <span class="text-slate-500 select-none w-5 text-right shrink-0 group-hover:text-slate-300">${idx + 1}</span>
+                                    <pre class="text-slate-200 whitespace-pre-wrap break-all flex-1">${escapeHtml(line)}</pre>
+                                    <span class="text-[11px] font-sans font-semibold px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 opacity-0 transition-opacity" id="bug-tag-${idx}">Suspect Bug</span>
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-2.5 pt-2">
+                    <div class="text-xs text-slate-400 px-1">
+                        Step 2: Select the replacement code or fix to resolve the bug
+                    </div>
+                    <div id="debug-options" class="grid grid-cols-1 gap-2.5">
+                        ${problem.options.map((opt, idx) => `
+                            <button type="button" onclick="selectDebugOption(${idx})" id="debug-opt-${idx}"
+                                class="w-full text-left p-3.5 rounded-xl border border-godot-border bg-godot-card/60 hover:bg-godot-card transition-all flex items-center gap-3">
+                                <span id="opt-radio-${idx}" class="w-5 h-5 rounded-full border-2 border-slate-500 flex items-center justify-center shrink-0"></span>
+                                <code class="font-mono text-xs sm:text-sm text-slate-100">${escapeHtml(opt.text)}</code>
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectDebugLine(idx) {
+            selectedDebugLine = idx;
+            const problem = PROBLEMS[currentProblemIndex];
+            document.getElementById('selected-line-label').textContent = `Line ${idx + 1} selected`;
+
+            problem.codeLines.forEach((_, i) => {
+                const row = document.getElementById(`debug-line-${i}`);
+                const tag = document.getElementById(`bug-tag-${i}`);
+                if (i === idx) {
+                    row.classList.add('bg-rose-500/15', 'border-l-4', 'border-l-rose-500');
+                    tag.classList.remove('opacity-0');
+                } else {
+                    row.classList.remove('bg-rose-500/15', 'border-l-4', 'border-l-rose-500');
+                    tag.classList.add('opacity-0');
+                }
+            });
+            hideFeedback();
+        }
+
+        function selectDebugOption(idx) {
+            selectedDebugOption = idx;
+            const problem = PROBLEMS[currentProblemIndex];
+            problem.options.forEach((_, i) => {
+                const btn = document.getElementById(`debug-opt-${i}`);
+                const radio = document.getElementById(`opt-radio-${i}`);
+                if (i === idx) {
+                    btn.classList.remove('border-godot-border', 'bg-godot-card/60');
+                    btn.classList.add('border-godot-blue', 'bg-godot-blue/15');
+                    radio.classList.remove('border-slate-500');
+                    radio.classList.add('border-godot-accent', 'bg-godot-accent');
+                } else {
+                    btn.classList.add('border-godot-border', 'bg-godot-card/60');
+                    btn.classList.remove('border-godot-blue', 'bg-godot-blue/15');
+                    radio.classList.add('border-slate-500');
+                    radio.classList.remove('border-godot-accent', 'bg-godot-accent');
+                }
+            });
+            hideFeedback();
+        }
+
+        function renderOrderWorkspace(problem) {
+            const workspace = document.getElementById('workspace-area');
+            workspace.innerHTML = `
+                <div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400 px-1">
+                    <span>Drag lines or use the <strong class="text-slate-200">Up / Down</strong> buttons to arrange <code class="text-slate-200 font-mono">${problem.fileName}</code> in execution order:</span>
+                </div>
+                <div class="bg-[#0f111a] border border-godot-border rounded-xl overflow-hidden">
+                    <div class="bg-godot-card/80 px-4 py-2 border-b border-godot-border flex items-center justify-between text-xs text-slate-400">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-rose-500/70"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-amber-500/70"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/70"></span>
+                            <span class="ml-1 font-semibold text-slate-300 font-mono">${problem.fileName}</span>
+                        </div>
+                        <span>${currentOrderLines.length} blocks</span>
+                    </div>
+                    <div id="order-list" class="p-3 space-y-2">
+                        ${currentOrderLines.map((line, idx) => renderOrderItem(line, idx, currentOrderLines.length)).join('')}
+                    </div>
+                </div>
+            `;
+            attachDragEvents();
+        }
+
+        function renderOrderItem(line, idx, total) {
+            return `
+                <div draggable="true" data-index="${idx}"
+                    class="order-item code-line-enter flex items-center justify-between gap-3 bg-godot-card hover:bg-slate-800 border border-godot-border rounded-xl px-3.5 py-2.5 cursor-grab active:cursor-grabbing transition-all select-none">
+                    <div class="flex items-center gap-3 min-w-0 flex-1">
+                        <span class="text-slate-500 font-mono text-xs w-4 text-right shrink-0">${idx + 1}</span>
+                        <svg class="w-4 h-4 text-slate-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/>
+                        </svg>
+                        <pre class="font-mono text-xs sm:text-sm text-slate-100 whitespace-pre overflow-x-auto">${escapeHtml(line)}</pre>
+                    </div>
+                    <div class="flex items-center gap-1 shrink-0">
+                        <button type="button" onclick="moveOrderLine(${idx}, -1)" ${idx === 0 ? 'disabled' : ''}
+                            aria-label="Move line up"
+                            class="p-1.5 rounded-lg bg-godot-panel hover:bg-godot-blue hover:text-white text-slate-300 disabled:opacity-30 disabled:pointer-events-none transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/></svg>
+                        </button>
+                        <button type="button" onclick="moveOrderLine(${idx}, 1)" ${idx === total - 1 ? 'disabled' : ''}
+                            aria-label="Move line down"
+                            class="p-1.5 rounded-lg bg-godot-panel hover:bg-godot-blue hover:text-white text-slate-300 disabled:opacity-30 disabled:pointer-events-none transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function moveOrderLine(index, direction) {
+            const newIndex = index + direction;
+            if (newIndex < 0 || newIndex >= currentOrderLines.length) return;
+            const temp = currentOrderLines[index];
+            currentOrderLines[index] = currentOrderLines[newIndex];
+            currentOrderLines[newIndex] = temp;
+            hideFeedback();
+            renderOrderWorkspace(PROBLEMS[currentProblemIndex]);
+        }
+
+        // Drag and drop handlers for Parsons Ordering
+        let dragSrcIndex = null;
+        function attachDragEvents() {
+            const items = document.querySelectorAll('.order-item');
+            items.forEach(item => {
+                item.addEventListener('dragstart', function (e) {
+                    dragSrcIndex = Number(this.dataset.index);
+                    this.classList.add('opacity-50', 'border-godot-accent');
+                    e.dataTransfer.effectAllowed = 'move';
+                });
+                item.addEventListener('dragover', function (e) {
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
+                    this.classList.add('border-godot-blue');
+                });
+                item.addEventListener('dragleave', function () {
+                    this.classList.remove('border-godot-blue');
+                });
+                item.addEventListener('drop', function (e) {
+                    e.stopPropagation();
+                    const targetIndex = Number(this.dataset.index);
+                    if (dragSrcIndex !== null && dragSrcIndex !== targetIndex) {
+                        const movedItem = currentOrderLines.splice(dragSrcIndex, 1)[0];
+                        currentOrderLines.splice(targetIndex, 0, movedItem);
+                        hideFeedback();
+                        renderOrderWorkspace(PROBLEMS[currentProblemIndex]);
+                    }
+                    return false;
+                });
+                item.addEventListener('dragend', function () {
+                    this.classList.remove('opacity-50', 'border-godot-accent', 'border-godot-blue');
+                });
+            });
+        }
+
+        function checkSolution() {
+            const problem = PROBLEMS[currentProblemIndex];
+
+            if (problem.type === 'debug') {
+                if (selectedDebugLine === null || selectedDebugOption === null) {
+                    showFeedback('warning', 'Incomplete Selection', 'Please complete both steps: click the buggy line in the script AND choose a fix below.');
+                    return;
+                }
+
+                const lineCorrect = selectedDebugLine === problem.buggyLineIndex;
+                const chosenOpt = problem.options[selectedDebugOption];
+
+                if (lineCorrect && chosenOpt.correct) {
+                    markProblemSolved(problem.id);
+                    showFeedback('success', 'Bug Squashed!', `${problem.explanation}`);
+                } else if (!lineCorrect) {
+                    showFeedback('error', 'Check the Line Number', `Line ${selectedDebugLine + 1} is actually working as intended. Look closer at the logic on another line!`);
+                } else {
+                    showFeedback('error', 'Right Line, Wrong Fix', chosenOpt.reason);
+                }
+            } else {
+                // Verify Parsons order
+                const isExactMatch = arraysEqual(currentOrderLines, problem.lines);
+                if (isExactMatch) {
+                    markProblemSolved(problem.id);
+                    showFeedback('success', 'Execution Order Verified!', problem.explanation);
+                } else {
+                    // Count how many lines are in their exact spot to give constructive retrieval feedback
+                    let correctCount = 0;
+                    currentOrderLines.forEach((line, idx) => {
+                        if (line === problem.lines[idx]) correctCount++;
+                    });
+                    showFeedback(
+                        'error',
+                        'Not Quite in Order Yet',
+                        `You currently have ${correctCount} out of ${problem.lines.length} lines in their exact final position. Check variable dependencies and indentation flow.`
+                    );
+                }
+            }
+        }
+
+        function markProblemSolved(id) {
+            solvedIds.add(id);
+            saveProgress();
+            renderSidebar();
+
+            const solvedBadge = document.getElementById('solved-badge');
+            solvedBadge.classList.remove('hidden');
+            solvedBadge.classList.add('flex');
+
+            const nextBtn = document.getElementById('btn-next');
+            nextBtn.classList.remove('hidden');
+            nextBtn.classList.add('flex');
+        }
+
+        function toggleHint() {
+            const problem = PROBLEMS[currentProblemIndex];
+            hintVisible = !hintVisible;
+            if (hintVisible) {
+                showFeedback('warning', 'Instructor Hint', problem.hint);
+            } else {
+                hideFeedback();
+            }
+        }
+
+        function resetCurrentProblem() {
+            loadProblem(currentProblemIndex);
+        }
+
+        function nextProblem() {
+            const filtered = getFilteredProblems();
+            const currentPosInFiltered = filtered.findIndex(p => p.id === PROBLEMS[currentProblemIndex].id);
+            if (currentPosInFiltered !== -1 && currentPosInFiltered + 1 < filtered.length) {
+                const nextId = filtered[currentPosInFiltered + 1].id;
+                const nextGlobalIdx = PROBLEMS.findIndex(p => p.id === nextId);
+                loadProblem(nextGlobalIdx);
+            } else {
+                const nextIdx = (currentProblemIndex + 1) % PROBLEMS.length;
+                loadProblem(nextIdx);
+            }
+        }
+
+        function showFeedback(type, title, message) {
+            const box = document.getElementById('feedback-box');
+            const icon = document.getElementById('feedback-icon');
+            const titleEl = document.getElementById('feedback-title');
+            const msgEl = document.getElementById('feedback-message');
+
+            box.classList.remove('hidden', 'bg-emerald-500/15', 'border-emerald-500/40', 'bg-rose-500/15', 'border-rose-500/40', 'bg-amber-500/15', 'border-amber-500/40');
+            titleEl.classList.remove('text-emerald-300', 'text-rose-300', 'text-amber-300');
+
+            if (type === 'success') {
+                box.classList.add('bg-emerald-500/15', 'border-emerald-500/40');
+                titleEl.classList.add('text-emerald-300');
+                icon.innerHTML = `<svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`;
+            } else if (type === 'error') {
+                box.classList.add('bg-rose-500/15', 'border-rose-500/40');
+                titleEl.classList.add('text-rose-300');
+                icon.innerHTML = `<svg class="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`;
+            } else {
+                box.classList.add('bg-amber-500/15', 'border-amber-500/40');
+                titleEl.classList.add('text-amber-300');
+                icon.innerHTML = `<svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`;
+            }
+
+            titleEl.textContent = title;
+            msgEl.textContent = message;
+        }
+
+        function hideFeedback() {
+            document.getElementById('feedback-box').classList.add('hidden');
+        }
+
+        // Modal Controls
+        function openResetModal() {
+            const modal = document.getElementById('reset-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeResetModal() {
+            const modal = document.getElementById('reset-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function confirmResetProgress() {
+            solvedIds.clear();
+            saveProgress();
+            closeResetModal();
+            loadProblem(0);
+        }
+
+        // Helpers
+        function shuffleArray(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        function arraysEqual(a, b) {
+            if (a.length !== b.length) return false;
+            for (let i = 0; i < a.length; i++) {
+                if (a[i] !== b[i]) return false;
+            }
+            return true;
+        }
+
+        function escapeHtml(str) {
+            return str
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        // Boot app
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
