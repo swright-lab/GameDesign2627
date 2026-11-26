@@ -4,37 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Godot 4 Game Design — Retrieval Practice Lab</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        godot: {
-                            bg: '#14161f',
-                            panel: '#1d212e',
-                            card: '#252a3a',
-                            border: '#32394f',
-                            blue: '#478cbf',
-                            blueHover: '#5aa0d6',
-                            accent: '#38bdf8',
-                            success: '#10b981',
-                            warning: '#f59e0b',
-                            danger: '#ef4444'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
     <style>
+        /* Compiled Tailwind CSS v3.4.17 (only the classes this page uses) */
+        *,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:Inter,sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:JetBrains Mono,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.sticky{position:sticky}.inset-0{inset:0}.top-0{top:0}.z-30{z-index:30}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mb-1\.5{margin-bottom:.375rem}.mb-2{margin-bottom:.5rem}.mb-3{margin-bottom:.75rem}.ml-1{margin-left:.25rem}.mt-0\.5{margin-top:.125rem}.mt-1{margin-top:.25rem}.block{display:block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-16{height:4rem}.h-2\.5{height:.625rem}.h-3\.5{height:.875rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.max-h-\[56vh\]{max-height:56vh}.min-h-screen{min-height:100vh}.w-10{width:2.5rem}.w-2\.5{width:.625rem}.w-3\.5{width:.875rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-full{width:100%}.min-w-0{min-width:0}.max-w-7xl{max-width:80rem}.max-w-md{max-width:28rem}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-grab{cursor:grab}.select-none{-webkit-user-select:none;-moz-user-select:none;user-select:none}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:.25rem}.gap-1\.5{gap:.375rem}.gap-2{gap:.5rem}.gap-2\.5{gap:.625rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.gap-5{gap:1.25rem}.gap-6{gap:1.5rem}.space-y-1>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.25rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.25rem*var(--tw-space-y-reverse))}.space-y-1\.5>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.375rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.375rem*var(--tw-space-y-reverse))}.space-y-2>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.5rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.5rem*var(--tw-space-y-reverse))}.space-y-2\.5>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.625rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.625rem*var(--tw-space-y-reverse))}.space-y-3>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.75rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.75rem*var(--tw-space-y-reverse))}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}.divide-y>:not([hidden])~:not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px*(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px*var(--tw-divide-y-reverse))}.divide-slate-800\/60>:not([hidden])~:not([hidden]){border-color:rgba(30,41,59,.6)}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.whitespace-pre{white-space:pre}.whitespace-pre-wrap{white-space:pre-wrap}.break-all{word-break:break-all}.rounded{border-radius:.25rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:.5rem}.rounded-xl{border-radius:.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-l-4{border-left-width:4px}.border-t{border-top-width:1px}.border-amber-500\/30{border-color:rgba(245,158,11,.3)}.border-amber-500\/40{border-color:rgba(245,158,11,.4)}.border-emerald-500\/40{border-color:rgba(16,185,129,.4)}.border-emerald-500\/50{border-color:rgba(16,185,129,.5)}.border-godot-accent{--tw-border-opacity:1;border-color:rgb(56 189 248/var(--tw-border-opacity,1))}.border-godot-blue{--tw-border-opacity:1;border-color:rgb(71 140 191/var(--tw-border-opacity,1))}.border-godot-blue\/30{border-color:rgba(71,140,191,.3)}.border-godot-blue\/40{border-color:rgba(71,140,191,.4)}.border-godot-border{--tw-border-opacity:1;border-color:rgb(50 57 79/var(--tw-border-opacity,1))}.border-godot-border\/70{border-color:rgba(50,57,79,.7)}.border-purple-500\/30{border-color:rgba(168,85,247,.3)}.border-rose-500\/40{border-color:rgba(244,63,94,.4)}.border-slate-500{--tw-border-opacity:1;border-color:rgb(100 116 139/var(--tw-border-opacity,1))}.border-slate-600{--tw-border-opacity:1;border-color:rgb(71 85 105/var(--tw-border-opacity,1))}.border-l-rose-500{--tw-border-opacity:1;border-left-color:rgb(244 63 94/var(--tw-border-opacity,1))}.bg-\[\#0f111a\]{--tw-bg-opacity:1;background-color:rgb(15 17 26/var(--tw-bg-opacity,1))}.bg-amber-500\/15{background-color:rgba(245,158,11,.15)}.bg-amber-500\/20{background-color:rgba(245,158,11,.2)}.bg-amber-500\/70{background-color:rgba(245,158,11,.7)}.bg-black\/70{background-color:rgba(0,0,0,.7)}.bg-emerald-500\/15{background-color:rgba(16,185,129,.15)}.bg-emerald-500\/20{background-color:rgba(16,185,129,.2)}.bg-emerald-500\/70{background-color:rgba(16,185,129,.7)}.bg-emerald-600{--tw-bg-opacity:1;background-color:rgb(5 150 105/var(--tw-bg-opacity,1))}.bg-godot-accent{--tw-bg-opacity:1;background-color:rgb(56 189 248/var(--tw-bg-opacity,1))}.bg-godot-bg{--tw-bg-opacity:1;background-color:rgb(20 22 31/var(--tw-bg-opacity,1))}.bg-godot-blue{--tw-bg-opacity:1;background-color:rgb(71 140 191/var(--tw-bg-opacity,1))}.bg-godot-blue\/15{background-color:rgba(71,140,191,.15)}.bg-godot-blue\/20{background-color:rgba(71,140,191,.2)}.bg-godot-card{--tw-bg-opacity:1;background-color:rgb(37 42 58/var(--tw-bg-opacity,1))}.bg-godot-card\/50{background-color:rgba(37,42,58,.5)}.bg-godot-card\/60{background-color:rgba(37,42,58,.6)}.bg-godot-card\/70{background-color:rgba(37,42,58,.7)}.bg-godot-card\/80{background-color:rgba(37,42,58,.8)}.bg-godot-panel{--tw-bg-opacity:1;background-color:rgb(29 33 46/var(--tw-bg-opacity,1))}.bg-purple-500\/20{background-color:rgba(168,85,247,.2)}.bg-rose-500\/15{background-color:rgba(244,63,94,.15)}.bg-rose-500\/20{background-color:rgba(244,63,94,.2)}.bg-rose-500\/70{background-color:rgba(244,63,94,.7)}.bg-rose-600{--tw-bg-opacity:1;background-color:rgb(225 29 72/var(--tw-bg-opacity,1))}.p-1\.5{padding:.375rem}.p-3{padding:.75rem}.p-3\.5{padding:.875rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.px-1{padding-left:.25rem;padding-right:.25rem}.px-1\.5{padding-left:.375rem;padding-right:.375rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-2\.5{padding-left:.625rem;padding-right:.625rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-3\.5{padding-left:.875rem;padding-right:.875rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.py-0\.5{padding-top:.125rem;padding-bottom:.125rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-1\.5{padding-top:.375rem;padding-bottom:.375rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-2\.5{padding-top:.625rem;padding-bottom:.625rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.pb-5{padding-bottom:1.25rem}.pr-1{padding-right:.25rem}.pt-1{padding-top:.25rem}.pt-2{padding-top:.5rem}.pt-4{padding-top:1rem}.text-left{text-align:left}.text-center{text-align:center}.text-right{text-align:right}.font-mono{font-family:JetBrains Mono,monospace}.font-sans{font-family:Inter,sans-serif}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-tight{letter-spacing:-.025em}.tracking-wider{letter-spacing:.05em}.text-amber-300{--tw-text-opacity:1;color:rgb(252 211 77/var(--tw-text-opacity,1))}.text-amber-400{--tw-text-opacity:1;color:rgb(251 191 36/var(--tw-text-opacity,1))}.text-emerald-300{--tw-text-opacity:1;color:rgb(110 231 183/var(--tw-text-opacity,1))}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153/var(--tw-text-opacity,1))}.text-godot-accent{--tw-text-opacity:1;color:rgb(56 189 248/var(--tw-text-opacity,1))}.text-godot-blue{--tw-text-opacity:1;color:rgb(71 140 191/var(--tw-text-opacity,1))}.text-purple-300{--tw-text-opacity:1;color:rgb(216 180 254/var(--tw-text-opacity,1))}.text-rose-300{--tw-text-opacity:1;color:rgb(253 164 175/var(--tw-text-opacity,1))}.text-rose-400{--tw-text-opacity:1;color:rgb(251 113 133/var(--tw-text-opacity,1))}.text-slate-100{--tw-text-opacity:1;color:rgb(241 245 249/var(--tw-text-opacity,1))}.text-slate-200{--tw-text-opacity:1;color:rgb(226 232 240/var(--tw-text-opacity,1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225/var(--tw-text-opacity,1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184/var(--tw-text-opacity,1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.placeholder-slate-500::-moz-placeholder{--tw-placeholder-opacity:1;color:rgb(100 116 139/var(--tw-placeholder-opacity,1))}.placeholder-slate-500::placeholder{--tw-placeholder-opacity:1;color:rgb(100 116 139/var(--tw-placeholder-opacity,1))}.opacity-0{opacity:0}.opacity-50{opacity:.5}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgba(0,0,0,.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color)}.shadow-2xl,.shadow-lg{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgba(0,0,0,.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color)}.shadow-sm,.shadow-xl{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color),0 8px 10px -6px var(--tw-shadow-color)}.shadow-godot-blue\/20{--tw-shadow-color:rgba(71,140,191,.2);--tw-shadow:var(--tw-shadow-colored)}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.ease-out{transition-timing-function:cubic-bezier(0,0,.2,1)}.selection\:bg-godot-blue ::-moz-selection{--tw-bg-opacity:1;background-color:rgb(71 140 191/var(--tw-bg-opacity,1))}.selection\:bg-godot-blue ::selection{--tw-bg-opacity:1;background-color:rgb(71 140 191/var(--tw-bg-opacity,1))}.selection\:text-white ::-moz-selection{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.selection\:text-white ::selection{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.selection\:bg-godot-blue::-moz-selection{--tw-bg-opacity:1;background-color:rgb(71 140 191/var(--tw-bg-opacity,1))}.selection\:bg-godot-blue::selection{--tw-bg-opacity:1;background-color:rgb(71 140 191/var(--tw-bg-opacity,1))}.selection\:text-white::-moz-selection{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.selection\:text-white::selection{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.hover\:bg-emerald-500:hover{--tw-bg-opacity:1;background-color:rgb(16 185 129/var(--tw-bg-opacity,1))}.hover\:bg-godot-blue:hover{--tw-bg-opacity:1;background-color:rgb(71 140 191/var(--tw-bg-opacity,1))}.hover\:bg-godot-blue\/15:hover{background-color:rgba(71,140,191,.15)}.hover\:bg-godot-blueHover:hover{--tw-bg-opacity:1;background-color:rgb(90 160 214/var(--tw-bg-opacity,1))}.hover\:bg-godot-card:hover{--tw-bg-opacity:1;background-color:rgb(37 42 58/var(--tw-bg-opacity,1))}.hover\:bg-rose-500:hover{--tw-bg-opacity:1;background-color:rgb(244 63 94/var(--tw-bg-opacity,1))}.hover\:bg-slate-700:hover{--tw-bg-opacity:1;background-color:rgb(51 65 85/var(--tw-bg-opacity,1))}.hover\:bg-slate-800:hover{--tw-bg-opacity:1;background-color:rgb(30 41 59/var(--tw-bg-opacity,1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.focus\:border-godot-blue:focus{--tw-border-opacity:1;border-color:rgb(71 140 191/var(--tw-border-opacity,1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.active\:cursor-grabbing:active{cursor:grabbing}.disabled\:pointer-events-none:disabled{pointer-events:none}.disabled\:opacity-30:disabled{opacity:.3}.group:hover .group-hover\:text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225/var(--tw-text-opacity,1))}@media (min-width:640px){.sm\:block{display:block}.sm\:gap-5{gap:1.25rem}.sm\:p-5{padding:1.25rem}.sm\:p-7{padding:1.75rem}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:text-2xl{font-size:1.5rem;line-height:2rem}.sm\:text-base{font-size:1rem;line-height:1.5rem}.sm\:text-lg{font-size:1.125rem;line-height:1.75rem}.sm\:text-sm{font-size:.875rem;line-height:1.25rem}}@media (min-width:1024px){.lg\:col-span-4{grid-column:span 4/span 4}.lg\:col-span-8{grid-column:span 8/span 8}.lg\:grid-cols-12{grid-template-columns:repeat(12,minmax(0,1fr))}.lg\:px-8{padding-left:2rem;padding-right:2rem}}
         /* Custom scrollbar for code panels */
         ::-webkit-scrollbar {
             width: 8px;
@@ -95,6 +70,15 @@
 
         <!-- Left Sidebar: Concept & Project Navigator -->
         <aside class="lg:col-span-4 flex flex-col gap-4">
+            <!-- Student Name -->
+            <div class="bg-godot-panel p-4 rounded-2xl border border-godot-border space-y-1.5">
+                <label for="student-name" class="text-xs font-semibold text-slate-300 block">Your name</label>
+                <input id="student-name" type="text" autocomplete="off" placeholder="First and last name"
+                    oninput="saveName(this.value)"
+                    class="w-full bg-godot-card border border-godot-border rounded-xl px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-godot-blue">
+                <p class="text-xs text-slate-400">On a shared computer? Click Reset Progress before you start so you don't see someone else's checkmarks.</p>
+            </div>
+
             <!-- Filter Pills -->
             <div class="bg-godot-panel p-4 rounded-2xl border border-godot-border space-y-3">
                 <div>
@@ -135,6 +119,10 @@
 
         <!-- Right Main Area: Active Retrieval Challenge -->
         <section class="lg:col-span-8 flex flex-col gap-5">
+            <div id="completion-banner" class="hidden rounded-2xl border border-emerald-500/50 bg-emerald-500/15 p-4 sm:p-5">
+                <p class="font-bold text-emerald-300 text-base">Retrieval Lab complete</p>
+                <p id="completion-text" class="text-sm text-slate-100 mt-1"></p>
+            </div>
             <div id="challenge-container" class="bg-godot-panel rounded-2xl border border-godot-border p-5 sm:p-7 shadow-xl flex flex-col gap-6">
                 <!-- Challenge Header -->
                 <div class="flex flex-wrap items-start justify-between gap-4 border-b border-godot-border pb-5">
@@ -251,8 +239,9 @@
                 title: "1. Balloon Script Variables & Setup",
                 concept: "GDScript Inheritance & @export Inspector Variables",
                 fileName: "Balloon.gd",
-                prompt: "Arrange the top declarations of Balloon.gd in the exact Zenva lesson order so the Area3D script exposes clicks_to_pop, size_increase, and score_to_give in the Inspector.",
-                hint: "In GDScript, 'extends Area3D' must always be the very first line, followed by the three @export variables in order.",
+                prompt: "Arrange the top of Balloon.gd so the Area3D script exposes clicks_to_pop, size_increase, and score_to_give in the Inspector.",
+                hint: "In GDScript, 'extends Area3D' must be the very first line. The three @export variables can go in any order after it.",
+                rules: [[0, 1], [0, 2], [0, 3]],
                 explanation: "Spot on! Starting with 'extends Area3D' establishes the node class, and the '@export' variables appear cleanly in the Inspector.",
                 lines: [
                     "extends Area3D",
@@ -268,7 +257,7 @@
                 title: "2. Filtering Left Mouse Clicks",
                 concept: "Input Events & Compound 'and' Conditions",
                 fileName: "Balloon.gd",
-                prompt: "A student wrote _on_input_event in Balloon.gd to detect left clicks, but releasing the mouse button or moving the mouse triggers inflation! Find and click the buggy line, then choose the fix.",
+                prompt: "A student wrote _on_input_event in Balloon.gd to detect left clicks, but the balloon inflates when you release the mouse button instead of when you press it! Find and click the buggy line, then choose the fix.",
                 hint: "Look closely at the compound 'if' statement: we want to ensure the button was pressed down ('event.pressed'), not unpressed.",
                 explanation: "Great catch! Zenva checks 'if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:' so the balloon only inflates on an active left-click press.",
                 buggyLineIndex: 1,
@@ -303,9 +292,10 @@
                 title: "3. Inflating & Popping Sequence",
                 concept: "Vector3 Uniform Scaling, Script Communication & queue_free()",
                 fileName: "Balloon.gd",
-                prompt: "Once a valid left click is detected in Balloon.gd, put the balloon's inflation, score awarding, and removal steps in the exact Zenva lesson order.",
-                hint: "If you call queue_free() before calling increase_score(), the balloon destroys itself before updating the score!",
-                explanation: "Exactly right! First the balloon scales up with Vector3.ONE, then clicks_to_pop decrements, and when it reaches 0, it calls increase_score on the parent node before queue_free().",
+                prompt: "Once a valid left click is detected in Balloon.gd, arrange the inflate, count-down, and pop steps so the balloon pops and awards points after the right number of clicks.",
+                hint: "The balloon can only check clicks_to_pop == 0 after it subtracts the click. The score line and queue_free() both belong inside the if block.",
+                rules: [[1, 2]],
+                explanation: "Exactly right! clicks_to_pop must decrement before the == 0 check, and both pop actions sit inside the if block. Calling increase_score() before queue_free() is the clearest habit, but either order works because queue_free() waits until the end of the frame to remove the balloon.",
                 lines: [
                     "scale += Vector3.ONE * size_increase",
                     "clicks_to_pop -= 1",
@@ -361,7 +351,8 @@
                 concept: "@onready Node References ($) & _ready() Initialization",
                 fileName: "BalloonManager.gd",
                 prompt: "Arrange the setup lines of BalloonManager.gd so the script tracks score, grabs the $ScoreText Label node when ready, and sets the initial UI text.",
-                hint: "Class variables and @onready references go at the top of the script before func _ready():.",
+                hint: "'extends' goes first. By the GDScript style guide, variables come before functions; the two variable lines can go in either order.",
+                rules: [[0, 1], [0, 2], [0, 3], [1, 3], [2, 3]],
                 explanation: "Spot on! Declaring score and @onready var score_text : Label = $ScoreText at the top ensures the Label node is ready when _ready() sets its text.",
                 lines: [
                     "extends Node3D",
@@ -414,6 +405,7 @@
                 fileName: "BalloonManager.gd",
                 prompt: "Order the lines of increase_score(amount : int) in BalloonManager.gd so the score updates before the UI Label refreshes.",
                 hint: "If you update score_text.text before adding amount to score, the UI will always lag one pop behind!",
+                rules: [[1, 2]],
                 explanation: "Exactly right! First define the function signature, then add 'amount' to 'score' with +=, and finally update score_text.text.",
                 lines: [
                     "func increase_score(amount : int):",
@@ -431,7 +423,7 @@
                 prompt: "When a balloon reaches 0 clicks_to_pop, Godot crashes with 'Node not found: Main'. Inspect Balloon.gd and fix the get_node() path.",
                 hint: "In Zenva's scene tree, Main is the root node inside '/root/'.",
                 explanation: "Bullseye! Because Main sits at the top of the active scene tree, get_node(\"/root/Main\") locates it reliably from any balloon.",
-                buggyLineIndex: 2,
+                buggyLineIndex: 1,
                 codeLines: [
                     "if clicks_to_pop == 0:",
                     "    get_node(\"Main\").increase_score(score_to_give)",
@@ -468,7 +460,8 @@
                 fileName: "PhysicsPlayer.gd",
                 prompt: "Order the lines inside _process(delta) from Zenva's PhysicsPlayer.gd so the RigidBody2D player calculates the direction toward the cursor and launches on a left click.",
                 hint: "First declare _process(delta), check Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT), calculate dir, and finally call apply_impulse().",
-                explanation: "Awesome! Checking Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT), calculating global_position.direction_to(get_global_mouse_position()), and calling apply_impulse(dir * hit_force) matches the exact Zenva script.",
+                rules: [[2, 3]],
+                explanation: "Awesome! Checking Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT), calculating global_position.direction_to(get_global_mouse_position()), and then calling apply_impulse(dir * hit_force) launches the player toward the cursor.",
                 lines: [
                     "func _process(delta):",
                     "    if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):",
@@ -520,8 +513,9 @@
                 title: "11. Complete PhysicsPlayer.gd Structure",
                 concept: "RigidBody2D Inheritance & Force Variable Setup",
                 fileName: "PhysicsPlayer.gd",
-                prompt: "Reconstruct the entire PhysicsPlayer.gd script from top to bottom in the exact Zenva lesson order.",
-                hint: "Start with 'extends RigidBody2D', then declare 'var hit_force : float = 50.0' above _process(delta).",
+                prompt: "Reconstruct the entire PhysicsPlayer.gd script from top to bottom.",
+                hint: "Start with 'extends RigidBody2D', then declare 'var hit_force : float = 50.0' above _process(delta) (variables before functions, per the GDScript style guide).",
+                rules: [[0, 1], [0, 2], [1, 2], [4, 5]],
                 explanation: "Clean work! Extending RigidBody2D gives the script access to apply_impulse(), and hit_force scales the unit direction vector.",
                 lines: [
                     "extends RigidBody2D",
@@ -616,15 +610,16 @@
                 project: "Lesson 4: Downhill Skiing",
                 type: "order",
                 title: "14. Tree Collision & Scene Reload",
-                concept: "Node Groups (is_in_group) & get_tree().reload_current_scene()",
+                concept: "Node Groups (is_in_group) & Deferred Scene Reload",
                 fileName: "PlayerMovement.gd",
                 prompt: "Arrange the collision signal handler from Zenva's PlayerMovement.gd so the game checks if the collided body is in the 'Tree' group and reloads the scene.",
-                hint: "First declare _on_body_entered(body), check body.is_in_group(\"Tree\"), and then reload the current scene via get_tree().",
-                explanation: "Well done! Checking body.is_in_group(\"Tree\") ignores collisions with the ski slope Ground, and get_tree().reload_current_scene() restarts the run.",
+                hint: "First declare _on_body_entered(body), check body.is_in_group(\"Tree\"), and then reload the current scene via get_tree(). Use .call_deferred() so Godot finishes the physics frame first.",
+                rules: [],
+                explanation: "Well done! Checking body.is_in_group(\"Tree\") ignores collisions with the ski slope Ground. Chaining .call_deferred() onto reload_current_scene waits until the physics frame finishes, which prevents the 'Removing a CollisionObject node' error.",
                 lines: [
                     "func _on_body_entered(body):",
                     "    if body.is_in_group(\"Tree\"):",
-                    "        get_tree().reload_current_scene()"
+                    "        get_tree().reload_current_scene.call_deferred()"
                 ]
             },
             {
@@ -635,7 +630,8 @@
                 concept: "Fixed Timestep _physics_process(delta) & Key Polling",
                 fileName: "PlayerMovement.gd",
                 prompt: "Order the declarations and _physics_process(delta) steering blocks in PlayerMovement.gd.",
-                hint: "Start with 'extends RigidBody3D', then '@export var move_speed : float = 2.0', followed by _physics_process(delta) checking KEY_LEFT and KEY_RIGHT.",
+                hint: "Start with 'extends RigidBody3D', then '@export var move_speed : float = 2.0', followed by _physics_process(delta). The LEFT and RIGHT checks can go in either order, but each velocity line must stay inside its own if.",
+                rules: [[0, 1], [0, 2], [1, 2]],
                 explanation: "Great job! Using _physics_process(delta) ensures smooth, frame-rate-independent velocity updates for RigidBody3D.",
                 lines: [
                     "extends RigidBody3D",
@@ -656,12 +652,12 @@
                 fileName: "PlayerMovement.gd",
                 prompt: "The instant the skier touches the snow slope (Ground), the game reloads endlessly! Inspect _on_body_entered(body) and fix the missing group check.",
                 hint: "Both Ground and Tree are StaticBody3D colliders. How does Zenva tell them apart?",
-                explanation: "Nailed it! Wrapping get_tree().reload_current_scene() inside 'if body.is_in_group(\"Tree\"):' ensures only trees reset the level.",
+                explanation: "Nailed it! Wrapping the scene reload inside 'if body.is_in_group(\"Tree\"):' ensures only trees reset the level.",
                 buggyLineIndex: 1,
                 codeLines: [
                     "func _on_body_entered(body):",
                     "    if body.is_in_group(\"Ground\"):",
-                    "        get_tree().reload_current_scene()"
+                    "        get_tree().reload_current_scene.call_deferred()"
                 ],
                 options: [
                     {
@@ -692,8 +688,9 @@
                 title: "17. Preloading Star.tscn & Setup",
                 concept: "@export Iteration Count & preload() PackedScene",
                 fileName: "Loops.gd",
-                prompt: "Arrange the top of Loops.gd in Zenva's exact order to extend Node2D, expose spawn_count, and preload Star.tscn.",
-                hint: "First extend Node2D, then declare '@export var spawn_count : int = 200', and then preload 'res://Loops/Star.tscn'.",
+                prompt: "Arrange the top of Loops.gd to extend Node2D, expose spawn_count, and preload Star.tscn.",
+                hint: "'extends Node2D' comes first. The spawn_count and star_scene lines can go in either order after it.",
+                rules: [[0, 1], [0, 2]],
                 explanation: "Spot on! Preloading Star.tscn into star_scene prepares the template so the loop can instantiate 200 copies instantly.",
                 lines: [
                     "extends Node2D",
@@ -748,8 +745,9 @@
                 concept: "For Loops, Scene Instantiation, randi_range() & randf_range()",
                 fileName: "Loops.gd",
                 prompt: "Order the loop body inside _ready() from Zenva's Loops.gd to instantiate a star, add it as a child, set its random integer position, and randomize its float star_size.",
-                hint: "Notice Zenva uses randi_range() for star.position.x / y, and randf_range() stored in 'star_size' for star.scale.x / y.",
-                explanation: "Fantastic! Each iteration instantiates star_scene, calls add_child(star), sets random integer positions with randi_range(), and applies float scaling via star_size = randf_range(0.5, 1.0).",
+                hint: "A star has to exist (instantiate) before you can add it or change its position or scale, and star_size has to exist before the scale lines use it.",
+                rules: [[1, 2], [1, 3], [1, 4], [1, 6], [1, 7], [5, 6], [5, 7]],
+                explanation: "Fantastic! Each iteration instantiates star_scene before using star, and creates star_size before the scale lines read it. Setting the position before or after add_child(star) both work.",
                 lines: [
                     "for i in spawn_count:",
                     "    var star = star_scene.instantiate()",
@@ -814,8 +812,10 @@
         // Initialize App
         function init() {
             loadProgress();
+            loadName();
             renderSidebar();
             loadProblem(0);
+            updateCompletion();
         }
 
         function loadProgress() {
@@ -973,8 +973,10 @@
             } else {
                 // Deterministic shuffle that isn't already solved
                 currentOrderLines = shuffleArray([...problem.lines]);
-                if (arraysEqual(currentOrderLines, problem.lines)) {
-                    currentOrderLines.reverse();
+                let tries = 0;
+                while (validateOrder(problem, currentOrderLines).ok && tries < 50) {
+                    currentOrderLines = shuffleArray([...problem.lines]);
+                    tries++;
                 }
                 renderOrderWorkspace(problem);
             }
@@ -1071,7 +1073,7 @@
             const workspace = document.getElementById('workspace-area');
             workspace.innerHTML = `
                 <div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400 px-1">
-                    <span>Drag lines or use the <strong class="text-slate-200">Up / Down</strong> buttons to arrange <code class="text-slate-200 font-mono">${problem.fileName}</code> in execution order:</span>
+                    <span>Drag lines or use the <strong class="text-slate-200">Up / Down</strong> buttons to arrange <code class="text-slate-200 font-mono">${problem.fileName}</code> so it runs correctly. If two lines don't depend on each other, either order counts.</span>
                 </div>
                 <div class="bg-[#0f111a] border border-godot-border rounded-xl overflow-hidden">
                     <div class="bg-godot-card/80 px-4 py-2 border-b border-godot-border flex items-center justify-between text-xs text-slate-400">
@@ -1184,24 +1186,17 @@
                     showFeedback('error', 'Right Line, Wrong Fix', chosenOpt.reason);
                 }
             } else {
-                // Verify Parsons order
-                const isExactMatch = arraysEqual(currentOrderLines, problem.lines);
-                if (isExactMatch) {
+                // Verify Parsons order: any order that keeps every line in its block
+                // and respects the problem's dependency rules counts as correct.
+                const result = validateOrder(problem, currentOrderLines);
+                if (result.ok) {
                     markProblemSolved(problem.id);
                     showFeedback('success', 'Execution Order Verified!', problem.explanation);
                 } else {
-                    // Count how many lines are in their exact spot to give constructive retrieval feedback
-                    let correctCount = 0;
-                    currentOrderLines.forEach((line, idx) => {
-                        if (line === problem.lines[idx]) correctCount++;
-                    });
-                    showFeedback(
-                        'error',
-                        'Not Quite in Order Yet',
-                        `You currently have ${correctCount} out of ${problem.lines.length} lines in their exact final position. Check variable dependencies and indentation flow.`
-                    );
+                    showFeedback('error', 'Not Quite in Order Yet', result.message);
                 }
             }
+            updateCompletion();
         }
 
         function markProblemSolved(id) {
@@ -1291,9 +1286,88 @@
 
         function confirmResetProgress() {
             solvedIds.clear();
+            try { localStorage.removeItem('godot4_retrieval_completed_at'); } catch (e) { /* storage unavailable */ }
             saveProgress();
+            updateCompletion();
             closeResetModal();
             loadProblem(0);
+        }
+
+
+        // ---- Order validation ----
+        function indentOf(line) {
+            return line.match(/^ */)[0].length;
+        }
+
+        function parentIndexes(lines) {
+            // For each line, the nearest earlier line with a smaller indent (its block header), or -1.
+            return lines.map((line, i) => {
+                const ind = indentOf(line);
+                for (let j = i - 1; j >= 0; j--) {
+                    if (indentOf(lines[j]) < ind) return j;
+                }
+                return -1;
+            });
+        }
+
+        function validateOrder(problem, order) {
+            const canon = problem.lines;
+            const canonParents = parentIndexes(canon);
+            const studentParents = parentIndexes(order);
+            const pos = {};
+            order.forEach((line, i) => { pos[canon.indexOf(line)] = i; });
+
+            // 1) Every line must sit inside the same block as in a working script.
+            for (let i = 0; i < order.length; i++) {
+                const ci = canon.indexOf(order[i]);
+                const expectedParent = canonParents[ci];
+                const actualParent = studentParents[i] === -1 ? -1 : canon.indexOf(order[studentParents[i]]);
+                if (expectedParent !== actualParent) {
+                    return { ok: false, message: `"${order[i].trim()}" is in the wrong block. Check which line it should be indented under.` };
+                }
+            }
+            // 2) Dependency rules: rules[k] = [a, b] means line a must come before line b.
+            for (const [a, b] of (problem.rules || [])) {
+                if (pos[a] > pos[b]) {
+                    return { ok: false, message: `"${canon[b].trim()}" is too early. Something it needs has to come before it.` };
+                }
+            }
+            return { ok: true };
+        }
+
+        // ---- Student name & completion banner ----
+        function loadName() {
+            try {
+                document.getElementById('student-name').value = localStorage.getItem('godot4_retrieval_name') || '';
+            } catch (e) { /* storage unavailable */ }
+        }
+
+        function saveName(value) {
+            try { localStorage.setItem('godot4_retrieval_name', value.trim()); } catch (e) { /* storage unavailable */ }
+            updateCompletion();
+        }
+
+        function updateCompletion() {
+            const banner = document.getElementById('completion-banner');
+            if (!banner) return;
+            if (solvedIds.size < PROBLEMS.length) {
+                banner.classList.add('hidden');
+                return;
+            }
+            let doneAt = null;
+            try {
+                doneAt = localStorage.getItem('godot4_retrieval_completed_at');
+                if (!doneAt) {
+                    doneAt = new Date().toISOString();
+                    localStorage.setItem('godot4_retrieval_completed_at', doneAt);
+                }
+            } catch (e) { doneAt = new Date().toISOString(); }
+            const name = document.getElementById('student-name').value.trim();
+            const when = new Date(doneAt).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' });
+            document.getElementById('completion-text').textContent = name
+                ? `All ${PROBLEMS.length} complete: ${name}, ${when}. Take a screenshot of this page and add it to your portfolio.`
+                : `All ${PROBLEMS.length} complete on ${when}. Type your name in the sidebar, then take a screenshot for your portfolio.`;
+            banner.classList.remove('hidden');
         }
 
         // Helpers
